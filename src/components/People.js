@@ -27,7 +27,9 @@ const People = ({ people, page }) => {
     <div className="card-deck">
       {peopleList}
       {people.next ? <Link to={`/people?page=${next}`}> Next </Link> : null}
-      {people.previous ? <p>{previous}</p> : null}
+      {people.previous
+        ? <Link to={`/people?page=${previous}`}> Previous </Link>
+        : null}
     </div>
   );
 };
