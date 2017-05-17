@@ -16,13 +16,13 @@ export function starWars(state = initialState, action) {
         films: action.data,
         isFetching: false
       };
-    case Actions.GET_FILMS_REQUEST:
+    case Actions.GET_REQUEST:
       return {
         ...state,
         isFetching: true,
         error: null
       };
-    case Actions.GET_FILMS_FAILURE:
+    case Actions.GET_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -35,18 +35,7 @@ export function starWars(state = initialState, action) {
         page: action.data.page,
         isFetching: false
       };
-    case Actions.GET_PEOPLE_REQUEST:
-      return {
-        ...state,
-        isFetching: true,
-        error: null
-      };
-    case Actions.GET_PEOPLE_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        error: action.error
-      };
+
     default:
       return state;
   }

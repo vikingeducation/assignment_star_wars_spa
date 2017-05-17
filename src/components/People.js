@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
   return (
-    <div className="card my-3" style={{ maxWidth: "320px" }}>
+    <div className="card my-4 col-sm-6">
       <div className="card-block">
         {person.name}
       </div>
@@ -24,12 +24,23 @@ const People = ({ people, page }) => {
   let next = Number(page) + 1;
   let previous = Number(page) - 1;
   return (
-    <div className="card-deck">
-      {peopleList}
-      {people.next ? <Link to={`/people?page=${next}`}> Next </Link> : null}
-      {people.previous
-        ? <Link to={`/people?page=${previous}`}> Previous </Link>
-        : null}
+    <div>
+      <h1>People</h1>
+      <div className="card-deck">
+        <div className="row">
+          {peopleList}
+
+        </div>
+        <div className="row">
+          {people.previous
+            ? <Link to={`/people?page=${previous}`}> Previous {" "}</Link>
+            : null}
+
+          {people.next
+            ? <Link to={`/people?page=${next}`}> {" "}Next </Link>
+            : null}
+        </div>
+      </div>
     </div>
   );
 };

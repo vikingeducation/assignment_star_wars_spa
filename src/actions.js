@@ -1,14 +1,11 @@
-export const GET_FILMS_REQUEST = "GET_FILMS_REQUEST";
 export const GET_FILMS_SUCCESS = "GET_FILMS_SUCCESS";
-export const GET_FILMS_FAILURE = "GET_FILMS_FAILURE";
-
-export const GET_PEOPLE_REQUEST = "GET_PEOPLE_REQUEST";
 export const GET_PEOPLE_SUCCESS = "GET_PEOPLE_SUCCESS";
-export const GET_PEOPLE_FAILURE = "GET_PEOPLE_FAILURE";
+export const GET_REQUEST = "GET_REQUEST";
+export const GET_FAILURE = "GET_FAILURE";
 
-export function getFilmsRequest() {
+export function getRequest() {
   return {
-    type: GET_FILMS_REQUEST
+    type: GET_REQUEST
   };
 }
 
@@ -19,36 +16,23 @@ export function getFilmsSuccess(data) {
   };
 }
 
-export function getFilmsFailure(error) {
+export function getFailure(error) {
   return {
-    type: GET_FILMS_FAILURE,
+    type: GET_FAILURE,
     error
   };
 }
 
 export function getFilms() {
   return dispatch => {
-    dispatch(getFilmsRequest());
-
-    fetch("http://swapi.co/api/films/")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
+    dispatch(getRequest());
+    _fetch("http://swapi.co/api/films/")
       .then(json => {
         dispatch(getFilmsSuccess(json.results));
       })
       .catch(error => {
-        dispatch(getFilmsFailure(error));
+        dispatch(getFailure(error));
       });
-  };
-}
-
-export function getPeopleRequest() {
-  return {
-    type: GET_PEOPLE_REQUEST
   };
 }
 
@@ -59,29 +43,25 @@ export function getPeopleSuccess(data) {
   };
 }
 
-export function getPeopleFailure(error) {
-  return {
-    type: GET_PEOPLE_FAILURE,
-    error
-  };
-}
-
 export function getPeople(page) {
   return dispatch => {
-    dispatch(getPeopleRequest());
-    fetch(`http://swapi.co/api/people/?page=${page}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        return response.json();
-      })
+    dispatch(getRequest());
+    _fetch(`http://swapi.co/api/people/?page=${page}`)
       .then(json => {
         json.page = page;
         dispatch(getPeopleSuccess(json));
       })
       .catch(error => {
-        dispatch(getPeopleFailure(error));
+        dispatch(getFailure(error));
       });
   };
+}
+
+function _fetch(url) {
+  return fetch(url).then(response => {
+    if (!response.ok) {
+      throw new Error(`${response.status}: ${response.statusText}`);
+    }
+    return response.json();
+  });
 }
