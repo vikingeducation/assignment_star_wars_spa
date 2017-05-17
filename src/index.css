@@ -7,3 +7,6 @@ body {
   text-decoration: none;
   color: #ccc;
 }
+.padding {
+  padding-right: 10px;
+}

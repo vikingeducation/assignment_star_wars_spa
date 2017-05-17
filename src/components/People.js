@@ -5,7 +5,7 @@ const PersonCard = ({ person }) => {
   return (
     <div className="card my-4 col-sm-6">
       <div className="card-block">
-        {person.name}
+        <h4>{person.name}</h4>
       </div>
     </div>
   );
@@ -26,19 +26,21 @@ const People = ({ people, page }) => {
   return (
     <div>
       <h1>People</h1>
+      <div className="row">
+        {people.previous
+          ? <Link className="padding" to={`/people?page=${previous}`}>
+              {" "}Previous {" "}
+            </Link>
+          : null}
+
+        {people.next
+          ? <Link to={`/people?page=${next}`}> {" "}Next </Link>
+          : null}
+      </div>
       <div className="card-deck">
         <div className="row">
           {peopleList}
 
-        </div>
-        <div className="row">
-          {people.previous
-            ? <Link to={`/people?page=${previous}`}> Previous {" "}</Link>
-            : null}
-
-          {people.next
-            ? <Link to={`/people?page=${next}`}> {" "}Next </Link>
-            : null}
         </div>
       </div>
     </div>

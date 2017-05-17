@@ -1,14 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FilmCard = ({ film }) => {
   return (
-    <div className="card my-3" style={{ maxWidth: "320px" }}>
-      <div className="card-block">
+    <Link to={`/films/${film.episode_id}`}>
+      <div className="card my-3" style={{ maxWidth: "320px" }}>
+        <div className="card-block">
 
-        <h4>{film.title}</h4>
-        <h6>{film.release_date}</h6>
+          <h4>{film.title}</h4>
+          <h6>{film.release_date}</h6>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 const Films = ({ films }) => {
