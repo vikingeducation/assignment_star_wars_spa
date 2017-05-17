@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
   return (
-    <div className="card my-4 col-sm-6">
-      <div className="card-block">
-        <h4>{person.name}</h4>
+    <Link to={`/people/${person.name}`}>
+      <div className="card my-4 col-sm-6">
+        <div className="card-block">
+          <h4>{person.name}</h4>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 const People = ({ people, page }) => {

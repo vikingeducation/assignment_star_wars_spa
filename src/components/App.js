@@ -8,6 +8,7 @@ import {
 import FilmsContainer from "../containers/FilmsContainer";
 import FilmContainer from "../containers/FilmContainer";
 import PeopleContainer from "../containers/PeopleContainer";
+import PersonContainer from "../containers/PersonContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -33,6 +34,7 @@ class App extends Component {
             <Route exact path="/" render={() => <h1>Home</h1>} />
             <Route path="/films/:id" component={FilmContainer} />
             <Route path="/films" component={FilmsContainer} />
+            <Route path="/people/:id" component={PersonContainer} />
             <Route path="/people" component={PeopleContainer} />
             <Route render={() => <h1>Page not found</h1>} />
           </Switch>

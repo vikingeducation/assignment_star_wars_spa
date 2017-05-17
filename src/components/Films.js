@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const FilmCard = ({ film }) => {
   return (
-    <Link to={`/films/${film.episode_id}`}>
-      <div className="card my-3" style={{ maxWidth: "320px" }}>
+    <Link to={`/films/${film.episode_id}`} className="my-3">
+      <div className="card" style={{ maxWidth: "320px" }}>
         <div className="card-block">
 
           <h4>{film.title}</h4>
