@@ -7,20 +7,23 @@ import parse from "url-parse";
 
 class PeopleContainer extends Component {
   componentDidMount() {
-    console.log("PROPS", this.props);
     let url = parse(this.props.location.search, true);
     let page = url.query.page || 1;
+    this.setState({
+      page
+    });
     this.props.getPeople(page);
   }
   render() {
-    const { people, isFetching } = this.props;
-    return <People people={people} isFetching={isFetching} />;
+    const { people, isFetching, page } = this.props;
+    return <People people={people} isFetching={isFetching} page={page} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
     people: state.people,
+    page: state.page,
     isFetching: state.isFetching
   };
 };
@@ -28,7 +31,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getPeople: page => {
-      dispatch(getPeople(1));
+      dispatch(getPeople(page));
     }
   };
 };
