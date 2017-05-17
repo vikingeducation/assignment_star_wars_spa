@@ -4,13 +4,14 @@ import Search from "./Search";
 
 const PersonCard = ({ person }) => {
   return (
-    <Link to={`/people/${person.name}`}>
-      <div className="card my-4 col-sm-6">
+    <div className="card my-4 col-sm-6">
+      <Link to={`/people/${person.name}`}>
+
         <div className="card-block">
           <h4>{person.name}</h4>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 const People = ({ people, searchResults, page, onSubmit }) => {
