@@ -10,7 +10,13 @@ class PeopleContainer extends Component {
     let url = parse(this.props.location.search, true);
     let page = url.query.page || 1;
     this.props.getPeople(page);
-    console.log(this.props);
+  }
+  componentWillReceiveProps(newProps) {
+    if (newProps.location.search !== this.props.location.search) {
+      let newUrl = parse(newProps.location.search, true);
+      let page = newUrl.query.page || 1;
+      this.props.getPeople(page);
+    }
   }
   render() {
     const { people, isFetching, page } = this.props;
