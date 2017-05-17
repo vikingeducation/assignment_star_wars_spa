@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { findFilm } from "../helpers";
 import Film from "../components/Film";
+import { withRouter } from "react-router-dom";
 
 class FilmContainer extends Component {
   render() {
@@ -16,4 +17,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(Film);
+export default withRouter(connect(mapStateToProps)(FilmContainer));

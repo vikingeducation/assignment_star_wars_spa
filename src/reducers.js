@@ -3,6 +3,7 @@ import * as Actions from "./actions";
 const initialState = {
   films: [],
   isFetching: false,
+  film: null,
   page: 1,
   people: {},
   error: null

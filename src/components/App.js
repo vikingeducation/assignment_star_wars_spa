@@ -6,8 +6,8 @@ import {
   Switch
 } from "react-router-dom";
 import FilmsContainer from "../containers/FilmsContainer";
-import PeopleContainer from "../containers/PeopleContainer";
 import FilmContainer from "../containers/FilmContainer";
+import PeopleContainer from "../containers/PeopleContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">

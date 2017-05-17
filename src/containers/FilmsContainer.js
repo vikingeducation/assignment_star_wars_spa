@@ -14,6 +14,7 @@ class FilmsContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     films: state.films,
     isFetching: state.isFetching
