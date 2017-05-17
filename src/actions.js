@@ -1,5 +1,6 @@
 export const GET_FILMS_SUCCESS = "GET_FILMS_SUCCESS";
 export const GET_PEOPLE_SUCCESS = "GET_PEOPLE_SUCCESS";
+export const GET_SEARCH_SUCCESS = "GET_SEARCH_SUCCESS";
 export const GET_REQUEST = "GET_REQUEST";
 export const GET_FAILURE = "GET_FAILURE";
 
@@ -50,6 +51,27 @@ export function getPeople(page) {
       .then(json => {
         json.page = page;
         dispatch(getPeopleSuccess(json));
+      })
+      .catch(error => {
+        dispatch(getFailure(error));
+      });
+  };
+}
+
+export function getSearchSuccess(data) {
+  return {
+    type: GET_SEARCH_SUCCESS,
+    data
+  };
+}
+
+export function getSearchResults(page, searchText) {
+  return dispatch => {
+    dispatch(getRequest());
+    _fetch(`http://swapi.co/api/people/?page=${page}&search=${searchText}`)
+      .then(json => {
+        json.page = page;
+        dispatch(getSearchSuccess(json));
       })
       .catch(error => {
         dispatch(getFailure(error));

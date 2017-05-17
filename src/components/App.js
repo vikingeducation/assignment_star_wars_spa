@@ -35,7 +35,7 @@ class App extends Component {
             <Route path="/films/:id" component={FilmContainer} />
             <Route path="/films" component={FilmsContainer} />
             <Route path="/people/:id" component={PersonContainer} />
-            <Route path="/people" component={PeopleContainer} />
+            <Route path="/people" component={PeopleContainer} component={Sea} />
             <Route render={() => <h1>Page not found</h1>} />
           </Switch>
           <NavLinks />

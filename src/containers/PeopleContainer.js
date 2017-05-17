@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import People from "../components/People";
 import { getPeople } from "../actions";
 import parse from "url-parse";
+import serialize from "form-serialize";
 
 class PeopleContainer extends Component {
   componentDidMount() {
@@ -18,9 +19,15 @@ class PeopleContainer extends Component {
       this.props.getPeople(page);
     }
   }
+
   render() {
     const { people, isFetching, page } = this.props;
-    return <People people={people} isFetching={isFetching} page={page} />;
+    return (
+      <div>
+        <Search onSubmit={onSubmit} />
+        <People people={people} isFetching={isFetching} page={page} />
+      </div>
+    );
   }
 }
 
@@ -36,6 +43,15 @@ const mapDispatchToProps = dispatch => {
   return {
     getPeople: page => {
       dispatch(getPeople(page));
+    },
+    onSubmit: e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = serialize(form, { hash: true });
+      if (data.searchText) {
+        dispatch(getSearchResults(data.searchText));
+        form.reset();
+      }
     }
   };
 };

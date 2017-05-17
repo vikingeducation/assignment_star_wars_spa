@@ -36,7 +36,13 @@ export function starWars(state = initialState, action) {
         page: action.data.page,
         isFetching: false
       };
-
+    case Actions.GET_SEARCH_SUCCESS:
+      return {
+        ...state,
+        people: action.data,
+        page: action.data.page,
+        isFetching: false
+      };
     default:
       return state;
   }
