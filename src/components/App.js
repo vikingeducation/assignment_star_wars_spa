@@ -6,6 +6,7 @@ import {
   Switch
 } from "react-router-dom";
 import FilmsContainer from "../containers/FilmsContainer";
+import PeopleContainer from "../containers/PeopleContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -30,7 +31,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <h1>Home</h1>} />
             <Route path="/films" component={FilmsContainer} />
-            <Route path="/people" render={() => <h1>People</h1>} />
+            <Route path="/people" component={PeopleContainer} />
             <Route render={() => <h1>Page not found</h1>} />
           </Switch>
           <NavLinks />

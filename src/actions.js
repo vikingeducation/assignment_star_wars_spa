@@ -45,3 +45,42 @@ export function getFilms() {
       });
   };
 }
+
+export function getPeopleRequest() {
+  return {
+    type: GET_PEOPLE_REQUEST
+  };
+}
+
+export function getPeopleSuccess(data) {
+  return {
+    type: GET_PEOPLE_SUCCESS,
+    data
+  };
+}
+
+export function getPeopleFailure(error) {
+  return {
+    type: GET_PEOPLE_FAILURE,
+    error
+  };
+}
+
+export function getPeople(page) {
+  return dispatch => {
+    dispatch(getPeopleRequest());
+    fetch(`http://swapi.co/api/people/?page=${page}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(json => {
+        dispatch(getPeopleSuccess(json));
+      })
+      .catch(error => {
+        dispatch(getPeopleFailure(error));
+      });
+  };
+}
