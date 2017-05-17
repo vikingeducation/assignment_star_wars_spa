@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const PersonCard = ({ person }) => {
   return (
@@ -12,7 +13,7 @@ const PersonCard = ({ person }) => {
     </Link>
   );
 };
-const People = ({ people, page }) => {
+const People = ({ people, searchResults, page, onSubmit }) => {
   if (!people.results) {
     return (
       <div>
@@ -20,7 +21,9 @@ const People = ({ people, page }) => {
       </div>
     );
   }
-  let peopleList = people.results.map(person => (
+
+  let peopleRender = searchResults.results ? searchResults : people;
+  let peopleList = peopleRender.results.map(person => (
     <PersonCard person={person} key={person.name} />
   ));
   let next = Number(page) + 1;
@@ -28,6 +31,7 @@ const People = ({ people, page }) => {
   return (
     <div>
       <h1>People</h1>
+      <Search onSubmit={onSubmit} />
       <div className="row">
         {people.previous
           ? <Link className="padding" to={`/people?page=${previous}`}>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import People from "../components/People";
-import { getPeople } from "../actions";
+import { getPeople, getSearchResults } from "../actions";
 import parse from "url-parse";
 import serialize from "form-serialize";
 
@@ -13,6 +13,7 @@ class PeopleContainer extends Component {
     this.props.getPeople(page);
   }
   componentWillReceiveProps(newProps) {
+    console.log("NEW", newProps);
     if (newProps.location.search !== this.props.location.search) {
       let newUrl = parse(newProps.location.search, true);
       let page = newUrl.query.page || 1;
@@ -21,11 +22,16 @@ class PeopleContainer extends Component {
   }
 
   render() {
-    const { people, isFetching, page } = this.props;
+    const { people, isFetching, page, onSubmit, searchResults } = this.props;
     return (
       <div>
-        <Search onSubmit={onSubmit} />
-        <People people={people} isFetching={isFetching} page={page} />
+        <People
+          people={people}
+          searchResults={searchResults}
+          isFetching={isFetching}
+          page={page}
+          onSubmit={onSubmit}
+        />
       </div>
     );
   }
@@ -35,7 +41,8 @@ const mapStateToProps = state => {
   return {
     people: state.people,
     page: state.page,
-    isFetching: state.isFetching
+    isFetching: state.isFetching,
+    searchResults: state.searchResults
   };
 };
 
@@ -49,7 +56,7 @@ const mapDispatchToProps = dispatch => {
       const form = e.target;
       const data = serialize(form, { hash: true });
       if (data.searchText) {
-        dispatch(getSearchResults(data.searchText));
+        dispatch(getSearchResults(1, data.searchText));
         form.reset();
       }
     }

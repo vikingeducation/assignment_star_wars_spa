@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 import Input from "./elements/Input";
 import InputGroup from "./elements/InputGroup";
 import Button from "./elements/Button";
@@ -11,9 +11,5 @@ const Search = ({ onSubmit }) => (
     <Button type="submit" color="primary">Search</Button>
   </form>
 );
-
-AddPuppy.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-};
 
 export default Search;

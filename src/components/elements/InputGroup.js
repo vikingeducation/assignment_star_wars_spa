@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 
 const InputGroup = ({ name, labelText, children }) => (
   <div className="form-group">
@@ -6,11 +6,5 @@ const InputGroup = ({ name, labelText, children }) => (
     {children}
   </div>
 );
-
-InputGroup.propTypes = {
-  name: PropTypes.string,
-  labelText: PropTypes.node.isRequired,
-  children: PropTypes.node
-};
 
 export default InputGroup;

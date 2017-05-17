@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React from "react";
 
 const Button = props => {
   const { size, color, children, type, ...rest } = props;
@@ -17,17 +17,6 @@ Button.defaultProps = {
   children: "Submit"
 };
 
-// Set PropTypes for Button
-Button.propTypes = {
-  // size is optional, but it must be a string if present
-  size: PropTypes.string,
-  // color is required, and it must be a string
-  color: PropTypes.string.isRequired,
-  // children is required and it can be anything that can
-  // be rendered (like a string, element, number, etc.)
-  children: PropTypes.node.isRequired,
-  // type is optional, but it must be a string
-  type: PropTypes.string
-};
+// Set PropTypes for Butto
 
 export default Button;

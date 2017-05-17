@@ -6,6 +6,7 @@ const initialState = {
   film: null,
   page: 1,
   people: {},
+  searchResults: {},
   error: null
 };
 
@@ -33,13 +34,14 @@ export function starWars(state = initialState, action) {
       return {
         ...state,
         people: action.data,
+        searchResults: {},
         page: action.data.page,
         isFetching: false
       };
     case Actions.GET_SEARCH_SUCCESS:
       return {
         ...state,
-        people: action.data,
+        searchResults: action.data,
         page: action.data.page,
         isFetching: false
       };
