@@ -77,6 +77,7 @@ export function getPeople(page) {
         return response.json();
       })
       .then(json => {
+        json.page = page;
         dispatch(getPeopleSuccess(json));
       })
       .catch(error => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
   return (
@@ -21,11 +21,13 @@ const People = ({ people, page }) => {
   let peopleList = people.results.map(person => (
     <PersonCard person={person} key={person.name} />
   ));
+  let next = Number(page) + 1;
+  let previous = Number(page) - 1;
   return (
     <div className="card-deck">
       {peopleList}
-      {people.next ? <Link to={`/people`}>Next</Link> : null}
-      {people.previous ? <Link to={`/people`}>Previous</Link> : null}
+      {people.next ? <Link to={`/people?page=${next}`}> Next </Link> : null}
+      {people.previous ? <p>{previous}</p> : null}
     </div>
   );
 };

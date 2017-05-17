@@ -32,6 +32,7 @@ export function starWars(state = initialState, action) {
       return {
         ...state,
         people: action.data,
+        page: action.data.page,
         isFetching: false
       };
     case Actions.GET_PEOPLE_REQUEST:

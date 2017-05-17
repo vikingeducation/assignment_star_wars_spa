@@ -9,10 +9,8 @@ class PeopleContainer extends Component {
   componentDidMount() {
     let url = parse(this.props.location.search, true);
     let page = url.query.page || 1;
-    this.setState({
-      page
-    });
     this.props.getPeople(page);
+    console.log(this.props);
   }
   render() {
     const { people, isFetching, page } = this.props;
