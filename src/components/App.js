@@ -5,6 +5,7 @@ import {
   NavLink,
   Switch
 } from "react-router-dom";
+import FilmsContainer from "../containers/FilmsContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -28,7 +29,7 @@ class App extends Component {
           <NavLinks />
           <Switch>
             <Route exact path="/" render={() => <h1>Home</h1>} />
-            <Route path="/films" render={() => <h1>Films</h1>} />
+            <Route path="/films" component={FilmsContainer} />
             <Route path="/people" render={() => <h1>People</h1>} />
             <Route render={() => <h1>Page not found</h1>} />
           </Switch>

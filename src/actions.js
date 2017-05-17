@@ -2,6 +2,10 @@ export const GET_FILMS_REQUEST = "GET_FILMS_REQUEST";
 export const GET_FILMS_SUCCESS = "GET_FILMS_SUCCESS";
 export const GET_FILMS_FAILURE = "GET_FILMS_FAILURE";
 
+export const GET_PEOPLE_REQUEST = "GET_PEOPLE_REQUEST";
+export const GET_PEOPLE_SUCCESS = "GET_PEOPLE_SUCCESS";
+export const GET_PEOPLE_FAILURE = "GET_PEOPLE_FAILURE";
+
 export function getFilmsRequest() {
   return {
     type: GET_FILMS_REQUEST
