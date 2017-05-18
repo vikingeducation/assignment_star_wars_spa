@@ -71,6 +71,7 @@ export function getSearchResults(page, searchText) {
     _fetch(`http://swapi.co/api/people/?page=${page}&search=${searchText}`)
       .then(json => {
         json.page = page;
+        json.searchText = searchText;
         dispatch(getSearchSuccess(json));
       })
       .catch(error => {

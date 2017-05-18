@@ -7,7 +7,8 @@ const initialState = {
   page: 1,
   people: {},
   searchResults: {},
-  error: null
+  error: null,
+  searchText: ""
 };
 
 export function starWars(state = initialState, action) {
@@ -36,6 +37,7 @@ export function starWars(state = initialState, action) {
         people: action.data,
         searchResults: {},
         page: action.data.page,
+        searchText: "",
         isFetching: false
       };
     case Actions.GET_SEARCH_SUCCESS:
@@ -43,6 +45,7 @@ export function starWars(state = initialState, action) {
         ...state,
         searchResults: action.data,
         page: action.data.page,
+        searchText: action.data.searchText,
         isFetching: false
       };
     default:

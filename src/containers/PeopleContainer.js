@@ -13,16 +13,27 @@ class PeopleContainer extends Component {
     this.props.getPeople(page);
   }
   componentWillReceiveProps(newProps) {
-    console.log("NEW", newProps);
     if (newProps.location.search !== this.props.location.search) {
       let newUrl = parse(newProps.location.search, true);
       let page = newUrl.query.page || 1;
-      this.props.getPeople(page);
+      let searchText = newUrl.query.searchText;
+      if (searchText) {
+        this.props.getSearchResults(page, searchText);
+      } else {
+        this.props.getPeople(page);
+      }
     }
   }
 
   render() {
-    const { people, isFetching, page, onSubmit, searchResults } = this.props;
+    const {
+      people,
+      isFetching,
+      page,
+      onSubmit,
+      searchResults,
+      searchText
+    } = this.props;
     return (
       <div>
         <People
@@ -31,6 +42,7 @@ class PeopleContainer extends Component {
           isFetching={isFetching}
           page={page}
           onSubmit={onSubmit}
+          searchText={searchText}
         />
       </div>
     );
@@ -42,21 +54,25 @@ const mapStateToProps = state => {
     people: state.people,
     page: state.page,
     isFetching: state.isFetching,
-    searchResults: state.searchResults
+    searchResults: state.searchResults,
+    searchText: state.searchText
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getPeople: page => {
       dispatch(getPeople(page));
+    },
+    getSearchResults: (page, searchText) => {
+      dispatch(getSearchResults(page, searchText));
     },
     onSubmit: e => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form, { hash: true });
       if (data.searchText) {
-        dispatch(getSearchResults(1, data.searchText));
+        ownProps.history.push(`/people?searchText=${data.searchText}`);
         form.reset();
       }
     }

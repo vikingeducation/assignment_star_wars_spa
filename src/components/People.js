@@ -14,7 +14,7 @@ const PersonCard = ({ person }) => {
     </div>
   );
 };
-const People = ({ people, searchResults, page, onSubmit }) => {
+const People = ({ people, searchResults, page, onSubmit, searchText }) => {
   if (!people.results) {
     return (
       <div>
@@ -34,14 +34,30 @@ const People = ({ people, searchResults, page, onSubmit }) => {
       <h1>People</h1>
       <Search onSubmit={onSubmit} />
       <div className="row">
-        {people.previous
+        {peopleRender.previous && searchText
+          ? <Link
+              className="padding"
+              to={`/people?page=${previous}&searchText=${searchText}`}
+            >
+              Previous{" "}
+            </Link>
+          : null}
+        {peopleRender.previous && !searchText
           ? <Link className="padding" to={`/people?page=${previous}`}>
-              {" "}Previous {" "}
+              Previous{" "}
             </Link>
           : null}
 
-        {people.next
-          ? <Link to={`/people?page=${next}`}> {" "}Next </Link>
+        {peopleRender.next && searchText
+          ? <Link to={`/people?page=${next}&searchText=${searchText}`}>
+              Next
+            </Link>
+          : null}
+
+        {peopleRender.next && !searchText
+          ? <Link to={`/people?page=${next}`}>
+              Next
+            </Link>
           : null}
       </div>
       <div className="card-deck">
