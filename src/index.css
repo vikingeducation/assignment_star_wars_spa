@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.active{
+  text-decoration: none;
+  color: #ccc;
+}
+.padding {
+  padding-right: 10px;
+}
