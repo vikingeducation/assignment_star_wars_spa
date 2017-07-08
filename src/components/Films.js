@@ -1,18 +1,18 @@
 import React from 'react';
 import FilmCard from './FilmCard';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Row} from 'react-bootstrap';
 
 const Films = ({films, isFetching}) => {
   const filmCards = films.map(film => (
     <FilmCard film={film} key={film.episode_id}/>
   ));
   return (
-    <Row>
-      <Col md={8}>
-      Films
-      {filmCards}
-      </Col>
-    </Row>
+    <Grid>
+      <h1>Films</h1>
+      <Row>
+        {filmCards}
+      </Row>
+    </Grid>
   )
 };
 

@@ -20,7 +20,6 @@ class App extends Component {
       <Router>
         <ScrollToTop>
         <Navbar title={"Star Wars Encyclopedia"}/>
-        <Grid>
           <Switch>
             <Route exact path="/" render={() => <h1>Home</h1>} />
             <Route path="/films" component={FilmsContainer} />
@@ -31,7 +30,6 @@ class App extends Component {
             <Route path="/vehicles" component={Vehicles} />
             <Route render={() => <h1>Page not found</h1>} />
           </Switch>
-        </Grid>
 
         </ScrollToTop>
       </Router>
