@@ -2,7 +2,9 @@ import * as Actions from "./actions";
 import { combineReducers } from "redux";
 
 const initialState = {
-  films: {},
+  films: {
+    allFilms: {}
+  },
   people: {},
   planets: {},
   species: {},
@@ -10,7 +12,7 @@ const initialState = {
   vehicles: {}
 }
 
-export function allFilms(state = initialState.films, action) {
+export function films(state = initialState.films, action) {
   switch (action.type) {
     case Actions.GET_FILMS_SUCCESS:
       return {
@@ -85,5 +87,5 @@ export function allFilms(state = initialState.films, action) {
 */
 
 export const starWarsApp = combineReducers({
-  allFilms
+  films
 });

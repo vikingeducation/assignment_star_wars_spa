@@ -5,7 +5,7 @@ import {
   Switch,
 } from 'react-router-dom'
 import ScrollToTop from './ScrollToTop'
-import Films from './Films';
+import FilmsContainer from '../containers/FilmsContainer';
 import People from './People';
 import Planets from './Planets';
 import Species from './Species';
@@ -21,7 +21,7 @@ class App extends Component {
         <Navbar title={"Star Wars Encyclopedia"}/>
         <Switch>
           <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route path="/films" component={Films} />
+          <Route path="/films" component={FilmsContainer} />
           <Route path="/people" component={People} />
           <Route path="/planets" component={Planets} />
           <Route path="/species" component={Species} />

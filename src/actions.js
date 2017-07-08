@@ -23,11 +23,14 @@ export function getFilmsFailure(error) {
   };
 }
 
-export function getFilmsFromAPI() {
+export function getFilmsFromAPI(searchTerm) {
   return dispatch => {
     dispatch(getFilmsRequest());
-
-    fetch(`${BASE_URI}/films`)
+    
+    let query;
+    searchTerm ? query = `/?search=${searchTerm}` : query = "";
+    
+    fetch(`${BASE_URI}/films${query}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
