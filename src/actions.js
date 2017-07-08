@@ -51,7 +51,7 @@ export function getFilmsFromAPI(searchTerm) {
     dispatch(getFilmsRequest());
     
     let query;
-    searchTerm ? query = `/?search=${searchTerm}` : query = "";
+    searchTerm ? query = `/?${searchTerm}` : query = "";
 
     fetch(`${BASE_URI}/films${query}`)
       .then(response => {
