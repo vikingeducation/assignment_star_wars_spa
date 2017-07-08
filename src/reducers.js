@@ -19,36 +19,36 @@ export function films(state = initialState.films, action) {
       return {
         ...state,
         allFilms: action.data,
-        isFetching: false,
+        isFetchingAll: false,
       }
     case Actions.GET_FILMS_REQUEST:
       return {
         ...state,
-        isFetching: true,
+        isFetchingAll: true,
         error: null,
       }
     case Actions.GET_FILMS_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isFetchingAll: false,
         error: action.error
       }
     case Actions.GET_SPECIFIC_FILM_SUCCESS:
       return {
         ...state,
         specificFilm: action.data,
-        isFetching: false,
+        isFetchingSpecific: false,
       }
     case Actions.GET_SPECIFIC_FILM_REQUEST:
       return {
         ...state,
-        isFetching: true,
+        isFetchingSpecific: true,
         error: null,
       }
     case Actions.GET_SPECIFIC_FILM_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isFetchingSpecific: false,
         error: action.error
       }
     default:

@@ -17,7 +17,8 @@ class FilmContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    film: state.films.specificFilm
+    film: state.films.specificFilm,
+    isFetching: state.films.isFetchingSpecific
   }
 }
 

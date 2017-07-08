@@ -27,3 +27,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+span.img-loader {
+  display: inline-block;
+  background-image: url("/ajax-loader.gif");
+  height: 1em;
+  width: 1em;
+}
