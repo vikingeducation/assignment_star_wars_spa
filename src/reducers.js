@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 
 const initialState = {
   films: {
-    allFilms: []
+    allFilms: [],
+    specificFilm: {}
   },
   people: {},
   planets: {},
@@ -27,6 +28,24 @@ export function films(state = initialState.films, action) {
         error: null,
       }
     case Actions.GET_FILMS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      }
+    case Actions.GET_SPECIFIC_FILM_SUCCESS:
+      return {
+        ...state,
+        specificFilm: action.data,
+        isFetching: false,
+      }
+    case Actions.GET_SPECIFIC_FILM_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      }
+    case Actions.GET_SPECIFIC_FILM_FAILURE:
       return {
         ...state,
         isFetching: false,

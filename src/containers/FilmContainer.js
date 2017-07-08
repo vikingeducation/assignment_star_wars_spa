@@ -1,0 +1,35 @@
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import Film from '../components/Film';
+import {
+  getSpecificFilm
+} from "../actions";
+
+class FilmContainer extends Component {
+  componentDidMount() {
+    this.props.getSpecificFilm();
+  }
+
+  render() {
+    return <Film {...this.props} />;
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    film: state.films.specificFilm
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  console.log('#########')
+  console.log(ownProps.match.params.id)
+  console.log('#########')
+  return {
+    getSpecificFilm: () => {
+      dispatch(getSpecificFilm(ownProps.match.params.id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilmContainer)
