@@ -4,10 +4,14 @@ body {
   font-family: sans-serif;
 }
 
-.Header.navbar {
+.navbar {
   border-radius: 0px;
 }
 
 .navbar a {
+  color: white;
+}
+
+.navbar-brand a {
   color: white;
 }
