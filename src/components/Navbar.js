@@ -4,7 +4,6 @@ import {
   Nav,
   NavItem,
 } from 'react-bootstrap';
-import {NavLink} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 
 const NavLinks = () => {
@@ -32,12 +31,12 @@ const NavLinks = () => {
   )
 }
 
-const NavbarInstance = () => { 
+const NavbarInstance = ({title}) => { 
   return (
     <Navbar fluid>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#">React-Bootstrap</a>
+          <a>{title}</a>
         </Navbar.Brand>
       </Navbar.Header>
       <NavLinks />

@@ -18,8 +18,7 @@ class App extends Component {
     return (
       <Router>
         <ScrollToTop>
-        {/*<Header title={"Star Wars Encyclopedia"} />*/}
-        <Navbar />
+        <Navbar title={"Star Wars Encyclopedia"}/>
         <Switch>
           <Route exact path="/" render={() => <h1>Home</h1>} />
           <Route path="/films" component={Films} />
