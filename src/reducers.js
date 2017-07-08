@@ -69,8 +69,9 @@ export function allFilms(state = initialState.films, action) {
   Then, get just ONE resource working perfectly. You get one, you have them all.
 
   state = {
-    allFilms: {
-      films: api response
+    films: {
+      allFilms: api response,
+      selectedFilm: api response,
       currentPage: Integer
     }
     selectedFilm: api response <- look at demo repo for clues; also goodreads assignment
