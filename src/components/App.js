@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
+import {Grid} from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop'
 import FilmsContainer from '../containers/FilmsContainer';
 import People from './People';
@@ -19,16 +20,18 @@ class App extends Component {
       <Router>
         <ScrollToTop>
         <Navbar title={"Star Wars Encyclopedia"}/>
-        <Switch>
-          <Route exact path="/" render={() => <h1>Home</h1>} />
-          <Route path="/films" component={FilmsContainer} />
-          <Route path="/people" component={People} />
-          <Route path="/planets" component={Planets} />
-          <Route path="/species" component={Species} />
-          <Route path="/starships" component={Starships} />
-          <Route path="/vehicles" component={Vehicles} />
-          <Route render={() => <h1>Page not found</h1>} />
-        </Switch>
+        <Grid>
+          <Switch>
+            <Route exact path="/" render={() => <h1>Home</h1>} />
+            <Route path="/films" component={FilmsContainer} />
+            <Route path="/people" component={People} />
+            <Route path="/planets" component={Planets} />
+            <Route path="/species" component={Species} />
+            <Route path="/starships" component={Starships} />
+            <Route path="/vehicles" component={Vehicles} />
+            <Route render={() => <h1>Page not found</h1>} />
+          </Switch>
+        </Grid>
 
         </ScrollToTop>
       </Router>

@@ -29,7 +29,7 @@ export function getFilmsFromAPI(searchTerm) {
     
     let query;
     searchTerm ? query = `/?search=${searchTerm}` : query = "";
-    
+
     fetch(`${BASE_URI}/films${query}`)
       .then(response => {
         if (!response.ok) {
@@ -39,7 +39,7 @@ export function getFilmsFromAPI(searchTerm) {
         return response.json();
       })
       .then(json => {
-        dispatch(getFilmsSuccess(json));
+        dispatch(getFilmsSuccess(json.results));
       })
       .catch(error => {
         dispatch(getFilmsFailure(error));

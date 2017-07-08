@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 
 const initialState = {
   films: {
-    allFilms: {}
+    allFilms: []
   },
   people: {},
   planets: {},
