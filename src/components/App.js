@@ -11,7 +11,8 @@ import PeopleContainer from '../containers/PeopleContainer';
 import PersonContainer from '../containers/PersonContainer';
 import PlanetsContainer from '../containers/PlanetsContainer';
 import PlanetContainer from '../containers/PlanetContainer';
-import Species from './Species';
+import SpeciesContainer from '../containers/SpeciesContainer';
+import SpecificSpeciesContainer from '../containers/SpecificSpeciesContainer';
 import Starships from './Starships';
 import Vehicles from './Vehicles';
 import Navigation from './Navigation';
@@ -31,7 +32,8 @@ class App extends Component {
           <Route path="/people" component={PeopleContainer} />
           <Route path="/planets/:id" component={PlanetContainer} />
           <Route path="/planets" component={PlanetsContainer} />
-          <Route path="/species" component={Species} />
+          <Route path="/species/:id" component={SpecificSpeciesContainer} />
+          <Route path="/species" component={SpeciesContainer} />
           <Route path="/starships" component={Starships} />
           <Route path="/vehicles" component={Vehicles} />
           <Route render={() => <h1>Page not found</h1>} />

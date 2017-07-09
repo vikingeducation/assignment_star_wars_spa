@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Planets from "../components/Planets";
 import {
-  getPlanetsFromAPI
+  getSpeciesFromAPI
 } from "../actions";
 
 class PlanetsContainer extends Component {
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getPlanetsFromAPI: (searchTerm, page) => {
-      dispatch(getPlanetsFromAPI(searchTerm, page));
+      dispatch(getSpeciesFromAPI(searchTerm, page));
     },
   };
 };

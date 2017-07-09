@@ -3,7 +3,10 @@ import Search from "../components/Search";
 import {
   getFilmsFromAPI,
   getPeopleFromAPI,
-  getPlanetsFromAPI
+  getPlanetsFromAPI,
+  getSpeciesFromAPI,
+  getStarshipsFromAPI,
+  getVehiclesFromAPI
 } from "../actions";
 import serialize from "form-serialize";
 
@@ -15,6 +18,12 @@ const handleDispatch = (dispatch, type, data) => {
       return dispatch(getPeopleFromAPI(data));
     case "planets": 
       return dispatch(getPlanetsFromAPI(data));
+    case "species": 
+      return dispatch(getSpeciesFromAPI(data));
+    case "starships": 
+      return dispatch(getStarshipsFromAPI(data));
+    case "vehicles": 
+      return dispatch(getVehiclesFromAPI(data));
     default:
       return;
   }
