@@ -31,7 +31,7 @@ const NavLinks = () => {
   )
 }
 
-const NavbarInstance = ({title}) => { 
+const Navigation = ({title}) => { 
   return (
     <Navbar fluid>
       <Navbar.Header>
@@ -44,4 +44,4 @@ const NavbarInstance = ({title}) => {
   )
 };
 
-export default NavbarInstance
+export default Navigation
