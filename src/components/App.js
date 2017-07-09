@@ -13,6 +13,8 @@ import PlanetsContainer from '../containers/PlanetsContainer';
 import PlanetContainer from '../containers/PlanetContainer';
 import SpeciesContainer from '../containers/SpeciesContainer';
 import SpecificSpeciesContainer from '../containers/SpecificSpeciesContainer';
+import StarshipsContainer from '../containers/StarshipsContainer';
+import StarshipContainer from '../containers/StarshipContainer';
 import Starships from './Starships';
 import Vehicles from './Vehicles';
 import Navigation from './Navigation';
@@ -34,6 +36,8 @@ class App extends Component {
           <Route path="/planets" component={PlanetsContainer} />
           <Route path="/species/:id" component={SpecificSpeciesContainer} />
           <Route path="/species" component={SpeciesContainer} />
+          <Route path="/starships/:id" component={StarshipContainer} />
+          <Route path="/starships" component={StarshipsContainer} />
           <Route path="/starships" component={Starships} />
           <Route path="/vehicles" component={Vehicles} />
           <Route render={() => <h1>Page not found</h1>} />
