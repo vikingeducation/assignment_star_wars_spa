@@ -169,7 +169,7 @@ export function getPrevPeoplePage(data) {
   };
 }
 
-export function getPeopleFromAPI(searchTerm, page) {
+export function getPeopleFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getPeopleRequest());
     let query;
@@ -269,7 +269,7 @@ export function getPrevPlanetPage(data) {
   };
 }
 
-export function getPlanetsFromAPI(searchTerm, page) {
+export function getPlanetsFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getPlanetsRequest());
     let query;
