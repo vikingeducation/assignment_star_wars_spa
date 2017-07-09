@@ -4,12 +4,18 @@ import {
 } from "../actions";
 import Pagination from '../components/Pagination';
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    page: ownProps.page
+  };
+};
+ 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onNextPage: (e) => {
       e.preventDefault();
-      dispatch(getNewPage("next", ownProps.type));
+      dispatch(getNewPage("next", ownProps.type, ownProps.page));
     },
     onPrevPage: (e) => {
       e.preventDefault();
@@ -20,7 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const PaginationContainer = connect(null, mapDispatchToProps)(
+const PaginationContainer = connect(mapStateToProps, mapDispatchToProps)(
   Pagination
 );
 

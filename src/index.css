@@ -34,3 +34,8 @@ span.img-loader {
   height: 1em;
   width: 1em;
 }
+
+.page-number {
+  text-align: center;
+  margin-bottom: 2em;
+}

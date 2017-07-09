@@ -7,7 +7,7 @@ import {
 
 class PeopleContainer extends Component {
   componentDidMount() {
-    this.props.getPeopleFromAPI();
+    this.props.getPeopleFromAPI(null, this.props.page);
   }
 
   render() {
@@ -25,8 +25,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPeopleFromAPI: () => {
-      dispatch(getPeopleFromAPI());
+    getPeopleFromAPI: (searchTerm, page) => {
+      dispatch(getPeopleFromAPI(searchTerm, page));
     },
   };
 };

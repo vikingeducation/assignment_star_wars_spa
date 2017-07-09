@@ -151,14 +151,13 @@ export function getSpecificFilm(id) {
   };
 }
 
-export function getPeopleFromAPI(searchTerm) {
+export function getPeopleFromAPI(searchTerm, page) {
   return dispatch => {
     dispatch(getPeopleRequest());
-    
     let query;
-    searchTerm ? query = `/?${searchTerm}` : query = "";
+    searchTerm ? query = `&${searchTerm}` : query = "";
 
-    fetch(`${BASE_URI}/people${query}`)
+    fetch(`${BASE_URI}/people/?page=${page}${query}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
@@ -196,11 +195,14 @@ export function getPerson(id) {
   };
 }
 
-export function getNewPage(direction, type) {
+export function getNewPage(direction, type, page) {
   if (direction === "next") {
     switch(type) {
       case "people": 
-        return dispatch => dispatch(getNextPeoplePage());
+        return dispatch => {
+          dispatch(getNextPeoplePage());
+          dispatch(getPeopleFromAPI(null, page + 1));
+        };
       default:
         return;
     }

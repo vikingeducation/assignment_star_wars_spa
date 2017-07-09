@@ -23,9 +23,7 @@ const People = ({people, isFetching, page}) => {
         <span className="img-loader" /> : 
         peopleCards}
       </Row>
-      <Row>
-        <PaginationContainer type="people" page={page}/>
-      </Row>
+      <PaginationContainer type="people" page={page}/>
     </Grid>
   )
 };
