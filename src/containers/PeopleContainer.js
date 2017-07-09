@@ -5,31 +5,31 @@ import {
   getPeopleFromAPI
 } from "../actions";
 
-class FilmsContainer extends Component {
+class PeopleContainer extends Component {
   componentDidMount() {
-    this.props.getFilmsFromAPI();
+    this.props.getPeopleFromAPI();
   }
 
   render() {
-    return <Films {...this.props} />;
+    return <People {...this.props} />;
   }
 }
 
 const mapStateToProps = state => {
   return {
-    films: state.films.allFilms,
-    isFetching: state.films.isFetchingAll
+    people: state.people.people,
+    isFetching: state.people.isFetchingAll
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getFilmsFromAPI: () => {
-      dispatch(getFilmsFromAPI());
+    getPeopleFromAPI: () => {
+      dispatch(getPeopleFromAPI());
     },
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  FilmsContainer
+  PeopleContainer
 );
