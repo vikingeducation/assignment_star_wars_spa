@@ -6,7 +6,10 @@ const initialState = {
     allFilms: [],
     specificFilm: {}
   },
-  people: {},
+  people: {
+    people: [],
+    person: {}
+  },
   planets: {},
   species: {},
   starships: {},
@@ -56,7 +59,7 @@ export function films(state = initialState.films, action) {
   }
 }
 
-export function people(state = initialState.films, action) {
+export function people(state = initialState.people, action) {
   switch (action.type) {
     case Actions.GET_PEOPLE_SUCCESS:
       return {
@@ -149,5 +152,6 @@ export function people(state = initialState.films, action) {
 */
 
 export const starWarsApp = combineReducers({
-  films
+  films,
+  people
 });

@@ -5,7 +5,6 @@ import SearchContainer from '../containers/SearchContainer';
 
 const getResourceID = url => {
   let urlParts = url.split('/');
-  console.log(urlParts);
   let id = urlParts[urlParts.length-2];
   return id;
 };
