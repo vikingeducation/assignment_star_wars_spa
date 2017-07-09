@@ -2,6 +2,7 @@ import React from 'react';
 import PersonCard from './PersonCard';
 import {Grid, Row} from 'react-bootstrap';
 import SearchContainer from '../containers/SearchContainer';
+import PaginationContainer from '../containers/PaginationContainer';
 
 const getResourceID = url => {
   let urlParts = url.split('/');
@@ -9,7 +10,7 @@ const getResourceID = url => {
   return id;
 };
 
-const People = ({people, isFetching}) => {
+const People = ({people, isFetching, page}) => {
   const peopleCards = people.map((person, index) => (
     <PersonCard person={person} key={person.name} id={getResourceID(person.url)}/>
   ));
@@ -21,6 +22,9 @@ const People = ({people, isFetching}) => {
         {isFetching ? 
         <span className="img-loader" /> : 
         peopleCards}
+      </Row>
+      <Row>
+        <PaginationContainer type="people" page={page}/>
       </Row>
     </Grid>
   )

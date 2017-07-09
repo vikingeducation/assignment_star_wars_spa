@@ -9,6 +9,8 @@ const handleDispatch = (dispatch, type, data) => {
   switch(type) {
     case "films":
       return dispatch(getFilmsFromAPI(data));
+    default:
+      return;
   }
 };
 

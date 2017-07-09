@@ -8,7 +8,8 @@ const initialState = {
   },
   people: {
     people: [],
-    person: {}
+    person: {},
+    page: 1
   },
   planets: {},
   species: {},
@@ -96,6 +97,16 @@ export function people(state = initialState.people, action) {
         ...state,
         isFetchingSpecific: false,
         error: action.error
+      }
+    case Actions.GET_NEXT_PEOPLE_PAGE:
+      return {
+        ...state,
+        page: state.page + 1
+      }
+    case Actions.GET_PREV_PEOPLE_PAGE:
+      return {
+        ...state,
+        page: state.page - 1
       }
     default:
       return state

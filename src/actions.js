@@ -10,6 +10,9 @@ export const GET_PEOPLE_FAILURE = "GET_PEOPLE_FAILURE";
 export const GET_PERSON_REQUEST = "GET_PERSON_REQUEST";
 export const GET_PERSON_SUCCESS = "GET_PERSON_SUCCESS";
 export const GET_PERSON_FAILURE = "GET_PERSON_FAILURE";
+export const GET_NEXT_PEOPLE_PAGE = "GET_NEXT_PEOPLE_PAGE";
+export const GET_PREV_PEOPLE_PAGE = "GET_PREV_PEOPLE_PAGE";
+
 const BASE_URI = 'http://swapi.co/api';
 
 export function getFilmsRequest() {
@@ -89,6 +92,17 @@ export function getPersonFailure(error) {
   return {
     type: GET_PERSON_FAILURE,
     error
+  };
+}
+
+export function getNextPeoplePage(data) {
+  return { 
+    type: GET_NEXT_PEOPLE_PAGE
+  };
+}
+export function getPrevPeoplePage(data) {
+  return { 
+    type: GET_PREV_PEOPLE_PAGE
   };
 }
 
@@ -182,6 +196,23 @@ export function getPerson(id) {
   };
 }
 
+export function getNewPage(direction, type) {
+  if (direction === "next") {
+    switch(type) {
+      case "people": 
+        return dispatch => dispatch(getNextPeoplePage());
+      default:
+        return;
+    }
+  } else if (direction === "prev") {
+    switch(type) {
+      case "people":
+        return dispatch => dispatch(getPrevPeoplePage());
+      default:
+        return;
+    }
+  }
+}
 
 /*
 
