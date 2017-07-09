@@ -181,3 +181,61 @@ export function getPerson(id) {
       });
   };
 }
+
+
+/*
+
+Refactor Idea:
+
+const getApiSettings = type => {
+  switch(type) {
+    case "films":
+      return {
+        request: getAllFilmsRequest(),
+        success: getAllFilmsSuccess(),
+        failure: getAllFilmsFailure()
+      }
+    case "film":
+      return {
+        request: getSpecificFilmRequest(),
+        success: getSpecificFilmSuccess(),
+        failure: getSpecificFilmFailure()
+      }
+  }
+};
+
+export function getApiData(type, id) {
+  let settings = getApiSettings(type)
+  let url;
+  if (id) {
+    url = `${BASE_URI}/${type}/${id}`
+  } else {
+    url = `${BASE_URI}/${type}`
+  }
+
+  let query;
+    searchTerm ? query = `/?${searchTerm}` : query = "";
+  return dispatch => {
+    dispatch(settings.request());
+
+    fetch(`${BASE_URI}/people/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+      })
+      .then(json => {
+        if (json.results) {
+          dispatch(settings.success(json.results));
+        } else {
+          dispatch(settings.success(json));
+        }
+      })
+      .catch(error => {
+        dispatch(settings.failure(error));
+      });
+  };
+}
+*/
