@@ -161,23 +161,23 @@ export function getPeopleFromAPI(searchTerm) {
   };
 }
 
-// export function getSpecificFilm(id) {
-//   return dispatch => {
-//     dispatch(getSpecificFilmRequest());
+export function getPerson(id) {
+  return dispatch => {
+    dispatch(getPersonRequest());
 
-//     fetch(`${BASE_URI}/films/${id}`)
-//       .then(response => {
-//         if (!response.ok) {
-//           throw new Error(`${response.status}: ${response.statusText}`);
-//         }
+    fetch(`${BASE_URI}/people/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
 
-//         return response.json();
-//       })
-//       .then(json => {
-//         dispatch(getSpecificFilmSuccess(json));
-//       })
-//       .catch(error => {
-//         dispatch(getSpecificFilmFailure(error));
-//       });
-//   };
-// }
+        return response.json();
+      })
+      .then(json => {
+        dispatch(getPersonSuccess(json));
+      })
+      .catch(error => {
+        dispatch(getPersonFailure(error));
+      });
+  };
+}
