@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import People from "../components/People";
-import {
-  getPeopleFromAPI
-} from "../actions";
+import { getPeopleFromAPI } from "../actions";
 
 class PeopleContainer extends Component {
   componentDidMount() {
@@ -27,10 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getPeopleFromAPI: (searchTerm, page) => {
       dispatch(getPeopleFromAPI(searchTerm, page));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  PeopleContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(PeopleContainer);

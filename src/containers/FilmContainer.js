@@ -1,9 +1,7 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import Film from '../components/Film';
-import {
-  getSpecificFilm
-} from "../actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Film from "../components/Film";
+import { getSpecificFilm } from "../actions";
 
 class FilmContainer extends Component {
   componentDidMount() {
@@ -19,15 +17,15 @@ const mapStateToProps = (state, ownProps) => {
   return {
     film: state.films.specificFilm,
     isFetching: state.films.isFetchingSpecific
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getSpecificFilm: () => {
       dispatch(getSpecificFilm(ownProps.match.params.id));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilmContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(FilmContainer);

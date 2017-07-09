@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Species from "../components/Species";
-import {
-  getSpeciesFromAPI
-} from "../actions";
+import { getSpeciesFromAPI } from "../actions";
 
 class SpeciesContainer extends Component {
   componentDidMount() {
@@ -27,10 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getSpeciesFromAPI: (searchTerm, page) => {
       dispatch(getSpeciesFromAPI(searchTerm, page));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  SpeciesContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(SpeciesContainer);

@@ -1,7 +1,7 @@
-import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import React from "react";
+import { Grid, Row, Col } from "react-bootstrap";
 
-const Planet = ({planet, isFetching}) => {
+const Planet = ({ planet, isFetching }) => {
   if (isFetching) {
     return (
       <Grid>
@@ -13,7 +13,7 @@ const Planet = ({planet, isFetching}) => {
       </Grid>
     );
   }
-  
+
   return (
     <Grid>
       <h1>Planet: {planet.name}</h1>

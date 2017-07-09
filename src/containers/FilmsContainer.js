@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Films from "../components/Films";
-import {
-  getFilmsFromAPI
-} from "../actions";
+import { getFilmsFromAPI } from "../actions";
 
 class FilmsContainer extends Component {
   componentDidMount() {
@@ -26,10 +24,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getFilmsFromAPI: () => {
       dispatch(getFilmsFromAPI());
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  FilmsContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsContainer);

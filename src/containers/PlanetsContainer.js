@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Planets from "../components/Planets";
-import {
-  getSpeciesFromAPI
-} from "../actions";
+import { getSpeciesFromAPI } from "../actions";
 
 class PlanetsContainer extends Component {
   componentDidMount() {
@@ -27,10 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getPlanetsFromAPI: (searchTerm, page) => {
       dispatch(getSpeciesFromAPI(searchTerm, page));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  PlanetsContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(PlanetsContainer);

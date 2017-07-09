@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Starships from "../components/Starships";
-import {
-  getStarshipsFromAPI
-} from "../actions";
+import { getStarshipsFromAPI } from "../actions";
 
 class StarshipsContainer extends Component {
   componentDidMount() {
@@ -27,10 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getStarshipsFromAPI: (searchTerm, page) => {
       dispatch(getStarshipsFromAPI(searchTerm, page));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  StarshipsContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(StarshipsContainer);

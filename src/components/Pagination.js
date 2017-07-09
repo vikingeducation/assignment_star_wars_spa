@@ -1,7 +1,7 @@
-import React from 'react';
-import {Col, Row, Button} from 'react-bootstrap';
+import React from "react";
+import { Col, Row, Button } from "react-bootstrap";
 
-const Pagination = ({onNextPage, onPrevPage, page}) => {
+const Pagination = ({ onNextPage, onPrevPage, page }) => {
   return (
     <Row>
       <Col md={3}>

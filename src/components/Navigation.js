@@ -1,20 +1,16 @@
-import React from 'react';
-import {
-  Navbar,
-  Nav,
-  NavItem,
-} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
+import React from "react";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavLinks = () => {
   return (
     <Nav pullRight>
       <LinkContainer activeClassName="active" exact to="/">
         <NavItem eventKey={1}>Home</NavItem>
-      </LinkContainer>{' '}
+      </LinkContainer>{" "}
       <LinkContainer activeClassName="active" exact to="/films">
         <NavItem eventKey={2}>Films</NavItem>
-      </LinkContainer>{' '}
+      </LinkContainer>{" "}
       <LinkContainer activeClassName="active" to="/people">
         <NavItem eventKey={3}>People</NavItem>
       </LinkContainer>
@@ -31,10 +27,10 @@ const NavLinks = () => {
         <NavItem eventKey={3}>Vehicles</NavItem>
       </LinkContainer>
     </Nav>
-  )
-}
+  );
+};
 
-const Navigation = ({title}) => { 
+const Navigation = ({ title }) => {
   return (
     <Navbar fluid>
       <Navbar.Header>
@@ -44,7 +40,7 @@ const Navigation = ({title}) => {
       </Navbar.Header>
       <NavLinks />
     </Navbar>
-  )
+  );
 };
 
-export default Navigation
+export default Navigation;

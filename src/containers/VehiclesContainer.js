@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Vehicles from "../components/Vehicles";
-import {
-  getVehiclesFromAPI
-} from "../actions";
+import { getVehiclesFromAPI } from "../actions";
 
 class VehiclesContainer extends Component {
   componentDidMount() {
@@ -27,10 +25,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getVehiclesFromAPI: (searchTerm, page) => {
       dispatch(getVehiclesFromAPI(searchTerm, page));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  VehiclesContainer
-);
+export default connect(mapStateToProps, mapDispatchToProps)(VehiclesContainer);

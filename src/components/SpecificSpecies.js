@@ -1,7 +1,7 @@
-import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import React from "react";
+import { Grid, Row, Col } from "react-bootstrap";
 
-const SpecificSpecies = ({species, isFetching}) => {
+const SpecificSpecies = ({ species, isFetching }) => {
   if (isFetching) {
     return (
       <Grid>
@@ -13,7 +13,7 @@ const SpecificSpecies = ({species, isFetching}) => {
       </Grid>
     );
   }
-  
+
   return (
     <Grid>
       <h1>Species: {species.name}</h1>

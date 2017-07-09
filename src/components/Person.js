@@ -1,7 +1,7 @@
-import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import React from "react";
+import { Grid, Row, Col } from "react-bootstrap";
 
-const Person = ({person, isFetching}) => {
+const Person = ({ person, isFetching }) => {
   if (isFetching) {
     return (
       <Grid>
@@ -13,7 +13,7 @@ const Person = ({person, isFetching}) => {
       </Grid>
     );
   }
-  
+
   return (
     <Grid>
       <h1>Person: {person.name}</h1>

@@ -1,6 +1,6 @@
-import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
-const Film = ({film, isFetching}) => {
+import React from "react";
+import { Grid, Row, Col } from "react-bootstrap";
+const Film = ({ film, isFetching }) => {
   if (isFetching) {
     return (
       <Grid>
@@ -12,7 +12,7 @@ const Film = ({film, isFetching}) => {
       </Grid>
     );
   }
-  
+
   return (
     <Grid>
       <h1>Film: {film.title}</h1>

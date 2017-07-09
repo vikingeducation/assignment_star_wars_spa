@@ -11,18 +11,18 @@ import {
 import serialize from "form-serialize";
 
 const handleDispatch = (dispatch, type, data) => {
-  switch(type) {
+  switch (type) {
     case "films":
       return dispatch(getFilmsFromAPI(data));
-    case "people": 
+    case "people":
       return dispatch(getPeopleFromAPI(data));
-    case "planets": 
+    case "planets":
       return dispatch(getPlanetsFromAPI(data));
-    case "species": 
+    case "species":
       return dispatch(getSpeciesFromAPI(data));
-    case "starships": 
+    case "starships":
       return dispatch(getStarshipsFromAPI(data));
-    case "vehicles": 
+    case "vehicles":
       return dispatch(getVehiclesFromAPI(data));
     default:
       return;
@@ -31,7 +31,7 @@ const handleDispatch = (dispatch, type, data) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSubmit: (e) => {
+    onSubmit: e => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form);
@@ -40,8 +40,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const SearchContainer = connect(null, mapDispatchToProps)(
-  Search
-);
+const SearchContainer = connect(null, mapDispatchToProps)(Search);
 
 export default SearchContainer;

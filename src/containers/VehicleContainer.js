@@ -1,9 +1,7 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import Vehicle from '../components/Vehicle';
-import {
-  getSpecificVehicle
-} from "../actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Vehicle from "../components/Vehicle";
+import { getSpecificVehicle } from "../actions";
 
 class VehicleContainer extends Component {
   componentDidMount() {
@@ -19,15 +17,15 @@ const mapStateToProps = (state, ownProps) => {
   return {
     vehicle: state.vehicles.specificVehicle,
     isFetching: state.vehicles.isFetchingSpecific
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getSpecificVehicle: () => {
       dispatch(getSpecificVehicle(ownProps.match.params.id));
-    },
+    }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleContainer);

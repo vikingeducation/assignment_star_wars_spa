@@ -1,4 +1,4 @@
-const BASE_URI = 'http://swapi.co/api';
+const BASE_URI = "http://swapi.co/api";
 
 /*
   ==========================
@@ -55,9 +55,9 @@ export function getSpecificFilmFailure(error) {
 export function getFilmsFromAPI(searchTerm) {
   return dispatch => {
     dispatch(getFilmsRequest());
-    
+
     let query;
-    searchTerm ? query = `/?${searchTerm}` : query = "";
+    searchTerm ? (query = `/?${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/films${query}`)
       .then(response => {
@@ -152,12 +152,12 @@ export function getPersonFailure(error) {
 }
 
 export function getNextPeoplePage(data) {
-  return { 
+  return {
     type: GET_NEXT_PEOPLE_PAGE
   };
 }
 export function getPrevPeoplePage(data) {
-  return { 
+  return {
     type: GET_PREV_PEOPLE_PAGE
   };
 }
@@ -166,7 +166,7 @@ export function getPeopleFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getPeopleRequest());
     let query;
-    searchTerm ? query = `&${searchTerm}` : query = "";
+    searchTerm ? (query = `&${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/people/?page=${page}${query}`)
       .then(response => {
@@ -261,12 +261,12 @@ export function getSpecificPlanetFailure(error) {
 }
 
 export function getNextPlanetsPage(data) {
-  return { 
+  return {
     type: GET_NEXT_PLANETS_PAGE
   };
 }
 export function getPrevPlanetsPage(data) {
-  return { 
+  return {
     type: GET_PREV_PLANETS_PAGE
   };
 }
@@ -275,7 +275,7 @@ export function getPlanetsFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getPlanetsRequest());
     let query;
-    searchTerm ? query = `&${searchTerm}` : query = "";
+    searchTerm ? (query = `&${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/planets/?page=${page}${query}`)
       .then(response => {
@@ -369,12 +369,12 @@ export function getSpecificSpeciesFailure(error) {
 }
 
 export function getNextSpeciesPage(data) {
-  return { 
+  return {
     type: GET_NEXT_SPECIES_PAGE
   };
 }
 export function getPrevSpeciesPage(data) {
-  return { 
+  return {
     type: GET_PREV_SPECIES_PAGE
   };
 }
@@ -383,7 +383,7 @@ export function getSpeciesFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getSpeciesRequest());
     let query;
-    searchTerm ? query = `&${searchTerm}` : query = "";
+    searchTerm ? (query = `&${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/species/?page=${page}${query}`)
       .then(response => {
@@ -478,12 +478,12 @@ export function getSpecificStarshipFailure(error) {
 }
 
 export function getNextStarshipsPage(data) {
-  return { 
+  return {
     type: GET_NEXT_STARSHIPS_PAGE
   };
 }
 export function getPrevStarshipsPage(data) {
-  return { 
+  return {
     type: GET_PREV_STARSHIPS_PAGE
   };
 }
@@ -492,7 +492,7 @@ export function getStarshipsFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getStarshipsRequest());
     let query;
-    searchTerm ? query = `&${searchTerm}` : query = "";
+    searchTerm ? (query = `&${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/starships/?page=${page}${query}`)
       .then(response => {
@@ -587,12 +587,12 @@ export function getSpecificVehicleFailure(error) {
 }
 
 export function getNextVehiclesPage(data) {
-  return { 
+  return {
     type: GET_NEXT_VEHICLES_PAGE
   };
 }
 export function getPrevVehiclesPage(data) {
-  return { 
+  return {
     type: GET_PREV_VEHICLES_PAGE
   };
 }
@@ -601,7 +601,7 @@ export function getVehiclesFromAPI(searchTerm, page = 1) {
   return dispatch => {
     dispatch(getVehiclesRequest());
     let query;
-    searchTerm ? query = `&${searchTerm}` : query = "";
+    searchTerm ? (query = `&${searchTerm}`) : (query = "");
 
     fetch(`${BASE_URI}/vehicles/?page=${page}${query}`)
       .then(response => {
@@ -648,8 +648,8 @@ export function getSpecificVehicle(id) {
 */
 export function getNewPage(direction, type, page) {
   if (direction === "next") {
-    switch(type) {
-      case "people": 
+    switch (type) {
+      case "people":
         return dispatch => {
           dispatch(getNextPeoplePage());
           dispatch(getPeopleFromAPI(null, page + 1));
@@ -678,7 +678,7 @@ export function getNewPage(direction, type, page) {
         return;
     }
   } else if (direction === "prev") {
-    switch(type) {
+    switch (type) {
       case "people":
         return dispatch => {
           dispatch(getPrevPeoplePage());
