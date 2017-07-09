@@ -15,8 +15,8 @@ import SpeciesContainer from '../containers/SpeciesContainer';
 import SpecificSpeciesContainer from '../containers/SpecificSpeciesContainer';
 import StarshipsContainer from '../containers/StarshipsContainer';
 import StarshipContainer from '../containers/StarshipContainer';
-import Starships from './Starships';
-import Vehicles from './Vehicles';
+import VehiclesContainer from '../containers/VehiclesContainer';
+import VehicleContainer from '../containers/VehicleContainer';
 import Navigation from './Navigation';
 
 class App extends Component {
@@ -38,8 +38,8 @@ class App extends Component {
           <Route path="/species" component={SpeciesContainer} />
           <Route path="/starships/:id" component={StarshipContainer} />
           <Route path="/starships" component={StarshipsContainer} />
-          <Route path="/starships" component={Starships} />
-          <Route path="/vehicles" component={Vehicles} />
+          <Route path="/vehicles/:id" component={VehicleContainer} />
+          <Route path="/vehicles" component={VehiclesContainer} />
           <Route render={() => <h1>Page not found</h1>} />
         </Switch>
 
