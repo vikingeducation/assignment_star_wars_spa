@@ -4,6 +4,12 @@ export const GET_FILMS_FAILURE = "GET_FILMS_FAILURE";
 export const GET_SPECIFIC_FILM_REQUEST = "GET_SPECIFIC_FILM_REQUEST";
 export const GET_SPECIFIC_FILM_SUCCESS = "GET_SPECIFIC_FILM_SUCCESS";
 export const GET_SPECIFIC_FILM_FAILURE = "GET_SPECIFIC_FILM_FAILURE";
+export const GET_PEOPLE_REQUEST = "GET_PEOPLE_REQUEST";
+export const GET_PEOPLE_SUCCESS = "GET_PEOPLE_SUCCESS";
+export const GET_PEOPLE_FAILURE = "GET_PEOPLE_FAILURE";
+export const GET_PERSON_REQUEST = "GET_PERSON_REQUEST";
+export const GET_PERSON_SUCCESS = "GET_PERSON_SUCCESS";
+export const GET_PERSON_FAILURE = "GET_PERSON_FAILURE";
 const BASE_URI = 'http://swapi.co/api';
 
 export function getFilmsRequest() {
@@ -42,6 +48,46 @@ export function getSpecificFilmSuccess(data) {
 export function getSpecificFilmFailure(error) {
   return {
     type: GET_SPECIFIC_FILM_FAILURE,
+    error
+  };
+}
+
+export function getPeopleRequest() {
+  return {
+    type: GET_PEOPLE_REQUEST
+  };
+}
+
+export function getPeopleSuccess(data) {
+  return {
+    type: GET_PEOPLE_SUCCESS,
+    data
+  };
+}
+
+export function getPeopleFailure(error) {
+  return {
+    type: GET_PEOPLE_FAILURE,
+    error
+  };
+}
+
+export function getPersonRequest() {
+  return {
+    type: GET_PERSON_REQUEST
+  };
+}
+
+export function getPersonSuccess(data) {
+  return {
+    type: GET_PERSON_SUCCESS,
+    data
+  };
+}
+
+export function getPersonFailure(error) {
+  return {
+    type: GET_PERSON_FAILURE,
     error
   };
 }
@@ -91,3 +137,47 @@ export function getSpecificFilm(id) {
   };
 }
 
+export function getPeopleFromAPI(searchTerm) {
+  return dispatch => {
+    dispatch(getPeopleRequest());
+    
+    let query;
+    searchTerm ? query = `/?${searchTerm}` : query = "";
+
+    fetch(`${BASE_URI}/people${query}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+      })
+      .then(json => {
+        dispatch(getPeopleSuccess(json.results));
+      })
+      .catch(error => {
+        dispatch(getPeopleFailure(error));
+      });
+  };
+}
+
+// export function getSpecificFilm(id) {
+//   return dispatch => {
+//     dispatch(getSpecificFilmRequest());
+
+//     fetch(`${BASE_URI}/films/${id}`)
+//       .then(response => {
+//         if (!response.ok) {
+//           throw new Error(`${response.status}: ${response.statusText}`);
+//         }
+
+//         return response.json();
+//       })
+//       .then(json => {
+//         dispatch(getSpecificFilmSuccess(json));
+//       })
+//       .catch(error => {
+//         dispatch(getSpecificFilmFailure(error));
+//       });
+//   };
+// }

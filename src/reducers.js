@@ -56,6 +56,49 @@ export function films(state = initialState.films, action) {
   }
 }
 
+export function people(state = initialState.films, action) {
+  switch (action.type) {
+    case Actions.GET_PEOPLE_SUCCESS:
+      return {
+        ...state,
+        people: action.data,
+        isFetchingAll: false,
+      }
+    case Actions.GET_PEOPLE_REQUEST:
+      return {
+        ...state,
+        isFetchingAll: true,
+        error: null,
+      }
+    case Actions.GET_PEOPLE_FAILURE:
+      return {
+        ...state,
+        isFetchingAll: false,
+        error: action.error
+      }
+    case Actions.GET_PERSON_SUCCESS:
+      return {
+        ...state,
+        person: action.data,
+        isFetchingSpecific: false,
+      }
+    case Actions.GET_PERSON_REQUEST:
+      return {
+        ...state,
+        isFetchingSpecific: true,
+        error: null,
+      }
+    case Actions.GET_PERSON_FAILURE:
+      return {
+        ...state,
+        isFetchingSpecific: false,
+        error: action.error
+      }
+    default:
+      return state
+  }
+}
+
 /* 
 
   films, people, planets, species, starships, and vehicles
