@@ -18,6 +18,9 @@ const NavLinks = () => {
       <LinkContainer activeClassName="active" to="/people">
         <NavItem eventKey={3}>People</NavItem>
       </LinkContainer>
+      <LinkContainer activeClassName="active" to="/planets">
+        <NavItem eventKey={3}>Planets</NavItem>
+      </LinkContainer>
       <LinkContainer activeClassName="active" to="/species">
         <NavItem eventKey={3}>Species</NavItem>
       </LinkContainer>

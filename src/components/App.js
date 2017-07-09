@@ -9,6 +9,7 @@ import FilmsContainer from '../containers/FilmsContainer';
 import FilmContainer from '../containers/FilmContainer';
 import PeopleContainer from '../containers/PeopleContainer';
 import PersonContainer from '../containers/PersonContainer';
+import PlanetsContainer from '../containers/PlanetsContainer';
 import Planets from './Planets';
 import Species from './Species';
 import Starships from './Starships';
@@ -28,7 +29,7 @@ class App extends Component {
           <Route path="/films" component={FilmsContainer} />
           <Route path="/people/:id" component={PersonContainer} />
           <Route path="/people" component={PeopleContainer} />
-          <Route path="/planets" component={Planets} />
+          <Route path="/planets" component={PlanetsContainer} />
           <Route path="/species" component={Species} />
           <Route path="/starships" component={Starships} />
           <Route path="/vehicles" component={Vehicles} />

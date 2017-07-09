@@ -12,7 +12,7 @@ const getResourceID = url => {
 
 const People = ({people, isFetching, page}) => {
   const peopleCards = people.map((person, index) => (
-    <PersonCard person={person} key={person.name} id={getResourceID(person.url)}/>
+    <PersonCard person={person} key={index} id={getResourceID(person.url)}/>
   ));
   return (
     <Grid>

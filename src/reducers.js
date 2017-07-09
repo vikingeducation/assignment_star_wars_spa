@@ -11,10 +11,26 @@ const initialState = {
     person: {},
     page: 1
   },
-  planets: {},
-  species: {},
-  starships: {},
-  vehicles: {}
+  planets: {
+    allPlanets: [],
+    specificPlanet: {},
+    page: 1
+  },
+  species: {
+    allSpecies: [],
+    specificSpecies: {},
+    page: 1
+  },
+  starships: {
+    allStarships: [],
+    specificStarship: {},
+    page: 1
+  },
+  vehicles: {
+    allVehicles: [],
+    specificVehicle: {},
+    page: 1
+  }
 }
 
 export function films(state = initialState.films, action) {
@@ -113,6 +129,59 @@ export function people(state = initialState.people, action) {
   }
 }
 
+export function planets(state = initialState.planets, action) {
+  switch (action.type) {
+    case Actions.GET_PLANETS_SUCCESS:
+      return {
+        ...state,
+        allPlanets: action.data,
+        isFetchingAll: false,
+      }
+    case Actions.GET_PLANETS_REQUEST:
+      return {
+        ...state,
+        isFetchingAll: true,
+        error: null,
+      }
+    case Actions.GET_PLANETS_FAILURE:
+      return {
+        ...state,
+        isFetchingAll: false,
+        error: action.error
+      }
+    case Actions.GET_SPECIFIC_PLANET_SUCCESS:
+      return {
+        ...state,
+        specificPlanet: action.data,
+        isFetchingSpecific: false,
+      }
+    case Actions.GET_SPECIFIC_PLANET_REQUEST:
+      return {
+        ...state,
+        isFetchingSpecific: true,
+        error: null,
+      }
+    case Actions.GET_SPECIFIC_PLANET_FAILURE:
+      return {
+        ...state,
+        isFetchingSpecific: false,
+        error: action.error
+      }
+    case Actions.GET_NEXT_PLANETS_PAGE:
+      return {
+        ...state,
+        page: state.page + 1
+      }
+    case Actions.GET_PREV_PLANETS_PAGE:
+      return {
+        ...state,
+        page: state.page - 1
+      }
+    default:
+      return state
+  }
+}
+
 /* 
 
   films, people, planets, species, starships, and vehicles
@@ -164,5 +233,6 @@ export function people(state = initialState.people, action) {
 
 export const starWarsApp = combineReducers({
   films,
-  people
+  people,
+  planets
 });

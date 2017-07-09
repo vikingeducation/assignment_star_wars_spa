@@ -11,7 +11,7 @@ const getResourceID = url => {
 
 const Films = ({films, isFetching}) => {
   const filmCards = films.map((film, index) => (
-    <FilmCard film={film} key={film.episode_id} id={getResourceID(film.url)}/>
+    <FilmCard film={film} key={index} id={getResourceID(film.url)}/>
   ));
   return (
     <Grid>

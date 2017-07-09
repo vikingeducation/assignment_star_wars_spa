@@ -7,7 +7,7 @@ import {
 
 class PeopleContainer extends Component {
   componentDidMount() {
-    this.props.getPeopleFromAPI(null, this.props.page);
+    this.props.getPeopleFromAPI(null, 1);
   }
 
   render() {
