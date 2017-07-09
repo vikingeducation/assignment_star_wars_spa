@@ -182,57 +182,170 @@ export function planets(state = initialState.planets, action) {
   }
 }
 
-/* 
-
-  films, people, planets, species, starships, and vehicles
-  paginated
-  details-view
-
-  so routes are
-  / -> simple landing page
-  /films
-  /people
-  /planets
-  ... etc.
-
-  /films/:id
-  /people/:id
-  /planets/:id
-  ... etc.
-
-  We need to store into state:
-  -> allFilms
-    -> api response
-    -> current page
-  -> allPeople
-  -> allPlanets
-
-  -> selectedFilm
-  -> selectedPeople
-  -> selectedPlanet
-
-  So tomorrow, very simple:
-  First, set up working routes for all the resources + nav links, etc.
-  Then, get just ONE resource working perfectly. You get one, you have them all.
-
-  state = {
-    films: {
-      allFilms: api response,
-      selectedFilm: api response,
-      currentPage: Integer
-    }
-    selectedFilm: api response <- look at demo repo for clues; also goodreads assignment
+export function species(state = initialState.species, action) {
+  switch (action.type) {
+    case Actions.GET_SPECIES_SUCCESS:
+      return {
+        ...state,
+        allSpecies: action.data,
+        isFetchingAll: false,
+      }
+    case Actions.GET_SPECIES_REQUEST:
+      return {
+        ...state,
+        isFetchingAll: true,
+        error: null,
+      }
+    case Actions.GET_SPECIES_FAILURE:
+      return {
+        ...state,
+        isFetchingAll: false,
+        error: action.error
+      }
+    case Actions.GET_SPECIFIC_SPECIES_SUCCESS:
+      return {
+        ...state,
+        specificSpecies: action.data,
+        isFetchingSpecific: false,
+      }
+    case Actions.GET_SPECIFIC_SPECIES_REQUEST:
+      return {
+        ...state,
+        isFetchingSpecific: true,
+        error: null,
+      }
+    case Actions.GET_SPECIFIC_SPECIES_FAILURE:
+      return {
+        ...state,
+        isFetchingSpecific: false,
+        error: action.error
+      }
+    case Actions.GET_NEXT_SPECIES_PAGE:
+      return {
+        ...state,
+        page: state.page + 1
+      }
+    case Actions.GET_PREV_SPECIES_PAGE:
+      return {
+        ...state,
+        page: state.page - 1
+      }
+    default:
+      return state
   }
+}
 
-  Tricky parts 
-    -> What to do about pagination when jumping between resources? Reset?
-    -> Search? <- Should be under resources
-    -> Bonus Search: One on the landing page with an option-select for the resource
+export function starships(state = initialState.starships, action) {
+  switch (action.type) {
+    case Actions.GET_STARSHIPS_SUCCESS:
+      return {
+        ...state,
+        allStarships: action.data,
+        isFetchingAll: false,
+      }
+    case Actions.GET_STARSHIPS_REQUEST:
+      return {
+        ...state,
+        isFetchingAll: true,
+        error: null,
+      }
+    case Actions.GET_STARSHIPS_FAILURE:
+      return {
+        ...state,
+        isFetchingAll: false,
+        error: action.error
+      }
+    case Actions.GET_SPECIFIC_STARSHIP_SUCCESS:
+      return {
+        ...state,
+        specificStarship: action.data,
+        isFetchingSpecific: false,
+      }
+    case Actions.GET_SPECIFIC_STARSHIP_REQUEST:
+      return {
+        ...state,
+        isFetchingSpecific: true,
+        error: null,
+      }
+    case Actions.GET_SPECIFIC_STARSHIP_FAILURE:
+      return {
+        ...state,
+        isFetchingSpecific: false,
+        error: action.error
+      }
+    case Actions.GET_NEXT_STARSHIPS_PAGE:
+      return {
+        ...state,
+        page: state.page + 1
+      }
+    case Actions.GET_PREV_STARSHIPS_PAGE:
+      return {
+        ...state,
+        page: state.page - 1
+      }
+    default:
+      return state
+  }
+}
 
-*/
+export function vehicles(state = initialState.vehicles, action) {
+  switch (action.type) {
+    case Actions.GET_VEHICLES_SUCCESS:
+      return {
+        ...state,
+        allVehicles: action.data,
+        isFetchingAll: false,
+      }
+    case Actions.GET_VEHICLES_REQUEST:
+      return {
+        ...state,
+        isFetchingAll: true,
+        error: null,
+      }
+    case Actions.GET_VEHICLES_FAILURE:
+      return {
+        ...state,
+        isFetchingAll: false,
+        error: action.error
+      }
+    case Actions.GET_SPECIFIC_VEHICLE_SUCCESS:
+      return {
+        ...state,
+        specificVehicle: action.data,
+        isFetchingSpecific: false,
+      }
+    case Actions.GET_SPECIFIC_VEHICLE_REQUEST:
+      return {
+        ...state,
+        isFetchingSpecific: true,
+        error: null,
+      }
+    case Actions.GET_SPECIFIC_VEHICLE_FAILURE:
+      return {
+        ...state,
+        isFetchingSpecific: false,
+        error: action.error
+      }
+    case Actions.GET_NEXT_VEHICLES_PAGE:
+      return {
+        ...state,
+        page: state.page + 1
+      }
+    case Actions.GET_PREV_VEHICLES_PAGE:
+      return {
+        ...state,
+        page: state.page - 1
+      }
+    default:
+      return state
+  }
+}
 
 export const starWarsApp = combineReducers({
   films,
   people,
-  planets
+  planets,
+  species,
+  starships,
+  vehicles
 });
