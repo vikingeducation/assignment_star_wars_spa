@@ -23,9 +23,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log('#########')
-  console.log(ownProps.match.params.id)
-  console.log('#########')
   return {
     getSpecificFilm: () => {
       dispatch(getSpecificFilm(ownProps.match.params.id));
