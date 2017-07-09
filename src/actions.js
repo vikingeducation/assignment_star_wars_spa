@@ -209,7 +209,10 @@ export function getNewPage(direction, type, page) {
   } else if (direction === "prev") {
     switch(type) {
       case "people":
-        return dispatch => dispatch(getPrevPeoplePage());
+        return dispatch => {
+          dispatch(getPrevPeoplePage());
+          dispatch(getPeopleFromAPI(null, page - 1));
+        };
       default:
         return;
     }

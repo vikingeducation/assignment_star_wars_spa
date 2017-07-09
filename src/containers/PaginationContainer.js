@@ -12,15 +12,16 @@ const mapStateToProps = (state, ownProps) => {
  
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const {type, page} = ownProps;
   return {
     onNextPage: (e) => {
       e.preventDefault();
-      dispatch(getNewPage("next", ownProps.type, ownProps.page));
+      dispatch(getNewPage("next", type, page));
     },
     onPrevPage: (e) => {
       e.preventDefault();
-      if (ownProps.page > 1) {
-        dispatch(getNewPage("prev", ownProps.type));
+      if (page > 1) {
+        dispatch(getNewPage("prev", type, page));
       }
     }
   };

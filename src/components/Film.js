@@ -23,10 +23,10 @@ const Film = ({film, isFetching}) => {
           <br />
           <h4>Released On: {film.release_date}</h4>
           <br />
-          <p>
+          <h3>
             <strong>Opening Crawl: </strong>
             {film.opening_crawl}
-          </p>
+          </h3>
         </Col>
       </Row>
     </Grid>
