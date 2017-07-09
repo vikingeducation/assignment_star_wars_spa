@@ -258,12 +258,12 @@ export function getSpecificPlanetFailure(error) {
   };
 }
 
-export function getNextPlanetPage(data) {
+export function getNextPlanetsPage(data) {
   return { 
     type: GET_NEXT_PLANETS_PAGE
   };
 }
-export function getPrevPlanetPage(data) {
+export function getPrevPlanetsPage(data) {
   return { 
     type: GET_PREV_PLANETS_PAGE
   };
@@ -326,6 +326,11 @@ export function getNewPage(direction, type, page) {
           dispatch(getNextPeoplePage());
           dispatch(getPeopleFromAPI(null, page + 1));
         };
+      case "planets":
+        return dispatch => {
+          dispatch(getNextPlanetsPage());
+          dispatch(getPlanetsFromAPI(null, page + 1));
+        };
       default:
         return;
     }
@@ -335,6 +340,11 @@ export function getNewPage(direction, type, page) {
         return dispatch => {
           dispatch(getPrevPeoplePage());
           dispatch(getPeopleFromAPI(null, page - 1));
+        };
+      case "planets":
+        return dispatch => {
+          dispatch(getPrevPlanetsPage());
+          dispatch(getPlanetsFromAPI(null, page - 1));
         };
       default:
         return;
