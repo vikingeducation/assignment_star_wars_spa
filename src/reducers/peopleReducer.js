@@ -3,6 +3,7 @@ import { peopleActions } from '../actions';
 const initialState = {
   people: [],
   isFetching: false,
+  currentPage: 1,
   error: null
 };
 

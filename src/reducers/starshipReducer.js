@@ -3,6 +3,7 @@ import { starshipActions } from '../actions';
 const initialState = {
   starships: [],
   isFetching: false,
+  currentPage: 1,
   error: null
 };
 
@@ -23,6 +24,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         starships: action.data,
+        currentPage: action.currentPage,
         isFetching: false
       };
 

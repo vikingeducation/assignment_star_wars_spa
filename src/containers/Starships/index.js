@@ -9,12 +9,37 @@ import Starship from '../../components/Starship';
 import ReactLoading from 'react-loading';
 
 class Starships extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentPage: 1
+    };
+  }
+
   componentDidMount() {
     const { starshipReducer, actions } = this.props;
     if (!starshipReducer.starships.length) {
-      actions.getInitialStarships();
+      actions.getCurrentStarships(this.state.currentPage);
     }
   }
+
+  onClickNextPage = e => {
+    const { starshipReducer, actions } = this.props;
+    console.log('clicked???');
+    let copy = Object.assign({}, this.state);
+    // console.log((copy.currentPage += 1), '??');
+    copy.currentPage = copy.currentPage + 1;
+
+    this.setState({
+      currentPage: copy.currentPage
+    });
+
+    // let nextPage = starshipReducer.currentPage++;
+    // console.log(starshipReducer.currentPage, 'current page');
+    // console.log(nextPage, 'next page');
+    actions.getCurrentStarships(this.state.currentPage);
+  };
 
   render() {
     const { isFetching, starships } = this.props.starshipReducer;
@@ -28,31 +53,32 @@ class Starships extends Component {
           <h2>Welcome to Starships from Star Wars API</h2>
         </div>
         <div className="router-link-container">
-        <div className="router-link-container">
-        <Link to="/">Home</Link>
-        </div>
-        </div>
-        <div className="router-link-container">
-        {isFetching
-          ? <div className="loading-icon">
-              <ReactLoading type="cylon" color="#444" />
-            </div>
-          : starships.map(starship =>
-            <div className="router-link">
-              <Link
-                to={{
-                  pathname: `/Starships/${starship.name}`,
-                  state: {
-                    ...starship
-                  }
-                }}
-                key={starship.name}
-              >
-                {' '}{starship.name}{' '}
-              </Link>
-              </div>
-            )}
+          <div className="router-link-container">
+            <Link to="/">Home</Link>
+            <a onClick={this.onClickNextPage}>Next Page</a>
           </div>
+        </div>
+        <div className="router-link-container">
+          {isFetching
+            ? <div className="loading-icon">
+                <ReactLoading type="cylon" color="#444" />
+              </div>
+            : starships.map(starship =>
+                <div className="router-link">
+                  <Link
+                    to={{
+                      pathname: `/Starships/${starship.name}`,
+                      state: {
+                        ...starship
+                      }
+                    }}
+                    key={starship.name}
+                  >
+                    {' '}{starship.name}{' '}
+                  </Link>
+                </div>
+              )}
+        </div>
       </div>
     );
   }

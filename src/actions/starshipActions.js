@@ -10,10 +10,11 @@ export function getStarshipsRequest() {
   };
 }
 
-export function getStarshipsSuccess(data) {
+export function getStarshipsSuccess(data, currentPage) {
   return {
     type: GET_STARSHIPS_SUCCESS,
-    data
+    data,
+    currentPage
   };
 }
 
@@ -24,13 +25,15 @@ export function getStarshipsFailure(error) {
   };
 }
 
-export const getInitialStarships = () => async dispatch => {
+export const getCurrentStarships = currentPage => async dispatch => {
   dispatch(getStarshipsRequest());
 
   try {
-    const response = await superagent.get('http://swapi.co/api/starships/');
+    const response = await superagent.get(
+      `http://swapi.co/api/starships/?page=${currentPage}`
+    );
 
-    dispatch(getStarshipsSuccess(response.body.results));
+    dispatch(getStarshipsSuccess(response.body.results, currentPage));
   } catch (e) {
     dispatch(getStarshipsFailure(e));
   }
