@@ -37,21 +37,22 @@ const getData = async url => {
 
 export const getSpecies = () => {
   return async dispatch => {
-    dispatch(startRequest());
+    // dispatch(startRequest());
     let response = await fetch(BASE_URL);
     let species = await response.json();
     dispatch(getSpeciesSuccess(species.results));
+    // dispatch(endRequest());
   };
 };
 
 export const getSpecie = id => {
   return async dispatch => {
-    dispatch(startRequest());
+    // dispatch(startRequest());
     let response = await fetch(`${BASE_URL}/${id}/`);
     let specie = await response.json();
     let homeworld = await getData(specie.homeworld);
     specie.homeworld = homeworld.name;
     dispatch(getSpecieSuccess(specie));
-    dispatch(endRequest());
+    // dispatch(endRequest());
   };
 };

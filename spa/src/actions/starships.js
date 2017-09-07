@@ -32,20 +32,20 @@ const getStarshipSuccess = data => {
 
 export const getStarships = () => {
   return async dispatch => {
-    dispatch(startRequest());
+    // dispatch(startRequest());
     let response = await fetch(BASE_URL);
     let starships = await response.json();
     dispatch(getStarshipsSuccess(starships.results));
-    dispatch(endRequest());
+    // dispatch(endRequest());
   };
 };
 
 export const getStarship = id => {
   return async dispatch => {
-    dispatch(startRequest());
+    // dispatch(startRequest());
     let response = await fetch(`${BASE_URL}/${id}/`);
     let starship = await response.json();
     dispatch(getStarshipSuccess(starship));
-    dispatch(endRequest());
+    // dispatch(endRequest());
   };
 };
