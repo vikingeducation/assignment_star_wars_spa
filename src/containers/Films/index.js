@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router';
 import Film from '../../components/Film';
-
 
 class Films extends Component {
   componentDidMount() {
@@ -19,7 +18,7 @@ class Films extends Component {
 
   render() {
     const { isFetching, films } = this.props.filmReducer;
-    console.log(this.props);
+
     return (
       <div className="App">
         <div className="App-header">
@@ -31,8 +30,21 @@ class Films extends Component {
         {isFetching
           ? <p>Fetching films...</p>
           : films.map(film =>
-              <Link to={`/films/${film.episode_id}`} > {film.title} </Link>
-              
+              <Link
+                to={{
+                  pathname: `/films/${film.episode_id}`,
+                  state: {
+                    title: film.title,
+                    description: film.opening_crawl,
+                    director: film.director,
+                    releaseDate: film.release_date
+                  }
+                }}
+                key={film.episode_id}
+                title={film.title}
+              >
+                {' '}{film.title}{' '}
+              </Link>
             )}
       </div>
     );
