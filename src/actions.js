@@ -1,5 +1,3 @@
-const qs = require("query-string");
-
 export const SET_PEOPLE = "SET_PEOPLE";
 export const SET_FILMS = "SET_FILMS";
 export const SET_FETCHING = "SET_FETCHING";
@@ -44,19 +42,18 @@ const resourceMap = {
   people: setPeople
 };
 
-const parseQuery = url => (url ? qs.parse(url.split("?")[1]).page : null);
-
 const parseResponse = async res => {
   const json = await res.json();
   return {
     list: json.results,
-    next: parseQuery(json.next),
-    prev: parseQuery(json.previous)
+    next: Boolean(json.next),
+    prev: Boolean(json.previous)
   };
 };
 
 export const fetchList = (resource, page = 1) => async dispatch => {
   try {
+    if (page === null) return;
     dispatch(setFetching());
     const response = await fetch(
       `https://swapi.co/api/${resource}?page=${page}`

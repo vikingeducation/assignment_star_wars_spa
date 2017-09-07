@@ -1,5 +1,6 @@
 import React from "react";
-import { Panel } from "react-bootstrap";
+import { Panel, Pager } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import Loadable from "./Loadable";
 
 const Film = info => (
@@ -17,15 +18,36 @@ const Person = info => (
   </Panel>
 );
 
+const pager = (resource, prev, next) => (
+  <Pager>
+    <LinkContainer exact to={`/${resource}?page=${prev}`}>
+      <Pager.Item disabled={!prev} previous>
+        &larr; Previous
+      </Pager.Item>
+    </LinkContainer>
+    <LinkContainer exact to={`/${resource}?page=${next}`}>
+      <Pager.Item disabled={!next} next>
+        Next &rarr;
+      </Pager.Item>
+    </LinkContainer>
+  </Pager>
+);
+
 const resourceMap = {
   people: Person,
   films: Film
 };
 
-const ResourceList = ({ resource, list, status }) => (
-  <Loadable condition={!status.isFetching}>
-    {list.map(res => resourceMap[resource](res))}
-  </Loadable>
-);
+const ResourceList = ({ resource, list, status, prev, next, page }) => {
+  prev = prev ? +page - 1 : prev;
+  next = next ? +page + 1 : next;
+  return (
+    <Loadable condition={!status.isFetching}>
+      {pager(resource, prev, next)}
+      {list.map(res => resourceMap[resource](res))}
+      {pager(resource, prev, next)}
+    </Loadable>
+  );
+};
 
 export default ResourceList;
