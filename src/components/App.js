@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import PlanetsHome from '../containers/PlanetsHome';
+import PlanetView from '../containers/PlanetView';
 
 const NavLinks = props => {
 	return (
@@ -39,6 +40,7 @@ const NavLinks = props => {
 
 class App extends Component {
 	render() {
+		console.log(this.props);
 		return (
 			<Router>
 				<ScrollToTop>
@@ -51,6 +53,7 @@ class App extends Component {
 									render={() => <h1>Star Wars Planets Page</h1>}
 								/>
 								<Route exact path="/planets" component={PlanetsHome} />
+								<Route exact path="/planets/:id" component={PlanetView} />
 								<Route
 									exact
 									path="/people"
