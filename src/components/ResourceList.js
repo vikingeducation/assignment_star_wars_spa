@@ -18,6 +18,15 @@ const Person = info => (
   </Panel>
 );
 
+const Planet = info => (
+  <Panel key={info.name} header={<h3>{info.name}</h3>}>
+    <p>
+      A {info.climate} planet with a population of {info.population} that has
+      appeared in {info.films.length} films.
+    </p>
+  </Panel>
+);
+
 const pager = (resource, prev, next) => (
   <Pager>
     <LinkContainer exact to={`/${resource}?page=${prev}`}>
@@ -35,7 +44,8 @@ const pager = (resource, prev, next) => (
 
 const resourceMap = {
   people: Person,
-  films: Film
+  films: Film,
+  planets: Planet
 };
 
 const ResourceList = ({ type, list, status, prev, next, page }) => {

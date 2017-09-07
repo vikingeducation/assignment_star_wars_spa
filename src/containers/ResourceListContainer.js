@@ -10,7 +10,7 @@ class ResourceListContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.page !== prevProps.page) {
+    if (this.props.location !== prevProps.location) {
       this.props.fetchList(this.props.resource, this.props.page);
     }
   }
