@@ -1,14 +1,14 @@
 import {
   GET_STARSHIPS_SUCCESS,
   GET_STARSHIP_SUCCESS
-} from "../actions/startships";
+} from "../actions/starships";
 
 const initialState = {
   starships: [],
   starship: []
 };
 
-export default const starships = (state = initialState, action) => {
+const starships = (state = initialState, action) => {
   switch (action.type) {
     case GET_STARSHIPS_SUCCESS:
       return {
@@ -24,3 +24,5 @@ export default const starships = (state = initialState, action) => {
       return state;
   }
 };
+
+export default starships;

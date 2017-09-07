@@ -9,34 +9,34 @@ const startRequest = () => {
   };
 };
 
-const getStarshipsSuccess = (data) => {
+const getStarshipsSuccess = data => {
   return {
     type: GET_STARSHIPS_SUCCESS,
     data
   };
 };
 
-const getStarshipSuccess = (data) => {
+const getStarshipSuccess = data => {
   return {
     type: GET_STARSHIP_SUCCESS,
     data
   };
 };
 
-export const getStarships = async () => {
-  return dispatch => {
+export const getStarships = () => {
+  return async dispatch => {
     dispatch(startRequest());
     let response = await fetch(BASE_URL);
     let starships = await response.json();
-    dispatch(getStarshipsSuccess(starships))
+    dispatch(getStarshipsSuccess(starships));
   };
 };
 
-export const getStarship = async (id) => {
-  return dispatch => {
+export const getStarship = id => {
+  return async dispatch => {
     dispatch(startRequest());
-    let response = await fetch(`${BASE_URL}/${id}/` );
+    let response = await fetch(`${BASE_URL}/${id}/`);
     let starship = await response.json();
-    dispatch(getStarshipSuccess(starship))
+    dispatch(getStarshipSuccess(starship));
   };
 };

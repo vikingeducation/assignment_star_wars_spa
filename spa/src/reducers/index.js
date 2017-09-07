@@ -1,4 +1,4 @@
 import { CombineReducers } from "react-redux";
-import startships from "startships";
+import starships from "./starships";
 
-export default const rootReducer = CombineReducers(starships);
+export default CombineReducers(starships);
