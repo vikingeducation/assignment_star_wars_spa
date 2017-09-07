@@ -112,3 +112,9 @@ ul {
   margin: auto;
   margin-bottom: 20px;
 }
+
+.loading {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20%;
+}
