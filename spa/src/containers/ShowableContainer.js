@@ -1,9 +1,12 @@
 import React from "react";
-import connect from "react-redux";
-import Showable from "../Containers/elements/Showable";
+import { connect } from "react-redux";
+import Showable from "../Components/elements/Showable";
 
 const mapStateToProps = state => {
-  isFetching: state.isFetching;
+  return {
+    isFetching: state.isFetching.isFetching
+  };
 };
 
 const ShowableContainer = connect(mapStateToProps, null)(Showable);
+export default ShowableContainer;

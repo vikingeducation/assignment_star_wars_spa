@@ -4,7 +4,15 @@ const BASE_URL = "https://swapi.co/api/starships";
 
 const startRequest = () => {
   return {
-    type: "SET_FETCHING"
+    type: "SET_FETCHING",
+    data: true
+  };
+};
+
+const endRequest = () => {
+  return {
+    type: "SET_FETCHING",
+    data: false
   };
 };
 
@@ -28,6 +36,7 @@ export const getStarships = () => {
     let response = await fetch(BASE_URL);
     let starships = await response.json();
     dispatch(getStarshipsSuccess(starships.results));
+    dispatch(endRequest());
   };
 };
 
@@ -37,5 +46,6 @@ export const getStarship = id => {
     let response = await fetch(`${BASE_URL}/${id}/`);
     let starship = await response.json();
     dispatch(getStarshipSuccess(starship));
+    dispatch(endRequest());
   };
 };

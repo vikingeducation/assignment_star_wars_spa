@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import starships from "./starships";
 import species from "./species";
-import { request } from "./request";
+import { request as isFetching } from "./request";
 
-export default combineReducers({ starships, species, request });
+export default combineReducers({ starships, species, isFetching });
