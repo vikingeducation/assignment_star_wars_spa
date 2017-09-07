@@ -1,4 +1,4 @@
-import { starshipsActions } from '../actions';
+import { starshipActions } from '../actions';
 
 const initialState = {
   starships: [],
@@ -12,21 +12,21 @@ export const GET_STARSHIPS_FAILURE = 'GET_STARSHIPS_FAILURE';
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case starshipsActions.GET_STARSHIPS_REQUEST:
+    case starshipActions.GET_STARSHIPS_REQUEST:
       return {
         ...state,
         isFetching: true,
         error: null
       };
 
-    case starshipsActions.GET_STARSHIPS_SUCCESS:
+    case starshipActions.GET_STARSHIPS_SUCCESS:
       return {
         ...state,
         starships: action.data,
         isFetching: false
       };
 
-    case starshipsActions.GET_STARSHIPS_FAILURE:
+    case starshipActions.GET_STARSHIPS_FAILURE:
       return {
         ...state,
         isFetching: false,

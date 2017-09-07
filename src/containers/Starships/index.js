@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
-import './People.css';
+import './Starships.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
-import Person from '../../components/Person';
+import Starship from '../../components/Starship';
 import ReactLoading from 'react-loading';
 
-class People extends Component {
+class Starships extends Component {
   componentDidMount() {
-    const { peopleReducer, actions } = this.props;
-    if (!peopleReducer.people.length) {
-      actions.getInitialPeople();
+    const { starshipReducer, actions } = this.props;
+    if (!starshipReducer.starships.length) {
+      actions.getInitialStarships();
     }
   }
 
   render() {
-    const { isFetching, people } = this.props.peopleReducer;
+    const { isFetching, starships } = this.props.starshipReducer;
+
+    console.log(this.props.starshipReducer, '?????');
 
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to People from Star Wars API</h2>
+          <h2>Welcome to Starships from Star Wars API</h2>
         </div>
         <Link to="/">Home</Link>
 
@@ -31,17 +33,17 @@ class People extends Component {
           ? <div className="loading-icon">
               <ReactLoading type="cylon" color="#444" />
             </div>
-          : people.map(person =>
+          : starships.map(starship =>
               <Link
                 to={{
-                  pathname: `/people/${person.name}`,
+                  pathname: `/Starships/${starship.name}`,
                   state: {
-                    ...person
+                    ...starship
                   }
                 }}
-                key={person.name}
+                key={starship.name}
               >
-                {' '}{person.name}{' '}
+                {' '}{starship.name}{' '}
               </Link>
             )}
       </div>
@@ -52,7 +54,7 @@ class People extends Component {
 const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions.peopleActions, dispatch)
+  actions: bindActionCreators(actions.starshipActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(People);
+export default connect(mapStateToProps, mapDispatchToProps)(Starships);

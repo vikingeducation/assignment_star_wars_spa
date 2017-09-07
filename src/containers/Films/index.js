@@ -7,6 +7,7 @@ import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Film from '../../components/Film';
+import ReactLoading from 'react-loading';
 
 class Films extends Component {
   componentDidMount() {
@@ -28,7 +29,9 @@ class Films extends Component {
         <Link to="/">Home</Link>
 
         {isFetching
-          ? <p>Fetching films...</p>
+          ? <div className="loading-icon">
+              <ReactLoading type="cylon" color="#444" />
+            </div>
           : films.map(film =>
               <Link
                 to={{
