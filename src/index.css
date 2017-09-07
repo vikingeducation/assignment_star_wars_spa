@@ -90,6 +90,7 @@ ul {
   font-size: 50px;
   color: #045;
   font-weight: bold;
+  margin: 10px;
 }
 
 .resourceList a li {
@@ -100,4 +101,14 @@ ul {
 .resourceList a li:hover {
   color: #023;
   background: #ccddff;
+}
+
+.search-box {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
 }

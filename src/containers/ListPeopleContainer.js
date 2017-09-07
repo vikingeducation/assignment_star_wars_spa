@@ -9,12 +9,14 @@ class ListPeopleContainer extends React.Component {
     this.state = {
       people: [],
       page: "1",
-      numPages: "0"
+      numPages: "0",
+      searchString: ""
     };
   }
 
-  getPeopleList = e => {
-    fetch(`https://swapi.co/api/people?page=${this.state.page}`)
+  getPeopleList = () => {
+    this.setState({people: [], numPages: "0"})
+    fetch(`https://swapi.co/api/people?page=${this.state.page}&search=${this.state.searchString}`)
       .then(res => {
         return res.json();
       })
@@ -33,8 +35,9 @@ class ListPeopleContainer extends React.Component {
     this.getPeopleList();
   };
 
-  handleSearch = e => {
-    const search = e ? `$search=${e.target.value}` : "";
+  handleSearch = async e => {
+    await Promise.resolve(this.setState({page: "1", searchString: e.target.value}));
+    this.getPeopleList();
   };
 
   render() {

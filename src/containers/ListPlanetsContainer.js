@@ -9,12 +9,14 @@ class ListPlanetsContainer extends React.Component {
     this.state = {
       planets: [],
       page: "1",
-      numPages: "0"
+      numPages: "0",
+      searchString: ""
     };
   }
 
   getPlanetsList = () => {
-    fetch(`https://swapi.co/api/planets?page=${this.state.page}`)
+    this.setState({planets: []})
+    fetch(`https://swapi.co/api/planets?page=${this.state.page}&search=${this.state.searchString}`)
       .then(res => {
         return res.json();
       })
@@ -33,11 +35,16 @@ class ListPlanetsContainer extends React.Component {
     this.getPlanetsList();
   };
 
+  handleSearch = async e => {
+    await Promise.resolve(this.setState({page: "1", searchString: e.target.value}));
+    this.getPlanetsList();
+  };
+
   render() {
     return (
       <div className="resource">
         <h1 className="resource-title">Planets</h1>
-        <Search />
+        <Search onChange={this.handleSearch} />
         <ListResource
           resourceName={"planets"}
           resource={this.state.planets}
