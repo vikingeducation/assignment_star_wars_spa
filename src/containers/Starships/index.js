@@ -27,13 +27,18 @@ class Starships extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Starships from Star Wars API</h2>
         </div>
+        <div className="router-link-container">
+        <div className="router-link-container">
         <Link to="/">Home</Link>
-
+        </div>
+        </div>
+        <div className="router-link-container">
         {isFetching
           ? <div className="loading-icon">
               <ReactLoading type="cylon" color="#444" />
             </div>
           : starships.map(starship =>
+            <div className="router-link">
               <Link
                 to={{
                   pathname: `/Starships/${starship.name}`,
@@ -45,7 +50,9 @@ class Starships extends Component {
               >
                 {' '}{starship.name}{' '}
               </Link>
+              </div>
             )}
+          </div>
       </div>
     );
   }

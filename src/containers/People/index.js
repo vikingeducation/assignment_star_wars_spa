@@ -25,13 +25,18 @@ class People extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to People from Star Wars API</h2>
         </div>
+        <div className="router-link-container">
+        <div className="router-link">
         <Link to="/">Home</Link>
-
+        </div>
+        </div>
+        <div className="router-link-container">
         {isFetching
           ? <div className="loading-icon">
               <ReactLoading type="cylon" color="#444" />
             </div>
           : people.map(person =>
+            <div className="router-link">
               <Link
                 to={{
                   pathname: `/people/${person.name}`,
@@ -43,7 +48,9 @@ class People extends Component {
               >
                 {' '}{person.name}{' '}
               </Link>
+              </div>
             )}
+          </div>
       </div>
     );
   }

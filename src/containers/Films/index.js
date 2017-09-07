@@ -26,13 +26,20 @@ class Films extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Films from Star Wars API</h2>
         </div>
-        <Link to="/">Home</Link>
+        <div className="router-link-container">
+        <div className="router-link">
+        <Link to="/">Home</Link><br />
+        </div>
+        </div>
+        <div className="router-link-container">
+        
 
         {isFetching
-          ? <div className="loading-icon">
+          ? <div className="loading-icon router-link">
               <ReactLoading type="cylon" color="#444" />
             </div>
           : films.map(film =>
+              <div className="router-link">
               <Link
                 to={{
                   pathname: `/films/${film.episode_id}`,
@@ -48,7 +55,9 @@ class Films extends Component {
               >
                 {' '}{film.title}{' '}
               </Link>
+              </div>
             )}
+          </div>
       </div>
     );
   }

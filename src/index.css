@@ -15,8 +15,8 @@ a {
 }
 
 .router-link {
-	width: 20%;
-	border: 1px solid black;
+	width: 200px;
+	border: 1px solid white;
 }
 
 .router-link-container {
@@ -24,4 +24,5 @@ a {
 	flex-direction: row;
 	justify-content: center;
 	background-color: black;
+	flex-wrap: wrap;
 }
