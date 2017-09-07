@@ -1,7 +1,8 @@
 import React from "react";
 import Loading from "./Loading";
 
-const ShowPlanet = ({ planet }) => {
+const ShowPlanet = ({ resource }) => {
+  const planet = resource;
   return (
     <div className="info">
       <h1>{planet.name}</h1>

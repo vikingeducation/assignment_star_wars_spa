@@ -118,3 +118,7 @@ ul {
   margin: 0 auto;
   border-radius: 20%;
 }
+
+.activeNav li {
+  background: #345;
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import Loading from "./Loading";
 
-const ShowVehicle = ({ vehicle }) => {
+const ShowVehicle = ({ resource }) => {
+  const vehicle = resource;
   return (
     <div className="info">
       <h1>{vehicle.name}</h1>
@@ -16,11 +17,14 @@ const ShowVehicle = ({ vehicle }) => {
         <br />
         <strong>Passengers:</strong> {vehicle.passengers}
         <br />
-        <strong>Skin Color:</strong> {person.skin_color}
+        <strong>Cargo Capacity:</strong> {vehicle.cargo_capacity}
         <br />
-        <strong>Eye Color:</strong> {person.eye_color}
+        <strong>Crew Members:</strong> {vehicle.crew}
         <br />
-        <strong>Gender:</strong> {person.gender}
+        <strong>Length:</strong> {vehicle.length}
+        <br />
+        <strong>Max Atmosphering Speed:</strong>{" "}
+        {vehicle.max_atmosphering_speed}
         <br />
       </div>
     </div>

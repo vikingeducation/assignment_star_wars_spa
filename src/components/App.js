@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ListResourceContainer from "../containers/ListResourceContainer";
 import Nav from "./Nav";
+import ListResourceContainer from "../containers/ListResourceContainer";
 import ShowResourceContainer from "../containers/ShowResourceContainer";
+import Welcome from "./Welcome";
 
 const App = () => (
   <Router>
     <div>
       <Route path="/" component={Nav} />
+      <Route exact path="/" component={Welcome} />
       <Route exact path="/people" component={ListResourceContainer} />
       <Route exact path="/people/:id" component={ShowResourceContainer} />
       <Route exact path="/planets" component={ListResourceContainer} />
