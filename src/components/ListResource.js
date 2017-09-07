@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
+import { NavLink } from "react-router-dom";
 
 const ListResource = ({ resource, resourceName, numPages, onClick }) => {
   return (
@@ -18,7 +19,7 @@ const ListResource = ({ resource, resourceName, numPages, onClick }) => {
               /swapi.co\/api\/\w+\/(\d+)/
             )[1]}`}
           >
-            <li>{r.name}</li>
+            <li>{resourceName === "films" ? r.title : r.name}</li>
           </Link>
         ))}
       </ul>

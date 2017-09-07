@@ -5,7 +5,6 @@ import Search from "../components/Search";
 class ListResourceContainer extends React.Component {
   constructor({ location }) {
     super();
-    console.log(location);
     this.resource = location.pathname[1]
       .toUpperCase()
       .concat(location.pathname.slice(2));
@@ -19,7 +18,6 @@ class ListResourceContainer extends React.Component {
   }
 
   getResourceList = () => {
-    this.setState({ resource: [] });
     fetch(
       `https://swapi.co/api/${this.resource.toLowerCase()}?page=${this.state
         .page}&search=${this.state.searchString}`
@@ -50,7 +48,7 @@ class ListResourceContainer extends React.Component {
   };
 
   render() {
-    let resources = ["People", "Planets"];
+    let resources = ["People", "Planets", "Films", "Vehicles", "Starships"];
     if (!resources.includes(this.resource)) return null;
 
     return (
@@ -58,7 +56,7 @@ class ListResourceContainer extends React.Component {
         <h1 className="resource-title">{this.resource}</h1>
         <Search onChange={this.handleSearch} />
         <ListResource
-          resourceName={this.resource}
+          resourceName={this.resource.toLowerCase()}
           resource={this.state.resource}
           {...this.state}
           onClick={this.handlePageChange}
