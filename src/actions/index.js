@@ -1,3 +1,4 @@
-import * as PlanetActions from "./planets";
+import * as PlanetsActions from "./planets";
+import * as PlanetActions from "./planet";
 
-export { PlanetActions };
+export { PlanetsActions, PlanetActions };

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import * as Actions from "../../actions";
-// import "./App.css";
 import PlanetsHome from "../../components/PlanetsHome";
 
 const mapStateToProps = state => ({
@@ -11,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(Actions.PlanetActions, dispatch)
+  actions: bindActionCreators(Actions.PlanetsActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlanetsHome);
