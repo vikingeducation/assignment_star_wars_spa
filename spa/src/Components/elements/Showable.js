@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const Showable = ({show, children}) => {
-  if (!show) {
-    return null
+const Showable = ({ isFetching, children }) => {
+  if (!isFetching) {
+    return null;
   }
 
-  return <div>{children}</div>
-}
+  return (
+    <div>
+      {children}
+    </div>
+  );
+};
 
-export default Showable
+export default Showable;
