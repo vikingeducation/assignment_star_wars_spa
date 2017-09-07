@@ -8,7 +8,9 @@ import {
   SET_SUCCESS
 } from "./actions";
 
-const people = (state = [], action) => {
+const defaultState = { list: [], next: null, prev: null };
+
+const people = (state = defaultState, action) => {
   switch (action.type) {
     case SET_PEOPLE:
       return action.data;
@@ -17,7 +19,7 @@ const people = (state = [], action) => {
   }
 };
 
-const films = (state = [], action) => {
+const films = (state = defaultState, action) => {
   switch (action.type) {
     case SET_FILMS:
       return action.data;

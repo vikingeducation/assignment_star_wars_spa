@@ -14,7 +14,9 @@ class ResourceListContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  list: state[ownProps.resource],
+  list: state[ownProps.resource].list,
+  prev: state[ownProps.resource].prev,
+  next: state[ownProps.resource].next,
   status: state.status,
   resource: ownProps.resource
 });

@@ -1,3 +1,5 @@
+const qs = require("query-string");
+
 export const SET_PEOPLE = "SET_PEOPLE";
 export const SET_FILMS = "SET_FILMS";
 export const SET_FETCHING = "SET_FETCHING";
@@ -42,15 +44,27 @@ const resourceMap = {
   people: setPeople
 };
 
-export const fetchList = resource => async dispatch => {
+const parseQuery = url => (url ? qs.parse(url.split("?")[1]).page : null);
+
+const parseResponse = async res => {
+  const json = await res.json();
+  return {
+    list: json.results,
+    next: parseQuery(json.next),
+    prev: parseQuery(json.previous)
+  };
+};
+
+export const fetchList = (resource, page = 1) => async dispatch => {
   try {
     dispatch(setFetching());
-    const response = await fetch(`https://swapi.co/api/${resource}`);
+    const response = await fetch(
+      `https://swapi.co/api/${resource}?page=${page}`
+    );
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
-    const json = await response.json();
-    dispatch(resourceMap[resource](json.results));
+    dispatch(resourceMap[resource](await parseResponse(response)));
     dispatch(setSuccess());
   } catch (error) {
     dispatch(setError(error));

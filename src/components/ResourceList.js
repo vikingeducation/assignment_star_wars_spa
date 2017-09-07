@@ -10,7 +10,10 @@ const Film = info => (
 
 const Person = info => (
   <Panel key={info.name} header={<h3>{info.name}</h3>}>
-    <p>Born: {info.birth_year}</p>
+    <p>
+      Born in {info.birth_year}, {info.name} has appeared in {info.films.length}{" "}
+      films.
+    </p>
   </Panel>
 );
 
