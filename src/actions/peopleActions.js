@@ -10,10 +10,11 @@ export function getPeopleRequest() {
   };
 }
 
-export function getPeopleSuccess(data) {
+export function getPeopleSuccess(data, currentPage) {
   return {
     type: GET_PEOPLE_SUCCESS,
-    data
+    data, 
+    currentPage
   };
 }
 
@@ -24,13 +25,13 @@ export function getPeopleFailure(error) {
   };
 }
 
-export const getInitialPeople = () => async dispatch => {
+export const getCurrentPeople = currentPage => async dispatch => {
   dispatch(getPeopleRequest());
 
   try {
-    const response = await superagent.get('http://swapi.co/api/people/');
+    const response = await superagent.get(`http://swapi.co/api/people/?page=${currentPage}`);
 
-    dispatch(getPeopleSuccess(response.body.results));
+    dispatch(getPeopleSuccess(response.body.results, currentPage));
   } catch (e) {
     dispatch(getPeopleFailure(e));
   }
