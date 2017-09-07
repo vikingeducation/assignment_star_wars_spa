@@ -8,10 +8,17 @@ ul {
   list-style-type: none;
 }
 
+.pagination {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 .pagination li {
-  display: inline;
+  display: inline-block;
   background: #023;
-  border: 2px solid black;
   border-radius: 10%;
   padding: 6px;
   margin: 4px;
@@ -63,14 +70,22 @@ ul {
 }
 
 .resourceList {
-  margin: 20px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
+
 .resourceList a {
   text-decoration: none;
   color: #045;
   font-weight: bold;
   line-height: 1.5;
   font-size: 30px;
+}
+
+.resourceList a li {
+  padding: 5px 40px;
+  border-top: 2px solid #eee;
 }
 
 .resourceList a li:hover {
