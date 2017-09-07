@@ -27,7 +27,7 @@ export const getStarships = () => {
   return async dispatch => {
     dispatch(startRequest());
     let response = await fetch(BASE_URL);
-    console.log("are we requesting", response);
+    // console.log("are we requesting", response);
     let starships = await response.json();
     dispatch(getStarshipsSuccess(starships.results));
   };

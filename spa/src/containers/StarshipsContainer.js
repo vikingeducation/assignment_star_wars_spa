@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getStarships, getStarship } from "../actions/starships";
 import Starships from "../Components/Starships";
+import { Starship } from "../Components/Starship";
 
 class StarshipsContainer extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class StarshipsContainer extends React.Component {
         />
       );
     } else {
-      return null;
+      return <Starship starship={this.props.starships.starship} />;
     }
   }
 }
@@ -32,7 +33,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(getStarships());
     },
     onClick: e => {
-      console.log(e.target);
+      dispatch(getStarship(e.target.id));
     }
   };
 };
