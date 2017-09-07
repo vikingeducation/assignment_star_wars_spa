@@ -6,7 +6,7 @@ import { Specie } from "../Components/Specie";
 
 class SpeciesContainer extends React.Component {
   componentDidMount() {
-    this.props.getIntitialSpecies();
+    this.props.getInitialSpecies();
   }
   render() {
     if (this.props.match.isExact) {
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getIntitialSpecies: () => {
+    getInitialSpecies: () => {
       dispatch(getSpecies());
     },
     onClick: e => {

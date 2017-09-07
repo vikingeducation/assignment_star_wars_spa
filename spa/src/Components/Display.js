@@ -3,13 +3,14 @@ import StarshipsContainer from "../Containers/StarshipsContainer";
 import SpeciesContainer from "../Containers/SpeciesContainer";
 import { Route } from "react-router-dom";
 
-const Home = () => <h1>HOME</h1>;
+const Home = () => <h1>WELCOME TO THE SWAPI MEET</h1>;
 
-const Display = () =>
+const Display = () => (
   <div>
     <Route exact path="/" component={Home} />
     <Route path="/starships" component={StarshipsContainer} />
     <Route path="/species" component={SpeciesContainer} />
-  </div>;
+  </div>
+);
 
 export default Display;

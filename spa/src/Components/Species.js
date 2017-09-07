@@ -6,23 +6,12 @@ const Species = ({ species, onClick }) => {
     const str = spec.url.split("/");
     const id = str[str.length - 2];
     return (
-      <div key={id} id={id}>
-        <h3>Species</h3>
-        <p>
-          Name: {spec.name}
-        </p>
-        <p>
-          Model: {spec.model}
-        </p>
-        <p>
-          Manufacturer: {spec.manufacturer}
-        </p>
-        <p>
-          Cost in Credits: {spec.cost_in_credits}
-        </p>
-        <p>
-          hyperdrive_rating: {spec.hyperdrive_rating}
-        </p>
+      <div className="well" key={id} id={id}>
+        <h3>{spec.name}</h3>
+        <p>Name: {spec.name}</p>
+        <p>Classification: {spec.classification}</p>
+        <p>Average Lifespan: {spec.average_lifespan}</p>
+        <p>Language: {spec.language}</p>
         <Link to={`/species/${id}`} onClick={onClick} id={id}>
           CLICK HERE
         </Link>
@@ -31,11 +20,7 @@ const Species = ({ species, onClick }) => {
       </div>
     );
   });
-  return (
-    <div>
-      {list}
-    </div>
-  );
+  return <div>{list}</div>;
 };
 
 export default Species;
