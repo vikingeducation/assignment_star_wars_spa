@@ -13,9 +13,9 @@ const App = () => (
     <div>
       <Route path="/" component={Nav} />
       <Route exact path="/people" component={ListPeopleContainer} />
-      <Route exact path="/people/:name" component={ShowPersonContainer} />
+      <Route exact path="/people/:id" component={ShowPersonContainer} />
       <Route exact path="/planets" component={ListPlanetsContainer} />
-      <Route exact path="/planets/:name" component={ShowPlanetContainer} />
+      <Route exact path="/planets/:id" component={ShowPlanetContainer} />
     </div>
   </Router>
 );

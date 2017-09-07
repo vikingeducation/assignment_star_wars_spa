@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ListPeople = ({ people }) => {
+const ListPeople = ({ people, numPages, onClick }) => {
+
   return (
     <div>
       {people.map(p => (
@@ -9,6 +10,9 @@ const ListPeople = ({ people }) => {
           <h1>{p.name}</h1>
         </Link>
       ))}
+      <ul>
+      	{[...Array(+numPages)].map((page, i) => <li onClick={onClick(i + 1)}>{i + 1}</li>)}
+      </ul>
     </div>
   );
 };

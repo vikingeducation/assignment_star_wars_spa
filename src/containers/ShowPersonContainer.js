@@ -6,12 +6,21 @@ class ShowPersonContainer extends React.Component {
     super();
 
     this.state = {
-      person: {}
+      person: { name: ""}
     };
   }
 
   componentDidMount() {
-    const name = this.props.match.params.name;
+    const id = this.props.match.params.id;
+
+    fetch(`https://swapi.co/api/people/${id}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        this.setState({ person: data });
+      });
   }
 
   render() {

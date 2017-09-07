@@ -6,24 +6,37 @@ class ListPeopleContainer extends React.Component {
     super();
 
     this.state = {
-      people: []
+      people: [],
+      page: "1",
+      numPages: "1"
     };
   }
 
-  componentDidMount() {
-    fetch("https://swapi.co/api/people")
+  getPeopleList = () => {
+    fetch(`https://swapi.co/api/people?page=${this.state.page}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        this.setState({ people: data.results });
+        const numPages = Math.ceil(data.count / 10);
+        this.setState({ people: data.results, numPages });
       });
   }
 
-  render() {
-    const { people } = this.state;
+  componentDidMount() {
+    this.getPeopleList();
+  }
 
-    return <ListPeople people={people} />;
+  componentDidUpdate() {
+    this.getPeopleList();
+  }
+
+  handlePageChange = (page) => () => {
+    this.setState({page: `${page}`})
+  }
+
+  render() {
+    return <ListPeople {...this.state} onClick={this.handlePageChange} />;
   }
 }
 
