@@ -28,8 +28,11 @@ class ShowResourceContainer extends React.Component {
     const { resource } = this.state;
 
     const resourceHash = {
-      people: (<ShowPerson resource={resource}/>)
-      planets: (<ShowPlanet resource={resource}/>)
+      people: (<ShowPerson resource={resource}/>),
+      planets: (<ShowPlanet resource={resource}/>),
+      films: (<ShowFilm resource={resource}/>),
+      starships: (<ShowStarship resource={resource}/>),
+      vehicles: (<ShowVehicle resource={resource}/>)
     };
 
     return resourceHash[this.props.resource];
