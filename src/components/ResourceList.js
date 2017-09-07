@@ -38,14 +38,14 @@ const resourceMap = {
   films: Film
 };
 
-const ResourceList = ({ resource, list, status, prev, next, page }) => {
+const ResourceList = ({ type, list, status, prev, next, page }) => {
   prev = prev ? +page - 1 : prev;
   next = next ? +page + 1 : next;
   return (
     <Loadable condition={!status.isFetching}>
-      {pager(resource, prev, next)}
-      {list.map(res => resourceMap[resource](res))}
-      {pager(resource, prev, next)}
+      {pager(type, prev, next)}
+      {list.map(res => resourceMap[type](res))}
+      {pager(type, prev, next)}
     </Loadable>
   );
 };

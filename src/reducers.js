@@ -1,27 +1,12 @@
 import { combineReducers } from "redux";
 
-import {
-  SET_PEOPLE,
-  SET_FILMS,
-  SET_FETCHING,
-  SET_ERROR,
-  SET_SUCCESS
-} from "./actions";
+import { SET_RESOURCES, SET_FETCHING, SET_ERROR, SET_SUCCESS } from "./actions";
 
 const defaultState = { list: [], next: null, prev: null };
 
-const people = (state = defaultState, action) => {
+const resources = (state = defaultState, action) => {
   switch (action.type) {
-    case SET_PEOPLE:
-      return action.data;
-    default:
-      return state;
-  }
-};
-
-const films = (state = defaultState, action) => {
-  switch (action.type) {
-    case SET_FILMS:
+    case SET_RESOURCES:
       return action.data;
     default:
       return state;
@@ -42,5 +27,5 @@ const status = (state = { isFetching: false, error: null }, action) => {
   }
 };
 
-const starWarsApp = combineReducers({ people, films, status });
+const starWarsApp = combineReducers({ resources, status });
 export default starWarsApp;

@@ -1,5 +1,4 @@
-export const SET_PEOPLE = "SET_PEOPLE";
-export const SET_FILMS = "SET_FILMS";
+export const SET_RESOURCES = "SET_RESOURCES";
 export const SET_FETCHING = "SET_FETCHING";
 export const SET_ERROR = "SET_ERROR";
 export const SET_SUCCESS = "SET_SUCCESS";
@@ -23,23 +22,11 @@ const setError = msg => {
   };
 };
 
-const setPeople = peopleList => {
+const setResources = (resources, type) => {
   return {
-    type: SET_PEOPLE,
-    data: peopleList
+    type: SET_RESOURCES,
+    data: { ...resources, type }
   };
-};
-
-const setFilms = filmList => {
-  return {
-    type: SET_FILMS,
-    data: filmList
-  };
-};
-
-const resourceMap = {
-  films: setFilms,
-  people: setPeople
 };
 
 const parseResponse = async res => {
@@ -61,7 +48,7 @@ export const fetchList = (resource, page = 1) => async dispatch => {
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
-    dispatch(resourceMap[resource](await parseResponse(response)));
+    dispatch(setResources(await parseResponse(response), resource));
     dispatch(setSuccess());
   } catch (error) {
     dispatch(setError(error));
