@@ -8,7 +8,7 @@ const initialState = {
   starship: []
 };
 
-const starships = (state = initialState, action) => {
+export default const starships = (state = initialState, action) => {
   switch (action.type) {
     case GET_STARSHIPS_SUCCESS:
       return {

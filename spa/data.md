@@ -22,3 +22,9 @@ Redux Store:
   starships,
   species
 }
+Display
+Router
+Switch
+  Route Component=StarshipContainer
+  Route Component=Container
+-
