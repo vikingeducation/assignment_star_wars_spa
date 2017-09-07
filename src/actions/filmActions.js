@@ -1,3 +1,5 @@
+import superagent from 'superagent';
+
 export const GET_FILMS_REQUEST = 'GET_FILMS_REQUEST';
 export const GET_FILMS_SUCCESS = 'GET_FILMS_SUCCESS';
 export const GET_FILMS_FAILURE = 'GET_FILMS_FAILURE';
@@ -21,3 +23,15 @@ export function getFilmsFailure(error) {
 		error
 	};
 }
+
+export const getInitialFilms = () => async dispatch => {
+	dispatch(getFilmsRequest());
+
+	try {
+		const response = await superagent.get('http://swapi.co/api/films/');
+
+		dispatch(getFilmsSuccess(response.body.results));
+	} catch (e) {
+		dispatch(getFilmsFailure(e));
+	}
+};
