@@ -4,13 +4,13 @@ body {
   font-family: sans-serif;
 }
 
-.pagination {
+ul {
   list-style-type: none;
 }
 
 .pagination li {
   display: inline;
-  background: blue;
+  background: #023;
   border: 2px solid black;
   border-radius: 10%;
   padding: 6px;
@@ -21,23 +21,59 @@ body {
 }
 
 .pagination li:hover {
-  background: darkblue;
+  background: #345;
 }
 
 .nav {
   margin-top: 0;
-  list-style-type: none;
   box-shadow: 0 0 10px black;
-  background: black;
+  background: #023;
 }
 
 .nav li {
   display: inline-block;
   padding: 10px 30px;
-  border: 1px solid black;
   color: white;
 }
 
 .nav li:hover {
-  background: grey;
+  background: #345;
+}
+
+.info {
+  margin: auto;
+  max-width: 600px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 30px;
+  line-height: 1.5;
+}
+
+.info h1, .info h2 {
+  color: #045;
+}
+
+.resource {
+  margin: auto;
+  margin-top: 40px;
+  padding-top: 10px;
+  max-width: 600px;
+  border: solid 2px #ccc;
+  border-radius: 5px;
+}
+
+.resourceList {
+  margin: 20px;
+}
+.resourceList a {
+  text-decoration: none;
+  color: #045;
+  font-weight: bold;
+  line-height: 1.5;
+  font-size: 30px;
+}
+
+.resourceList a li:hover {
+  color: #023;
+  background: #ccddff;
 }
