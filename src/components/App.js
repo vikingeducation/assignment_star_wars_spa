@@ -6,6 +6,7 @@ import {
   Switch
 } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
+import PlanetsHome from "../containers/PlanetsHome";
 
 const NavLinks = () => {
   return (
@@ -31,12 +32,12 @@ class App extends Component {
         <ScrollToTop>
           <NavLinks />
           <Switch>
-            <Route exact path="/" render={() => <h1>Star Wars Home Page</h1>} />
             <Route
               exact
-              path="/planets"
+              path="/"
               render={() => <h1>Star Wars Planets Page</h1>}
             />
+            <Route exact path="/planets" component={PlanetsHome} />
             <Route
               exact
               path="/people"

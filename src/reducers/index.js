@@ -1,3 +1,3 @@
-import * as PlanetsReducer from "./planets";
+import PlanetsReducer from "./planets";
 
 export { PlanetsReducer };

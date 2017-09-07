@@ -5,16 +5,16 @@ export const REQUEST_GET_PLANETS = "REQUEST_GET_PLANETS";
 export const SUCCESS_GET_PLANETS = "SUCCESS_GET_PLANETS";
 export const FAILURE_GET_PLANETS = "FAILURE_GET_PLANETS";
 
-export const requestGetPlanets = () => ({
+const requestGetPlanets = () => ({
   type: REQUEST_GET_PLANETS
 });
 
-export const successGetPlanets = data => ({
+const successGetPlanets = data => ({
   type: SUCCESS_GET_PLANETS,
   data
 });
 
-export const failureGetPlanets = error => ({
+const failureGetPlanets = error => ({
   type: FAILURE_GET_PLANETS,
   error
 });
