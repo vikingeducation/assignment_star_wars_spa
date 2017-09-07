@@ -1,14 +1,15 @@
 import React from "react";
-import { StarshipsContainer, SpeciesContainer } from "../containers";
+import { StarshipsContainer, SpeciesContainer } from "../Containers";
 import { Route } from "react-router-dom";
 
 const Home = () => <h1>HOME</h1>;
 
-const Display = () =>
+const Display = () => (
   <div>
     <Route exact path="/" component={Home} />
     <Route path="/starships" component={StarshipsContainer} />
     <Route path="/species" component={SpeciesContainer} />
-  </div>;
+  </div>
+);
 
 export default Display;
