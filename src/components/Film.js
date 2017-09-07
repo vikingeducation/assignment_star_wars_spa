@@ -7,3 +7,6 @@ export default ({ title }) => {
 		</div>
 	);
 };
+
+
+//todo: convert to info desplay

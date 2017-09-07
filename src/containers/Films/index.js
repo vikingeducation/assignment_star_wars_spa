@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
+import {withRouter} from 'react-router'
 import Film from '../../components/Film';
+
 
 class Films extends Component {
   componentDidMount() {
@@ -29,7 +31,8 @@ class Films extends Component {
         {isFetching
           ? <p>Fetching films...</p>
           : films.map(film =>
-              <Film title={film.title} key={film.episode_id} />
+              <Link to={`/films/${film.episode_id}`} > {film.title} </Link>
+              
             )}
       </div>
     );

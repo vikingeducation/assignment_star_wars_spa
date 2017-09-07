@@ -10,6 +10,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
+import Film from './components/Film';
 
 const app = (
 	<Provider store={configureStore()}>
@@ -17,6 +18,7 @@ const app = (
       <div>
   		  <Route exact path='/' component={App} />
         <Route path='/films' component={Films} />
+        <Route path='/films/:id' component={Film} />
       </div>
     </Router>
 	</Provider>
