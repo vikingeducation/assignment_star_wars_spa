@@ -7,10 +7,17 @@ class StarshipsContainer extends React.Component {
   componentDidMount() {
     this.props.getIntitialStarships();
   }
-
   render() {
-    console.log(this.props.starships);
-    return <Starships starships={this.props.starships} />;
+    if (this.props.match.isExact) {
+      return (
+        <Starships
+          starships={this.props.starships}
+          onClick={this.props.onClick}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 }
 
@@ -25,7 +32,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(getStarships());
     },
     onClick: e => {
-      //TODO: write this
+      console.log(e.target);
     }
   };
 };
