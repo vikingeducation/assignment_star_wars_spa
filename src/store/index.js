@@ -1,9 +1,7 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunk from "redux-thunk";
-// import { PlanetsReducer } from "../reducers";
-import PlanetsReducer from "../reducers/planets";
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 
-console.log("type: ", typeof PlanetsReducer);
-console.log(PlanetsReducer);
+import * as Reducers from '../reducers';
 
-export default () => createStore(PlanetsReducer, applyMiddleware(thunk));
+export default () =>
+	createStore(combineReducers({ ...Reducers }), applyMiddleware(thunk));
