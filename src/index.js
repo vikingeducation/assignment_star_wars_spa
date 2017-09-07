@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Film from './components/Film';
+import People from './containers/People';
+import Person from './components/Person';
 
 const app = (
   <Provider store={configureStore()}>
@@ -16,6 +18,8 @@ const app = (
         <Route exact path="/" component={App} />
         <Route path="/films" component={Films} />
         <Route path="/films/:id" render={props => <Film {...props} />} />
+        <Route path="/people" component={People} />
+        <Route path="/people/:name" render={props => <Person {...props} />} />
       </div>
     </Router>
   </Provider>

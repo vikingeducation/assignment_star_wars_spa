@@ -1,3 +1,4 @@
 import filmReducer from './filmReducer';
+import peopleReducer from './peopleReducer';
 
-export { filmReducer };
+export { filmReducer, peopleReducer };

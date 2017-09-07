@@ -14,10 +14,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Star Wars API</h2>
         </div>
-        <Link to='/films'>Films</Link>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Link to='/films'>Films</Link>{' '}
+        <Link to='/people'>Characters</Link>{' '}
       </div>
     );
   }
