@@ -5,6 +5,7 @@ const ShowFilm = ({ resource }) => {
   const film = resource;
   return (
     <div className="info">
+      <Loading condition={Object.keys(resource).length} />
       <h1>{film.title}</h1>
       <h3>Episode {film.episode_id}</h3>
       <hr />

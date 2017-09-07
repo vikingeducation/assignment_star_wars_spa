@@ -5,6 +5,7 @@ const ShowPlanet = ({ resource }) => {
   const planet = resource;
   return (
     <div className="info">
+      <Loading condition={Object.keys(resource).length} />
       <h1>{planet.name}</h1>
       <hr />
       <div>

@@ -11,7 +11,7 @@ const ListResource = ({ resource, resourceName, numPages, onClick }) => {
           <li onClick={onClick(i + 1)}>{i + 1}</li>
         ))}
       </ul>
-      <Loading resource={resource} />
+      <Loading condition={resource.length} />
       <ul className="resourceList">
         {resource.map(r => (
           <Link
