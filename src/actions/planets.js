@@ -19,15 +19,10 @@ const failureGetPlanets = error => ({
   error
 });
 
-export const getInitialPlanets = () => async dispatch => {
-  getPlanets()(dispatch);
-};
-
-export const getPlanets = id => async dispatch => {
+export const getPlanets = page => async dispatch => {
   dispatch(requestGetPlanets());
-  let url = `${SWAPI.BASE_URL}${SWAPI.PLANETS_URL}`;
-  url += id || "";
-  url += `${SWAPI.FORMAT_SUFFIX}`;
+  let url = `${SWAPI.BASE_URL}${SWAPI.PLANETS_URL}${SWAPI.FORMAT_SUFFIX}`;
+  if (page) url = page;
 
   try {
     const response = await superagent.get(url).buffer();

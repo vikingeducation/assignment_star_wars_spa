@@ -1,26 +1,26 @@
-import { PlanetsActions } from "../actions";
+import { PlanetActions } from "../actions";
 
 const initialState = {
-  planets: [],
+  planet: {},
   isFetching: false,
   error: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case PlanetsActions.REQUEST_GET_PLANETS:
+    case PlanetActions.REQUEST_GET_PLANET:
       return {
         ...state,
         isFetching: true,
         error: null
       };
-    case PlanetsActions.SUCCESS_GET_PLANETS:
+    case PlanetActions.SUCCESS_GET_PLANET:
       return {
         ...state,
-        planets: action.data.results,
+        planet: action.data,
         isFetching: false
       };
-    case PlanetsActions.FAILURE_GET_PLANETS:
+    case PlanetActions.FAILURE_GET_PLANET:
       console.log("Error:", action.error);
       return {
         ...state,
