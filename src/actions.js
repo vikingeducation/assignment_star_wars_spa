@@ -49,7 +49,8 @@ export const fetchList = resource => async dispatch => {
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
-    dispatch(resourceMap[resource](await response.json()));
+    const json = await response.json();
+    dispatch(resourceMap[resource](json.results));
     dispatch(setSuccess());
   } catch (error) {
     dispatch(setError(error));
