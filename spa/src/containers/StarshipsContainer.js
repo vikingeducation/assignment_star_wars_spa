@@ -1,22 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import {getStarships, getStarship} from '../actions/starships'
-import Starships from '../Components/Starships'
+import { getStarships, getStarship } from "../actions/starships";
+import Starships from "../Components/Starships";
 
-
-class StarshipsContainer{
-  componentDidMount(){
-    this.props.getIntitialStarships()
+class StarshipsContainer extends React.Component {
+  componentDidMount() {
+    this.props.getIntitialStarships();
   }
-  render(){
-    //
-    return (
-      <div>STTARTSHIPS</div>
 
-    )
+  render() {
+    console.log(this.props.starships);
+    return <Starships starships={this.props.starships} />;
   }
 }
- // = () => <div>STTARTSHIPS</div>;
 
 const mapStateToProps = state => {
   return {
@@ -25,17 +21,13 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getIntitialStarships = () =>{
-      dispatch(getStarships)
+    getIntitialStarships: () => {
+      dispatch(getStarships());
     },
-    onClick = e =>{
+    onClick: e => {
       //TODO: write this
     }
   };
 };
 
-const StarshipsContainer = connect(mapStateToProps, mapDispatchToProps)(
-  StarshipsContainer
-);
-
-export default StarshipsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(StarshipsContainer);

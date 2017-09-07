@@ -1,6 +1,6 @@
-const START_REQUEST = "START_REQUEST";
-const GET_STARSHIPS_SUCCESS = "GET_STARSHIPS_SUCCESS";
-const GET_STARSHIP_SUCCESS = "GET_STARSHIP_SUCCESS";
+export const START_REQUEST = "START_REQUEST";
+export const GET_STARSHIPS_SUCCESS = "GET_STARSHIPS_SUCCESS";
+export const GET_STARSHIP_SUCCESS = "GET_STARSHIP_SUCCESS";
 const BASE_URL = "https://swapi.co/api/starships";
 
 const startRequest = () => {
@@ -27,8 +27,9 @@ export const getStarships = () => {
   return async dispatch => {
     dispatch(startRequest());
     let response = await fetch(BASE_URL);
+    console.log("are we requesting", response);
     let starships = await response.json();
-    dispatch(getStarshipsSuccess(starships));
+    dispatch(getStarshipsSuccess(starships.results));
   };
 };
 

@@ -2,6 +2,6 @@ import React from "react";
 
 //container stuff
 
-const Species = () => <div>STTARTSHIPS</div>;
+const SpeciesContainer = () => <div>STTARTSHIPS</div>;
 
 export default SpeciesContainer;

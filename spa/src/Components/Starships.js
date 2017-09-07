@@ -1,7 +1,5 @@
 import React from "react";
-//
-// export const Starships = ({starships}) => {
-//   (
-//
-//   )
-// };
+
+const Starships = ({ starships }) => <div>starhips</div>;
+
+export default Starships;
