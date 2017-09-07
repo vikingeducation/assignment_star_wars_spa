@@ -5,6 +5,7 @@ const ShowPerson = ({ resource }) => {
   const person = resource;
   return (
     <div className="info">
+      <Loading condition={Object.keys(resource).length} />
       <h1>{person.name}</h1>
       <hr />
       <div>

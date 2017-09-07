@@ -5,6 +5,7 @@ const ShowStarship = ({ resource }) => {
   const starship = resource;
   return (
     <div className="info">
+      <Loading condition={Object.keys(resource).length} />
       <h1>{starship.name}</h1>
       <hr />
       <div>

@@ -5,6 +5,7 @@ const ShowVehicle = ({ resource }) => {
   const vehicle = resource;
   return (
     <div className="info">
+      <Loading condition={Object.keys(resource).length} />
       <h1>{vehicle.name}</h1>
       <hr />
       <div>
