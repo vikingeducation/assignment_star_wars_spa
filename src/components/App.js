@@ -14,27 +14,17 @@ const NavLinks = props => {
 			<div className="card-header">
 				<ul className="nav nav-tabs card-header-tabs">
 					<li className="nav-item">
-						<NavLink className="nav-link" activeclassName="active" exact to="/">
+						<NavLink className="nav-link" exact to="/">
 							Home
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink
-							className="nav-link"
-							activeclassName="active"
-							exact
-							to="/planets"
-						>
+						<NavLink className="nav-link" exact to="/planets">
 							Planets
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink
-							className="nav-link"
-							activeclassName="active"
-							exact
-							to="/people"
-						>
+						<NavLink className="nav-link" exact to="/people">
 							People
 						</NavLink>
 					</li>
@@ -52,7 +42,7 @@ class App extends Component {
 		return (
 			<Router>
 				<ScrollToTop>
-					<div className="container">
+					<main className="container">
 						<NavLinks>
 							<Switch>
 								<Route
@@ -68,7 +58,7 @@ class App extends Component {
 								/>
 							</Switch>
 						</NavLinks>
-					</div>
+					</main>
 				</ScrollToTop>
 			</Router>
 		);
