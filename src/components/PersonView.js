@@ -4,33 +4,31 @@ import ScrollToTop from "./ScrollToTop";
 import Header from "./Header";
 import Loadable from "./Loadable";
 
-class PlanetView extends Component {
+class PersonView extends Component {
   componentDidMount() {
-    console.log("Planet View", this.props);
-    this.props.actions.getPlanet(this.props.match.params.id);
+    console.log("Person View", this.props);
+    this.props.actions.getPerson(this.props.match.params.id);
   }
 
   render() {
-    if (!this.props.PlanetReducer.planet) return null;
+    if (!this.props.PersonReducer.person) return null;
     const {
       name,
-      diameter,
-      population,
-      terrain,
-      climate,
-      gravity,
-      orbital_period,
-      rotation_period,
-      residents,
-      url
-    } = this.props.PlanetReducer.planet;
+      height,
+      mass,
+      skin_color,
+      eye_color,
+      birth_year,
+      homeworld,
+      hair_color
+    } = this.props.PersonReducer.person;
     return (
-      <Loadable condition={!this.props.PlanetReducer.isFetching}>
+      <Loadable condition={!this.props.PersonReducer.isFetching}>
         <div className="card bg-light mb-3">
           <div className="card-header">
             <h1>
               <strong>
-                {name} - (Pop: {population})
+                {name}
               </strong>
             </h1>
           </div>
@@ -41,24 +39,24 @@ class PlanetView extends Component {
             <div className="row">
               <div className="col-md-6">
                 <p>
-                  <strong>Terrain: </strong> {terrain}
+                  <strong>Height: </strong> {height}
                 </p>
                 <p>
-                  <strong>Climate: </strong> {climate}
+                  <strong>Mass: </strong> {mass} kg
                 </p>
                 <p>
-                  <strong>Gravity: </strong> {gravity}
+                  <strong>Birth Year </strong> {birth_year}
                 </p>
               </div>
               <div className="col-md-6">
                 <p>
-                  <strong>Diameter: </strong> {diameter} miles
+                  <strong>Eye Color: </strong> {eye_color}
                 </p>
                 <p>
-                  <strong>Orbital Period: </strong> {orbital_period} days
+                  <strong>Skin Color: </strong> {skin_color}
                 </p>
                 <p>
-                  <strong>Rotation Period: </strong> {rotation_period} hours
+                  <strong>Hair Color: </strong> {hair_color}
                 </p>
               </div>
               <hr />
@@ -77,4 +75,4 @@ class PlanetView extends Component {
   }
 }
 
-export default PlanetView;
+export default PersonView;

@@ -6,28 +6,34 @@ const extractId = url => {
   return url.slice(url.lastIndexOf("/") + 1);
 };
 
-const Planet = ({ name, diameter, population, terrain, climate, url }) => {
+const Person = ({ name, gender, birth_year, hair_color, url }) => {
   return (
-    <NavLink className="nav-link" exact to={`/planets/${extractId(url)}`}>
+    <NavLink className="nav-link" exact to={`/people/${extractId(url)}`}>
       <li>
         <div className="card">
           <div className="card-body">
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-3">
                 <h4 className="card-title">
                   {name}
                 </h4>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-2">
                 <p className="card-text">
-                  <strong>Terrain: </strong>
-                  {terrain}
+                  <strong>Gender: </strong>
+                  {gender}
+                </p>
+              </div>
+              <div className="col-md-3">
+                <p className="card-text">
+                  <strong>Born: </strong>
+                  {birth_year}
                 </p>
               </div>
               <div className="col-md-4">
                 <p className="card-text">
-                  <strong>Population: </strong>
-                  {population}
+                  <strong>Hair Color (IMPORTANT!!!): </strong>
+                  {hair_color}
                 </p>
               </div>
             </div>
@@ -38,10 +44,11 @@ const Planet = ({ name, diameter, population, terrain, climate, url }) => {
   );
 };
 
-export default ({ planets }) => {
+export default ({ people }) => {
+  console.log("people: ", people);
   return (
     <ul className="list-unstyled">
-      {planets.map(planet => <Planet key={planet.name} {...planet} />)}
+      {people.map(person => <Person key={person.name} {...person} />)}
     </ul>
   );
 };
