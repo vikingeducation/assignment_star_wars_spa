@@ -1,5 +1,6 @@
 import React from "react";
 import { Panel } from "react-bootstrap";
+import Loadable from "./Loadable";
 
 const Film = info => (
   <Panel key={info.title} header={<h3>{info.title}</h3>}>
@@ -18,8 +19,10 @@ const resourceMap = {
   films: Film
 };
 
-const ResourceList = ({ resource, list }) => (
-  <div>{list.map(res => resourceMap[resource](res))}</div>
+const ResourceList = ({ resource, list, status }) => (
+  <Loadable condition={!status.isFetching}>
+    {list.map(res => resourceMap[resource](res))}
+  </Loadable>
 );
 
 export default ResourceList;
