@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
-import './App.css';
+import './Films.css';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from '../../actions'
 import {Link} from 'react-router-dom'
 
-class App extends Component {
+class Films extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Star Wars API</h2>
+          <h2>Welcome to Films from Star Wars API</h2>
+          <Link to='/'>Home</Link>
         </div>
-        <Link to='/films'>Films</Link>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        
       </div>
     );
   }
 }
+
 
 const mapStateToProps = (state)=>state
 
@@ -30,4 +29,4 @@ const mapDispatchToProps = (dispatch)=>({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Films);
