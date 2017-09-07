@@ -8,12 +8,16 @@ import {
 } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import queryString from "query-string";
+
+import Findable from "./elements/Findable";
+import NotFound from "./elements/NotFound";
 import ScrollToTop from "./ScrollToTop";
 import Home from "./Home";
+import ResourceContainer from "../containers/ResourceContainer";
 import ResourceListContainer from "../containers/ResourceListContainer";
-const qs = require("query-string");
+import { resourceNames } from "../resources";
 
-const RESOURCES = ["films", "people", "planets"];
 const capitalize = word => word[0].toUpperCase() + word.slice(1);
 
 const ResNavLink = ({ resource }) => (
@@ -31,24 +35,32 @@ const NavLinks = () => (
         </NavLink>
       </Navbar.Brand>
     </Navbar.Header>
-    <Nav>{RESOURCES.map(resource => <ResNavLink resource={resource} />)}</Nav>
+    <Nav>
+      {resourceNames.map(resource => <ResNavLink resource={resource} />)}
+    </Nav>
   </Navbar>
 );
 
-const NotFound = () => <h1>Page not found</h1>;
-
 const Resources = ({ location, match }) => {
-  const page = qs.parse(location.search).page || 1;
+  const page = queryString.parse(location.search).page || 1;
   const resource = match.params.resource;
 
-  if (!RESOURCES.includes(resource)) return <NotFound />;
-  else
-    return (
-      <div>
-        <h1>{capitalize(resource)}</h1>
-        <ResourceListContainer resource={resource} page={page} />
-      </div>
-    );
+  return (
+    <Findable condition={resourceNames.includes(resource)}>
+      <h1>{capitalize(resource)}</h1>
+      <ResourceListContainer resource={resource} page={page} />
+    </Findable>
+  );
+};
+
+const Resource = ({ match }) => {
+  const resource = match.params.resource;
+  return (
+    <Findable condition={resourceNames.includes(resource)}>
+      <h1>{capitalize(resource)}</h1>
+      <ResourceContainer resource={resource} id={match.params.id} />
+    </Findable>
+  );
 };
 
 const App = () => (
@@ -59,6 +71,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/:resource" component={withRouter(Resources)} />
+          <Route exact path="/:resource/:id" component={withRouter(Resource)} />
           <Route component={NotFound} />
         </Switch>
       </section>
