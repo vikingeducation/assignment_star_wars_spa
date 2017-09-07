@@ -56,13 +56,15 @@ ul {
   line-height: 1.5;
 }
 
-.info h1, .info h2 {
+.info h1,
+.info h2 {
   color: #045;
 }
 
 .resource {
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 80px;
   padding-top: 10px;
   max-width: 600px;
   border: solid 2px #ccc;
@@ -81,6 +83,13 @@ ul {
   font-weight: bold;
   line-height: 1.5;
   font-size: 30px;
+}
+
+.resource-title {
+  text-align: center;
+  font-size: 50px;
+  color: #045;
+  font-weight: bold;
 }
 
 .resourceList a li {

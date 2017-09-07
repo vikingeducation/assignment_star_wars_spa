@@ -1,5 +1,6 @@
 import React from "react";
 import ListResource from "../components/ListResource";
+import Search from "../components/Search";
 
 class ListPeopleContainer extends React.Component {
   constructor() {
@@ -8,11 +9,11 @@ class ListPeopleContainer extends React.Component {
     this.state = {
       people: [],
       page: "1",
-      numPages: "1"
+      numPages: "0"
     };
   }
 
-  getPeopleList = () => {
+  getPeopleList = e => {
     fetch(`https://swapi.co/api/people?page=${this.state.page}`)
       .then(res => {
         return res.json();
@@ -32,14 +33,22 @@ class ListPeopleContainer extends React.Component {
     this.getPeopleList();
   };
 
+  handleSearch = e => {
+    const search = e ? `$search=${e.target.value}` : "";
+  };
+
   render() {
     return (
-      <ListResource
-        resourceName={"people"}
-        resource={this.state.people}
-        {...this.state}
-        onClick={this.handlePageChange}
-      />
+      <div className="resource">
+        <h1 className="resource-title">People</h1>
+        <Search onChange={this.handleSearch} />
+        <ListResource
+          resourceName={"people"}
+          resource={this.state.people}
+          {...this.state}
+          onClick={this.handlePageChange}
+        />
+      </div>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import ListResource from "../components/ListResource";
+import Search from "../components/Search";
 
 class ListPlanetsContainer extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ class ListPlanetsContainer extends React.Component {
     this.state = {
       planets: [],
       page: "1",
-      numPages: "1"
+      numPages: "0"
     };
   }
 
@@ -34,12 +35,16 @@ class ListPlanetsContainer extends React.Component {
 
   render() {
     return (
-      <ListResource
-        resourceName={"planets"}
-        resource={this.state.planets}
-        {...this.state}
-        onClick={this.handlePageChange}
-      />
+      <div className="resource">
+        <h1 className="resource-title">Planets</h1>
+        <Search />
+        <ListResource
+          resourceName={"planets"}
+          resource={this.state.planets}
+          {...this.state}
+          onClick={this.handlePageChange}
+        />
+      </div>
     );
   }
 }
