@@ -29,21 +29,18 @@ class People extends Component {
 
         {isFetching
           ? <p>Fetching people...</p>
-          : people.map(people =>
+          : people.map(person =>
               <Link
                 to={{
-                  pathname: `/people/${people.name}`,
+                  pathname: `/people/${person.name}`,
                   state: {
-                    name: people.name,
-                    species: people.species,
-                    homeworld: people.homeworld,
-                    films: people.films
+                    ...person
                   }
                 }}
-                key={people.name}
-                title={people.name}
+                key={person.name}
+                title={person.name}
               >
-                {' '}{people.name}{' '}
+                {' '}{person.name}{' '}
               </Link>
             )}
       </div>
