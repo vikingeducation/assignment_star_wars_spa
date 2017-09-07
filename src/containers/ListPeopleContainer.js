@@ -1,5 +1,5 @@
 import React from "react";
-import ListPeople from "../components/ListPeople";
+import ListResource from "../components/ListResource";
 
 class ListPeopleContainer extends React.Component {
   constructor() {
@@ -21,22 +21,26 @@ class ListPeopleContainer extends React.Component {
         const numPages = Math.ceil(data.count / 10);
         this.setState({ people: data.results, numPages });
       });
-  }
+  };
 
   componentDidMount() {
     this.getPeopleList();
   }
 
-  componentDidUpdate() {
+  handlePageChange = page => async () => {
+    await Promise.resolve(this.setState({ page: `${page}` }));
     this.getPeopleList();
-  }
-
-  handlePageChange = (page) => () => {
-    this.setState({page: `${page}`})
-  }
+  };
 
   render() {
-    return <ListPeople {...this.state} onClick={this.handlePageChange} />;
+    return (
+      <ListResource
+        resourceName={"people"}
+        resource={this.state.people}
+        {...this.state}
+        onClick={this.handlePageChange}
+      />
+    );
   }
 }
 

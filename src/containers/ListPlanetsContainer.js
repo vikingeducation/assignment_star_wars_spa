@@ -1,29 +1,46 @@
 import React from "react";
-import ListPlanets from "../components/ListPlanets";
+import ListResource from "../components/ListResource";
 
 class ListPlanetsContainer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      planets: []
+      planets: [],
+      page: "1",
+      numPages: "1"
     };
   }
 
-  componentDidMount() {
-    fetch("https://swapi.co/api/planets")
+  getPlanetsList = () => {
+    fetch(`https://swapi.co/api/planets?page=${this.state.page}`)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        this.setState({ planets: data.results });
+        const numPages = Math.ceil(data.count / 10);
+        this.setState({ planets: data.results, numPages });
       });
+  };
+
+  componentDidMount() {
+    this.getPlanetsList();
   }
 
-  render() {
-    const { planets } = this.state;
+  handlePageChange = page => async () => {
+    await Promise.resolve(this.setState({ page: `${page}` }));
+    this.getPlanetsList();
+  };
 
-    return <ListPlanets planets={planets} />;
+  render() {
+    return (
+      <ListResource
+        resourceName={"planets"}
+        resource={this.state.planets}
+        {...this.state}
+        onClick={this.handlePageChange}
+      />
+    );
   }
 }
 
