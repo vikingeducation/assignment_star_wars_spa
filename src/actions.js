@@ -1,4 +1,7 @@
+import { FetchError } from "./lib/errors";
+
 export const SET_RESOURCES = "SET_RESOURCES";
+export const SET_RESOURCE = "SET_RESOURCE";
 export const SET_FETCHING = "SET_FETCHING";
 export const SET_ERROR = "SET_ERROR";
 export const SET_SUCCESS = "SET_SUCCESS";
@@ -29,26 +32,42 @@ const setResources = (resources, type) => {
   };
 };
 
-const parseResponse = async res => {
-  const json = await res.json();
+const setResource = (resource, type) => {
   return {
-    list: json.results,
-    next: Boolean(json.next),
-    prev: Boolean(json.previous)
+    type: SET_RESOURCE,
+    data: { ...resource, type }
   };
+};
+
+const ensureFetch = async url => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new FetchError(response);
+  }
+  return response.json();
 };
 
 export const fetchList = (resource, page = 1) => async dispatch => {
   try {
-    if (page === null) return;
     dispatch(setFetching());
-    const response = await fetch(
+    const json = await ensureFetch(
       `https://swapi.co/api/${resource}?page=${page}`
     );
-    if (!response.ok) {
-      throw new Error(`${response.status}: ${response.statusText}`);
-    }
-    dispatch(setResources(await parseResponse(response), resource));
+    const update = {
+      list: json.results,
+      next: Boolean(json.next),
+      prev: Boolean(json.previous)
+    };
+    dispatch(setResources(update, resource));
+    dispatch(setSuccess());
+  } catch (error) {
+    dispatch(setError(error));
+  }
+};
+
+export const fetchSingle = (resource, id) => async dispatch => {
+  try {
+    dispatch(setFetching());
     dispatch(setSuccess());
   } catch (error) {
     dispatch(setError(error));

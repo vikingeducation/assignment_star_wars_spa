@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ResourceList from "../components/ResourceList";
 import { fetchList } from "../actions";
+import queryString from "query-string";
 
 class ResourceListContainer extends Component {
   componentDidMount() {
-    this.props.fetchList(this.props.resource, this.props.page);
+    this.props.fetchList(this.props.match.params.resource, this.props.page);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.props.fetchList(this.props.resource, this.props.page);
+      this.props.fetchList(this.props.match.params.resource, this.props.page);
     }
   }
 
@@ -26,7 +27,7 @@ const mapStateToProps = (state, ownProps) => ({
   next: state.resources.next,
   type: state.resources.type,
   status: state.status,
-  page: ownProps.page
+  page: queryString.parse(ownProps.location.search).page || 1
 });
 
 const mapDispatchToProps = dispatch => ({

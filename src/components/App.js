@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import queryString from "query-string";
 
+import capitalize from "../lib/capitalize";
 import Findable from "./elements/Findable";
 import NotFound from "./elements/NotFound";
 import ScrollToTop from "./ScrollToTop";
@@ -17,8 +17,6 @@ import Home from "./Home";
 import ResourceContainer from "../containers/ResourceContainer";
 import ResourceListContainer from "../containers/ResourceListContainer";
 import { resourceNames } from "../resources";
-
-const capitalize = word => word[0].toUpperCase() + word.slice(1);
 
 const ResNavLink = ({ resource }) => (
   <LinkContainer activeClassName="active" exact to={`/${resource}`}>
@@ -36,32 +34,12 @@ const NavLinks = () => (
       </Navbar.Brand>
     </Navbar.Header>
     <Nav>
-      {resourceNames.map(resource => <ResNavLink resource={resource} />)}
+      {resourceNames.map(resource => (
+        <ResNavLink key={resource} resource={resource} />
+      ))}
     </Nav>
   </Navbar>
 );
-
-const Resources = ({ location, match }) => {
-  const page = queryString.parse(location.search).page || 1;
-  const resource = match.params.resource;
-
-  return (
-    <Findable condition={resourceNames.includes(resource)}>
-      <h1>{capitalize(resource)}</h1>
-      <ResourceListContainer resource={resource} page={page} />
-    </Findable>
-  );
-};
-
-const Resource = ({ match }) => {
-  const resource = match.params.resource;
-  return (
-    <Findable condition={resourceNames.includes(resource)}>
-      <h1>{capitalize(resource)}</h1>
-      <ResourceContainer resource={resource} id={match.params.id} />
-    </Findable>
-  );
-};
 
 const App = () => (
   <Router>
@@ -70,8 +48,8 @@ const App = () => (
       <section className="container" id="content">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/:resource" component={withRouter(Resources)} />
-          <Route exact path="/:resource/:id" component={withRouter(Resource)} />
+          <Route exact path="/:resource" component={ResourceListContainer} />
+          <Route exact path="/:resource/:id" component={ResourceContainer} />
           <Route component={NotFound} />
         </Switch>
       </section>

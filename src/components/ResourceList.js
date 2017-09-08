@@ -2,7 +2,9 @@ import React from "react";
 import { Pager } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Loadable from "./elements/Loadable";
+import Findable from "./elements/Findable";
 import { resources } from "../resources";
+import capitalize from "../lib/capitalize";
 
 const pager = (resource, prev, next) => (
   <Pager>
@@ -20,15 +22,17 @@ const pager = (resource, prev, next) => (
 );
 
 const ResourceList = ({ type, list, status, prev, next, page }) => {
-  console.log(resources[type]);
   prev = prev ? +page - 1 : prev;
   next = next ? +page + 1 : next;
   return (
-    <Loadable condition={!status.isFetching}>
-      {pager(type, prev, next)}
-      {list.map(res => resources[type]["list"](res))}
-      {pager(type, prev, next)}
-    </Loadable>
+    <Findable condition={!status.error}>
+      <Loadable condition={!status.isFetching}>
+        <h1>{capitalize(type)}</h1>
+        {pager(type, prev, next)}
+        {list.map(res => resources[type]["list"](res))}
+        {pager(type, prev, next)}
+      </Loadable>
+    </Findable>
   );
 };
 
