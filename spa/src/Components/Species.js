@@ -13,7 +13,7 @@ const Species = ({ species, onClick }) => {
         <p>Average Lifespan: {spec.average_lifespan}</p>
         <p>Language: {spec.language}</p>
         <Link to={`/species/${id}`} onClick={onClick} id={id}>
-          CLICK HERE
+          <p>CLICK HERE FOR MORE INFO</p>
         </Link>
         <br />
         <hr />

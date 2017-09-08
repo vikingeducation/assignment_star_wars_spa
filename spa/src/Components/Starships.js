@@ -14,7 +14,7 @@ const Starships = ({ starships, onClick }) => {
         <p>Cost in Credits: {ship.cost_in_credits}</p>
         <p>hyperdrive_rating: {ship.hyperdrive_rating}</p>
         <Link to={`/starships/${id}`} onClick={onClick} id={id}>
-          CLICK HERE
+          <p>CLICK HERE FOR MORE INFO</p>
         </Link>
         <br />
         <hr />
