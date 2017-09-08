@@ -47,10 +47,13 @@ const ensureFetch = async url => {
   return response.json();
 };
 
-export const fetchList = (type, page = 1) => async dispatch => {
+const baseUrl = "https://swapi.co/api/";
+
+export const fetchList = (type, page = 1, search) => async dispatch => {
   try {
     dispatch(setFetching());
-    const json = await ensureFetch(`https://swapi.co/api/${type}?page=${page}`);
+    search = search ? `&search=${search}` : "";
+    const json = await ensureFetch(`${baseUrl}${type}?page=${page}${search}`);
     const update = {
       list: json.results,
       next: Boolean(json.next),
@@ -66,7 +69,7 @@ export const fetchList = (type, page = 1) => async dispatch => {
 export const fetchSingle = (type, id) => async dispatch => {
   try {
     dispatch(setFetching());
-    const json = await ensureFetch(`https://swapi.co/api/${type}/${id}`);
+    const json = await ensureFetch(`${baseUrl}${type}/${id}`);
     dispatch(setResource(json, type));
     dispatch(setSuccess());
   } catch (error) {

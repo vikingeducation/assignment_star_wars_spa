@@ -1,6 +1,7 @@
 import React from "react";
 import { Pager } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Loadable from "./elements/Loadable";
 import Findable from "./elements/Findable";
@@ -29,10 +30,27 @@ const Resource = ({ info, type }) => (
   </Link>
 );
 
-const ResourceList = ({ type, list, status, prev, next }) => (
+const ResourceList = ({
+  type,
+  list,
+  status,
+  prev,
+  next,
+  search,
+  updateSearch
+}) => (
   <Findable condition={!status.error}>
+    <h1>{capitalize(type)}</h1>
+    <FormGroup>
+      <ControlLabel>Search</ControlLabel>
+      <FormControl
+        onChange={updateSearch}
+        type="text"
+        name="search"
+        value={search}
+      />
+    </FormGroup>
     <Loadable condition={!status.isFetching}>
-      <h1>{capitalize(type)}</h1>
       <ResourcePager type={type} prev={prev} next={next} />
       {list.map(info => <Resource key={info.url} info={info} type={type} />)}
       <ResourcePager type={type} prev={prev} next={next} />
