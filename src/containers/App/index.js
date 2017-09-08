@@ -6,6 +6,4 @@ import { ResourcesActions } from "../../actions";
 import "./App.css";
 import App from "../../components/App";
 
-const mapStateToProps = state => state;
-
-export default connect(mapStateToProps, { ResourcesActions })(App);
+export default connect(state => state, ResourcesActions)(App);

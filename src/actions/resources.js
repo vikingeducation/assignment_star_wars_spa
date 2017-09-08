@@ -29,14 +29,16 @@ export const getResources = (resource, page, id) => async dispatch => {
   dispatch(requestGetResources());
 
   let url = `${SWAPI.BASE_URL}${resource}`;
+  const schemaUrl = url + "/schema";
   url += id || "";
   url += `/${SWAPI.FORMAT_SUFFIX}`;
   url += page ? `&page=${page}` : "";
 
   try {
-    const response = await superagent.get(url).buffer();
+    const schema = (await superagent.get(schemaUrl).buffer()).properties;
+    const body = (await superagent.get(url).buffer()).body;
 
-    dispatch(successGetResources(response.body));
+    dispatch(successGetResources({ schema, body }));
   } catch (error) {
     dispatch(failureGetResources(error));
   }

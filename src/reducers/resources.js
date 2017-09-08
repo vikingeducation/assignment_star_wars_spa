@@ -1,6 +1,7 @@
 import { ResourcesActions } from "../actions";
 
 const initialState = {
+  schema: null,
   resources: [],
   isFetching: false,
   error: null
@@ -17,7 +18,8 @@ export default (state = initialState, action) => {
     case ResourcesActions.SUCCESS_GET_RESOURCES:
       return {
         ...state,
-        resources: action.data.results || [action.data],
+        schema: action.data.schema,
+        resources: action.data.body.results || [action.data.body],
         isFetching: false
       };
     case ResourcesActions.FAILURE_GET_RESOURCES:
