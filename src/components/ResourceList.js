@@ -50,11 +50,11 @@ const ResourceList = ({
         value={search}
       />
     </FormGroup>
+    <ResourcePager type={type} prev={prev} next={next} />
     <Loadable condition={!status.isFetching}>
-      <ResourcePager type={type} prev={prev} next={next} />
       {list.map(info => <Resource key={info.url} info={info} type={type} />)}
-      <ResourcePager type={type} prev={prev} next={next} />
     </Loadable>
+    <ResourcePager type={type} prev={prev} next={next} />
   </Findable>
 );
 
