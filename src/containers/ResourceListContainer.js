@@ -7,12 +7,12 @@ import queryString from "query-string";
 
 class ResourceListContainer extends Component {
   componentDidMount() {
-    this.props.fetchList(this.props.match.params.resource, this.props.page);
+    this.props.fetchList(this.props.match.params.type, this.props.page);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.props.fetchList(this.props.match.params.resource, this.props.page);
+      this.props.fetchList(this.props.match.params.type, this.props.page);
     }
   }
 
@@ -21,17 +21,20 @@ class ResourceListContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  list: state.resources.list,
-  prev: state.resources.prev,
-  next: state.resources.next,
-  type: state.resources.type,
-  status: state.status,
-  page: queryString.parse(ownProps.location.search).page || 1
-});
+const mapStateToProps = (state, ownProps) => {
+  const page = queryString.parse(ownProps.location.search).page || 1;
+  return {
+    list: state.resources.list,
+    prev: state.resources.prev ? +page - 1 : null,
+    next: state.resources.next ? +page + 1 : null,
+    type: state.resources.type,
+    status: state.status,
+    page
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  fetchList: (resource, page) => dispatch(fetchList(resource, page))
+  fetchList: (type, page) => dispatch(fetchList(type, page))
 });
 
 export default withRouter(

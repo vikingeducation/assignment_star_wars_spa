@@ -17,7 +17,7 @@ const resources = (state = { list: [], next: null, prev: null }, action) => {
   }
 };
 
-const resource = (state = { list: [], next: null, prev: null }, action) => {
+const resource = (state = {}, action) => {
   switch (action.type) {
     case SET_RESOURCE:
       return action.data;
