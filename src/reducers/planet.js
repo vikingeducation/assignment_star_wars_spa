@@ -2,7 +2,7 @@ import { PlanetActions } from '../actions';
 
 const initialState = {
 	planet: null,
-	isFetching: false,
+	isFetching: true,
 	error: null
 };
 

@@ -5,4 +5,4 @@ export default props =>
 		? <div>
 				{props.children}
 			</div>
-		: <ReactLoading type="spinningBubbles" color="#444" />;
+		: <ReactLoading type="cylon" color="#444" />;
