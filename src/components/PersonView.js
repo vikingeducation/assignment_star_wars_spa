@@ -11,7 +11,7 @@ class PersonView extends Component {
 	}
 
 	render() {
-		if (!this.props.PersonReducer.person) return null;
+		if (!this.props.resources.length) return null;
 		console.log(this.props);
 		const {
 			name,
@@ -22,9 +22,9 @@ class PersonView extends Component {
 			birth_year,
 			homeworld,
 			hair_color
-		} = this.props.PersonReducer.person;
+		} = this.props.resources[0];
 		return (
-			<Loadable condition={!this.props.PersonReducer.isFetching}>
+			<Loadable condition={!this.props.isFetching}>
 				<div className="card bg-light mb-3">
 					<div className="card-header">
 						<h1>

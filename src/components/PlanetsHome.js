@@ -7,18 +7,17 @@ import Loadable from './Loadable';
 
 class PlanetsHome extends Component {
 	componentDidMount() {
-		console.log('fetching planets');
 		this.props.getResources('planets');
 	}
 
 	render() {
-		console.log(this.props);
+		console.log('Planets Home', this.props);
 		return (
-			<Loadable condition={!this.props.ResourcesReducer.isFetching}>
+			<Loadable condition={!this.props.isFetching}>
 				<div className="container">
 					<Header text="Planets Home Page" />
 					<hr />
-					<PlanetsList planets={this.props.ResourcesReducer.resources} />
+					<PlanetsList planets={this.props.resources} />
 				</div>
 			</Loadable>
 		);

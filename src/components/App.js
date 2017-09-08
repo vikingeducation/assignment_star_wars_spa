@@ -62,22 +62,22 @@ class App extends Component {
 								<Route
 									exact
 									path="/planets"
-									render={() => <PlanetsHome {...this.props} />}
+									render={rProps => <PlanetsHome {...rProps} {...this.props} />}
 								/>
 								<Route
 									exact
 									path="/planets/:id"
-									render={() => <PlanetView {...this.props} />}
+									render={rProps => <PlanetView {...rProps} {...this.props} />}
 								/>
 								<Route
 									exact
 									path="/people"
-									render={() => <PeopleHome {...this.props} />}
+									render={rProps => <PeopleHome {...this.props} />}
 								/>
 								<Route
 									exact
 									path="/people/:id"
-									render={() => <PersonView {...this.props} />}
+									render={rProps => <PersonView {...this.props} />}
 								/>
 							</Switch>
 						</NavLinks>
