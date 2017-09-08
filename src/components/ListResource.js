@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
-import { NavLink } from "react-router-dom";
 
 const ListResource = ({ resource, resourceName, numPages, onClick }) => {
   return (
