@@ -5,6 +5,9 @@ import Starships from "../Components/Starships";
 import { Starship } from "../Components/Starship";
 
 class StarshipsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     this.props.getIntitialStarships();
   }
