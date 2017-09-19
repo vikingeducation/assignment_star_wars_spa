@@ -1,0 +1,8 @@
+.nav-link .card {
+	color: #333;
+	text-decoration: none;
+}
+.nav-link .card:hover {
+	color: #007bff;
+	border-color: #99ccff;
+}
