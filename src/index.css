@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.pagination {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.pagination li {
+  display: inline-block;
+  background: #023;
+  border-radius: 10%;
+  padding: 6px;
+  margin: 4px;
+  color: white;
+  cursor: pointer;
+  box-shadow: -2px -2px 5px black;
+}
+
+.pagination li:hover {
+  background: #345;
+}
+
+.nav {
+  margin-top: 0;
+  box-shadow: 0 0 10px black;
+  background: #023;
+}
+
+.nav li {
+  display: inline-block;
+  padding: 10px 30px;
+  color: white;
+}
+
+.nav li:hover {
+  background: #345;
+}
+
+.info {
+  margin: auto;
+  max-width: 600px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 30px;
+  line-height: 1.5;
+}
+
+.info h1,
+.info h2 {
+  color: #045;
+}
+
+.resource {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  padding-top: 10px;
+  max-width: 600px;
+  border: solid 2px #ccc;
+  border-radius: 5px;
+}
+
+.resourceList {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.resourceList a {
+  text-decoration: none;
+  color: #045;
+  font-weight: bold;
+  line-height: 1.5;
+  font-size: 30px;
+}
+
+.resource-title {
+  text-align: center;
+  font-size: 50px;
+  color: #045;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.resourceList a li {
+  padding: 5px 40px;
+  border-top: 2px solid #eee;
+}
+
+.resourceList a li:hover {
+  color: #023;
+  background: #ccddff;
+}
+
+.search-box {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.loading {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20%;
+}
+
+.activeNav li {
+  background: #345;
+}
