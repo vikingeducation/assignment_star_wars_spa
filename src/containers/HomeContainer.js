@@ -8,7 +8,13 @@ class HomeContainer extends Component {
   }
 
   render() {
-    return <p>Home</p>;
+    return (
+      <p>
+        To get started, click on section of sidebar to view information, or
+        select a section and type in the search box to search that current
+        section.
+      </p>
+    );
   }
 }
 

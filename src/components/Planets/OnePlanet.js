@@ -30,7 +30,11 @@ const Planet = ({ planetData, isFetching }) => {
         <p>Surface Water: {planetData.surface_water}</p>
         <p>Terrain: {planetData.terrain}</p>
         <p>Residents: {planetLinks(planetData.residents)}</p>
-        <p>Films: {planetLinks(planetData.films)}</p>
+        {planetData.films ? (
+          <p>Films: {planetLinks(planetData.films)}</p>
+        ) : (
+          <div />
+        )}
       </div>
     );
   } else {

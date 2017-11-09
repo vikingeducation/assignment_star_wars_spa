@@ -32,7 +32,11 @@ const OneStarship = ({ starshipData, isFetching }) => {
         <p>Manufacturer: {starshipData.manufacturer}</p>
         <p>Max Atmosphering Speed: {starshipData.max_atmosphering_speed}</p>
         <p>Model: {starshipData.model}</p>
-        <p>Pilots: {starshipLinks(starshipData.pilots)}</p>
+        {starshipData.pilots ? (
+          <p>Pilots: {starshipLinks(starshipData.pilots)}</p>
+        ) : (
+          <div />
+        )}
         <p>Passenagers: {starshipData.passengers}</p>
         <p>Starship Class: {starshipData.starship_class}</p>
         <p>Films: {starshipLinks(starshipData.films)}</p>

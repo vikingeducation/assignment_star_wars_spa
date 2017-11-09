@@ -30,7 +30,11 @@ const Vehicle = ({ vehicleData, isFetching }) => {
         <p>Manufacturer: {vehicleData.manufacturer}</p>
         <p>Max Atmosphering Speed: {vehicleData.max_atmosphering_speed}</p>
         <p>Model: {vehicleData.model}</p>
-        <p>Pilots: {vehicleLinks(vehicleData.pilots)}</p>
+        {vehicleData.pilots ? (
+          <p>Pilots: {vehicleLinks(vehicleData.pilots)}</p>
+        ) : (
+          <div />
+        )}
         <p>Passenagers: {vehicleData.passengers}</p>
         <p>Vehicle Class: {vehicleData.vehicle_class}</p>
         <p>Films: {vehicleLinks(vehicleData.films)}</p>

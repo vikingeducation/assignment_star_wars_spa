@@ -37,7 +37,11 @@ const Specie = ({ specieData, isFetching }) => {
         </p>
         <p>Languages: {specieData.language}</p>
         <p>Films: {specieLinks(specieData.films)}</p>
-        <p>People: {specieLinks(specieData.people)}</p>
+        {specieData.people ? (
+          <p>People: {specieLinks(specieData.people)}</p>
+        ) : (
+          <div />
+        )}
       </div>
     );
   } else {

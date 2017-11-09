@@ -18,27 +18,47 @@ const Peoples = ({ peopleData, isFetching }) => {
     return <p>Loading...</p>;
   } else if (!peopleData) {
     return <p>Error</p>;
-  } else if (peopleData.species) {
+  } else if (peopleData.films) {
     return (
       <div className="people card" key={peopleData.name}>
         <h3>{peopleData.name}</h3>
         <p>Born: {peopleData.birth_year}</p>
-        <p>Species: {personLinks(peopleData.species)}</p>
+        {peopleData.species ? (
+          <p>Species: {personLinks(peopleData.species)}</p>
+        ) : (
+          <div />
+        )}
         <p>Gender: {peopleData.gender}</p>
         <p>Hair: {peopleData.hair_color}</p>
         <p>Eye: {peopleData.eye_color}</p>
         <p>Skin Color: {peopleData.skin_color}</p>
         <p>Height: {peopleData.height}cm</p>
         <p>Mass: {peopleData.mass}</p>
-        <p>
-          Homeworld:{" "}
-          <Link to={peopleData.homeworld.substring(20)}>
-            <button className="btn-sm btn">1</button>
-          </Link>
-        </p>
-        <p>Films: {personLinks(peopleData.films)}</p>
-        <p>Starships: {personLinks(peopleData.starships)}</p>
-        <p>Vehicles: {personLinks(peopleData.vehicles)}</p>
+        {peopleData.homeworld ? (
+          <p>
+            Homeworld:{" "}
+            <Link to={peopleData.homeworld.substring(20)}>
+              <button className="btn-sm btn">1</button>
+            </Link>
+          </p>
+        ) : (
+          <div />
+        )}
+        {peopleData.films ? (
+          <p>Films: {personLinks(peopleData.films)}</p>
+        ) : (
+          <div />
+        )}
+        {peopleData.starships ? (
+          <p>Starships: {personLinks(peopleData.starships)}</p>
+        ) : (
+          <div />
+        )}
+        {peopleData.vehicles ? (
+          <p>Vehicles: {personLinks(peopleData.vehicles)}</p>
+        ) : (
+          <div />
+        )}
       </div>
     );
   } else {
