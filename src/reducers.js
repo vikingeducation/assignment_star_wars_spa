@@ -2,6 +2,7 @@ import * as Actions from "./actions";
 
 const initalState = {
   infoData: {},
+  searchBox: "",
   isFetching: false,
   error: null
 };
@@ -31,6 +32,7 @@ export function swpedia(state = initalState, action) {
     case Actions.CLEAR_DATA:
       return {
         infoData: {},
+        search: "",
         isFetching: false,
         error: null
       };

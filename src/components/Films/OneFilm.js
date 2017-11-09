@@ -17,7 +17,7 @@ const Films = ({ filmData, isFetching }) => {
   if (isFetching) {
     return <p>Loading...</p>;
   } else if (!filmData) {
-    return <p>Error</p>;
+    return <p>Error No Data</p>;
   } else if (filmData.title) {
     let characters = filmLinks(filmData.characters);
     let planets = filmLinks(filmData.planets);
@@ -46,7 +46,7 @@ const Films = ({ filmData, isFetching }) => {
       </div>
     );
   } else {
-    return <p>Error</p>;
+    return <p>Error Title</p>;
   }
 };
 

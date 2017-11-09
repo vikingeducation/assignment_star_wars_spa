@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Switch,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import NavContainer from "../containers/NavContainer";
+
+//---Views--
 import HomeContainer from "../containers/HomeContainer";
 import FilmsContainer from "../containers/FilmsContainer";
 import FilmContainer from "../containers/FilmContainer";
@@ -20,70 +17,6 @@ import StarshipsContainer from "../containers/StarshipsContainer";
 import StarshipContainer from "../containers/StarshipContainer";
 import VehiclesContainer from "../containers/VehiclesContainer";
 import VehicleContainer from "../containers/VehicleContainer";
-
-const NavLinks = () => (
-  <div className="col-sm-3 sidebar">
-    <input type="text" />
-    <NavLink activeClassName="active btn-primary" className="btn" exact to="/">
-      Home
-    </NavLink>{" "}
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/films"
-    >
-      Films
-    </NavLink>
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/people"
-    >
-      People
-    </NavLink>
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/planets"
-    >
-      Planets
-    </NavLink>
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/species"
-    >
-      Species
-    </NavLink>
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/starships"
-    >
-      Starships
-    </NavLink>
-    <br />
-    <NavLink
-      activeClassName="active btn-primary"
-      className="btn"
-      exact
-      to="/vehicles"
-    >
-      Vehicles
-    </NavLink>
-    <br />
-  </div>
-);
 
 class App extends Component {
   render() {
@@ -126,7 +59,7 @@ class App extends Component {
       <Router>
         <div className="container-fluid">
           <div className="row">
-            <NavLinks />
+            <Route component={NavContainer} />
             <div className="col-sm-9">
               <header className="App-header">
                 <h2>Star Wars-pedia</h2>
@@ -149,6 +82,7 @@ class App extends Component {
                 <Route path="/starships" component={StarshipsContainer} />
                 <Route path="/vehicles/:id" component={VehicleContainer} />
                 <Route path="/vehicles" component={VehiclesContainer} />
+                <Route path="/" render={() => <h1>Page Not Found</h1>} />
               </Switch>
               <br />
               {previousButton} {nextButton}

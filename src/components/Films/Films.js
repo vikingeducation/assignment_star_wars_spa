@@ -15,7 +15,7 @@ const Films = ({ filmData, isFetching }) => {
     //map styling
     return sortedFilms.results.map(film => {
       return (
-        <div className="film card" key={film.name}>
+        <div className="film card" key={film.episode_id}>
           <Link to={film.url.substring(20)}>
             <h3>
               {film.title} Episode {film.episode_id}

@@ -36,8 +36,13 @@ export function getApiData(section, params) {
     dispatch(getRequest());
     if (!params) {
       params = "";
-    } else {
+    } else if (params.includes("?")) {
       params = "/" + params;
+    } else {
+      params = "/" + params + "/";
+    }
+    if (!section && params) {
+      return {};
     }
     fetch(`https://swapi.co/api/${section}${params}`)
       .then(response => {
@@ -47,7 +52,6 @@ export function getApiData(section, params) {
         return response.json();
       })
       .then(json => {
-        console.log("Res", json);
         dispatch(getRequestSuccess(json));
       })
       .catch(error => {
