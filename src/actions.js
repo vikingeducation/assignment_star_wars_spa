@@ -32,12 +32,12 @@ const checkStatus = (response) => {
   return response.json();
 };
 
-export function getResources(resourceName) {
+export function getResources(resourceName, searchQuery) {
   return (dispatch) => {
     dispatch(getResourceRequest());
 
     if (resourceName) {
-      fetch(`https://swapi.co/api/${ resourceName }/`)
+      fetch(`https://swapi.co/api/${ resourceName }/${ searchQuery ? '?search=' + searchQuery : '' }`)
         .then(checkStatus)
         .then(json => {
           dispatch(getResourceSuccess(json));

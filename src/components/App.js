@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Nav from './Nav';
 import Home from './Home';
+import FilmsContainer from '../containers/FilmsContainer';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <div className="MainContent col-10">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/films" render={() => <h1 className="text-center">FILMS</h1>} />
+            <Route exact path="/films/:page_number?" component={FilmsContainer} />
             <Route exact path="/people" render={() => <h1 className="text-center">PEOPLE</h1>} />
             <Route exact path="/starships" render={() => <h1 className="text-center">STARSHIPS</h1>} />
             <Route exact path="/vehicles" render={() => <h1 className="text-center">VEHICLES</h1>} />

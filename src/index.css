@@ -19,6 +19,29 @@ h1 {
   margin-bottom: 20px;
 }
 
+.card {
+  padding: 10px;
+  color: #fff;
+  background-color: #292b2c;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  color: #ffd700;
+}
+
+.FilmCard {
+  min-height: 520px;
+}
+
+.attribute-item {
+  margin-bottom: 10px;
+}
+
+.attribute {
+  margin-left: 15px;
+}
+
 /*Spinner styles*/
 @keyframes lds-spinner {
   0% {
@@ -38,6 +61,7 @@ h1 {
 }
 .lds-spinner {
   position: relative;
+  margin: 0 auto;
 }
 .lds-spinner div {
   left: 94px;
@@ -131,4 +155,38 @@ h1 {
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
 }
 
+/*Search Inputs*/
 
+.SearchInput::-webkit-input-placeholder {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.SearchInput:-ms-input-placeholder {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.SearchInput:-moz-placeholder {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.SearchInput::-moz-placeholder {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+
+.SearchInputGroup {
+  margin-bottom: 20px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn-outline-secondary {
+  color: #200075;
+  border-color: #ffd700;
+}
+
+.btn-outline-secondary:hover {
+  color: #200075;
+  background-color: #ffd700;
+}

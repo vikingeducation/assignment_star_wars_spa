@@ -18,12 +18,13 @@ const FilmsInfo = (state = initialFilmsState, action) => {
     return {
       ...state,
       films: action.data.results,
-      isFetching: true,
+      isFetching: false,
       error: null
     };
   case Actions.GET_RESOURCE_FAILURE:
     return {
       ...state,
+      isFetching: false,
       error: action.error
     };
   default:
