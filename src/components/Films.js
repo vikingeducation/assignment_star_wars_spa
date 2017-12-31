@@ -27,8 +27,10 @@ const Films = ({ films, isFetching, onSearchSubmit }) => {
       <SearchForm onSubmit={onSearchSubmit}/>
       {isFetching
         ? <Spinner/>
-        : <div className="row justify-content-center">
-          {filmCards.length ? filmCards : <p className="text-muted text-center">No Films Found</p>}
+        : <div>
+          <div className="row justify-content-center">
+            {filmCards.length ? filmCards : <p className="text-muted text-center">No Films Found</p>}
+          </div>
         </div>}
     </div>
   );
@@ -37,7 +39,8 @@ const Films = ({ films, isFetching, onSearchSubmit }) => {
 Films.propTypes = {
   films: PropTypes.array.isRequired,
   isFetching: PropTypes.bool,
-  onSearchSubmit: PropTypes.func.isRequired
+  onSearchSubmit: PropTypes.func.isRequired,
+  match: PropTypes.object
 };
 
 export default Films;

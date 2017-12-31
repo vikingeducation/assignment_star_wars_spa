@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
-import { SwapiApp } from './reducers';
+import { SwapiApp } from './reducers/main_reducer';
 
 const store = createStore(SwapiApp, applyMiddleware(ReduxThunk));
 

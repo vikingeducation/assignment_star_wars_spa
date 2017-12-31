@@ -32,15 +32,21 @@ const checkStatus = (response) => {
   return response.json();
 };
 
-export function getResources(resourceName, searchQuery) {
+export function getResources(resourceName, page, searchQuery) {
   return (dispatch) => {
     dispatch(getResourceRequest());
 
     if (resourceName) {
-      fetch(`https://swapi.co/api/${ resourceName }/${ searchQuery ? '?search=' + searchQuery : '' }`)
+      fetch(`https://swapi.co/api/${ resourceName }/?${ page ? 'page=' + page : '' }&search=${ searchQuery || '' }`)
         .then(checkStatus)
         .then(json => {
-          dispatch(getResourceSuccess(json));
+          if (resourceName === 'people') {
+            getPeopleInfo(json, dispatch);
+          } else if (resourceName === 'species') {
+            getSpeciesInfo(json, dispatch);
+          } else {
+            dispatch(getResourceSuccess(json));
+          }
         })
         .catch(error => {
           dispatch(getResourceFailure(error));
@@ -50,4 +56,64 @@ export function getResources(resourceName, searchQuery) {
       dispatch(getResourceFailure(new Error('No Resource given')));
     }
   };
+}
+
+function getPeopleInfo(json, dispatch) {
+  new Promise(resolve => {
+    const attributePromises = [];
+
+    for (let person of json.results) {
+      person.speciesString = '';
+
+      if (!person.species.length) {
+        person.speciesString = 'Unknown';
+      } else {
+        // save all species
+        attributePromises.push(fetch(person.species)
+          .then(checkStatus)
+          .then(speciesJson => {
+            if (person.speciesString === '') {
+              person.speciesString += speciesJson.name;
+            } else {
+              person.speciesString += `, ${ speciesJson.name }`;
+            }
+          }));
+      }
+      // save person's homeworld
+      attributePromises.push(fetch(person.homeworld)
+        .then(checkStatus)
+        .then(worldJson => {
+          person.homeworld = worldJson.name;
+        })
+      );
+    }
+    Promise.all(attributePromises).then(() => resolve(json));
+  })
+    .then(json => {
+      dispatch(getResourceSuccess(json));
+    })
+    .catch(error => dispatch(getResourceFailure(error)));
+}
+
+function getSpeciesInfo(json, dispatch) {
+  new Promise(resolve => {
+    const homeWorldPromises = [];
+
+    for (let species of json.results) {
+      if (!species.homeworld) {
+        species.homeworld = 'n/a';
+      } else {
+        homeWorldPromises.push(fetch(species.homeworld)
+          .then(checkStatus)
+          .then(homeworldJson => {
+            species.homeworld = homeworldJson.name;
+          }));
+      }
+    }
+    Promise.all(homeWorldPromises).then(() => resolve(json));
+  })
+    .then(json => {
+      dispatch(getResourceSuccess(json));
+    })
+    .catch(error => dispatch(getResourceFailure(error)));
 }

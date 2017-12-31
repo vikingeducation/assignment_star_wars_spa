@@ -16,37 +16,37 @@ const Nav = () => {
           </li>
 
           <li>
-            <NavLink exact to="/films" activeClassName="active" className="side-navlink">
+            <NavLink to="/films/" activeClassName="active" className="side-navlink">
               Films
             </NavLink>
           </li>
 
           <li>
-            <NavLink exact to="/people" activeClassName="active" className="side-navlink">
+            <NavLink to="/people" activeClassName="active" className="side-navlink">
               People
             </NavLink>
           </li>
 
           <li>
-            <NavLink exact to="/starships" activeClassName="active" className="side-navlink">
+            <NavLink to="/starships" activeClassName="active" className="side-navlink">
               Starships
             </NavLink>
           </li>
 
           <li>
-            <NavLink exact to="/vehicles" activeClassName="active" className="side-navlink">
+            <NavLink to="/vehicles" activeClassName="active" className="side-navlink">
               Vehicles
             </NavLink>
           </li>
 
           <li>
-            <NavLink exact to="/species" activeClassName="active" className="side-navlink">
+            <NavLink to="/species" activeClassName="active" className="side-navlink">
               Species
             </NavLink>
           </li>
 
           <li>
-            <NavLink exact to="/planets" activeClassName="active" className="side-navlink">
+            <NavLink to="/planets" activeClassName="active" className="side-navlink">
               Planets
             </NavLink>
           </li>

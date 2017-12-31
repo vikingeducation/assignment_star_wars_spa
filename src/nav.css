@@ -46,3 +46,12 @@
   color: #200075 !important;
   text-decoration: none !important;
 }
+
+.page-link {
+  color: #200075;
+}
+
+.page-link:hover, .page-link:focus {
+  color: #200075;
+  background-color: #ffd700;
+}

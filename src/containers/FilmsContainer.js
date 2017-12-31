@@ -11,9 +11,14 @@ class FilmsContainer extends Component {
   }
 
   render() {
-    let { films, isFetching, onSearchSubmit } = this.props;
+    let { films, isFetching, onSearchSubmit, match } = this.props;
     films = films.sort((a, b) => a.episode_id > b.episode_id);
-    return <Films films={films} isFetching={isFetching} onSearchSubmit={onSearchSubmit}/>;
+    return <Films
+      films={films}
+      isFetching={isFetching}
+      onSearchSubmit={onSearchSubmit}
+      match={match}
+    />;
   }
 }
 
@@ -21,12 +26,15 @@ FilmsContainer.propTypes = {
   films: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   getResources: PropTypes.func.isRequired,
-  onSearchSubmit: PropTypes.func.isRequired
+  onSearchSubmit: PropTypes.func.isRequired,
+  match: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
+  const films = state.FilmsInfo.films;
+
   return {
-    films: state.FilmsInfo.films,
+    films: films.results || [],
     isFetching: state.FilmsInfo.isFetching
   };
 };
@@ -42,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
       const form = e.target;
       const data = serialize(form, { hash: true });
 
-      dispatch(getResources('films', data.search_query));
+      dispatch(getResources('films', null, data.search_query));
     }
   };
 };

@@ -1,13 +1,12 @@
-import * as Actions from './actions';
-import { combineReducers } from 'redux';
+import * as Actions from '../actions';
 
-const initialFilmsState = {
-  films: [],
+const initialSpeciesState = {
+  species: {},
   isFetching: false,
   error: null
 };
 
-const FilmsInfo = (state = initialFilmsState, action) => {
+const SpeciesInfo = (state = initialSpeciesState, action) => {
   switch (action.type) {
   case Actions.GET_RESOURCE_REQUEST:
     return {
@@ -17,7 +16,7 @@ const FilmsInfo = (state = initialFilmsState, action) => {
   case Actions.GET_RESOURCE_SUCCESS:
     return {
       ...state,
-      films: action.data.results,
+      species: action.data,
       isFetching: false,
       error: null
     };
@@ -32,4 +31,4 @@ const FilmsInfo = (state = initialFilmsState, action) => {
   }
 };
 
-export const SwapiApp = combineReducers({ FilmsInfo });
+export default SpeciesInfo;
