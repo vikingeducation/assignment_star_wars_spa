@@ -20,7 +20,7 @@ export function starWarsReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        books: action.data
+        entities: action.data
       };
 
     case Actions.GET_STARWARS_FAILURE:

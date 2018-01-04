@@ -33,7 +33,8 @@ export function getStarWars(query) {
         return response.json();
       })
       .then(response => {
-        dispatch(getStarWarsSuccess(response));
+        console.log("response =>", response);
+        dispatch(getStarWarsSuccess(response.results));
       })
       .catch(e => {
         dispatch(getStarWarsFailure(e));

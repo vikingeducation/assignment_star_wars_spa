@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 let store = createStore(starWars, applyMiddleware(thunk));
+console.log("state =>", store.getState());
 
 ReactDOM.render(
   <Provider store={store}>
