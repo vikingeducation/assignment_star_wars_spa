@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { getStarWars } from "../actions";
 
 class Populate extends Component {
   componentDidMount() {
-    console.log("props inside populate class", this.props);
     this.props.getStarWars();
   }
 
@@ -18,10 +17,10 @@ class Populate extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log("state in populatecontainer=> ", state);
-  // console.log("ownprops =>", ownProps);
   return {
-    entities: state.starWarsReducer.entities
+    entities: state.starWarsReducer.entities,
+    previous: state.starWarsReducer.previous,
+    next: state.starWarsReducer.next
   };
 };
 

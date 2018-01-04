@@ -7,6 +7,7 @@ import {
   Switch
 } from "react-router-dom";
 import PopulateContainer from "../containers/PopulateContainer";
+import PeopleContainer from "../containers/PeopleContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -16,7 +17,7 @@ const NavLinks = () => (
     <NavLink activeClassName="active" exact to="/people">
       People
     </NavLink>{" "}
-    <NavLink activeClassName="active" exact to="/planets">
+    {/* <NavLink activeClassName="active" exact to="/planets">
       Planets
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/species">
@@ -27,7 +28,7 @@ const NavLinks = () => (
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/vehicles">
       Vehicles
-    </NavLink>{" "}
+    </NavLink>{" "} */}
   </div>
 );
 
@@ -40,13 +41,13 @@ const App = () => (
       <NavLinks />
 
       <Switch>
-        <Route exact path="/" component={PopulateContainer} />
+        {/* <Route exact path="/" component={PopulateContainer} /> */}
         <Route path="/films" component={PopulateContainer} />
-        <Route path="/people" component={PopulateContainer} />
-        <Route path="/planets" component={PopulateContainer} />
+        <Route path="/people/:page_number?" component={PeopleContainer} />
+        {/* <Route path="/planets" component={PopulateContainer} />
         <Route path="/species" component={PopulateContainer} />
         <Route path="/starships" component={PopulateContainer} />
-        <Route path="/vehicles" component={PopulateContainer} />
+        <Route path="/vehicles" component={PopulateContainer} /> */}
         <Route render={() => <h1>Page not found</h1>} />
       </Switch>
     </div>

@@ -5,7 +5,9 @@ import * as Actions from "./actions";
 const initialState = {
   entities: [],
   isFetching: false,
-  error: null
+  error: null,
+  previous: null,
+  next: null
 };
 
 export function starWarsReducer(state = initialState, action) {
@@ -20,7 +22,9 @@ export function starWarsReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        entities: action.data
+        entities: action.data.results,
+        previous: action.data.previous,
+        next: action.data.next
       };
 
     case Actions.GET_STARWARS_FAILURE:
@@ -29,6 +33,7 @@ export function starWarsReducer(state = initialState, action) {
         isFetching: false,
         error: action.error
       };
+
     default:
       return state;
   }
