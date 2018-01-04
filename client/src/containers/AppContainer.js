@@ -30,12 +30,6 @@ const mapDispatchToProps = dispatch => {
   return {
     getStarWars: () => {
       dispatch(getStarWars("films"));
-    },
-    onClick: e => {
-      e.preventDefault();
-      let query = e.target.name;
-      console.log(query);
-      dispatch(getStarWars(query));
     }
   };
 };

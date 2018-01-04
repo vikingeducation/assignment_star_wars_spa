@@ -11,34 +11,22 @@ import PopulateContainer from "../containers/PopulateContainer";
 const NavLinks = ({ onClick }) => (
   <div className="NavLinks">
     <NavLink activeClassName="active" exact to="/films">
-      <p onClick={onClick} name="films">
-        Films
-      </p>
+      Films
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/people">
-      <p onClick={onClick} name="people">
-        People
-      </p>
+      People
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/planets">
-      <p onClick={onClick} name="planets">
-        Planets
-      </p>
+      Planets
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/species">
-      <p onClick={onClick} name="species">
-        Species
-      </p>
+      Species
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/starships">
-      <p onClick={onClick} name="starships">
-        Starships
-      </p>
+      Starships
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/vehicles">
-      <p onClick={onClick} name="vehicles">
-        Vehicles
-      </p>
+      Vehicles
     </NavLink>{" "}
   </div>
 );
@@ -59,6 +47,7 @@ const App = () => (
         <Route path="/species" component={PopulateContainer} />
         <Route path="/starships" component={PopulateContainer} />
         <Route path="/vehicles" component={PopulateContainer} />
+        <Route render={() => <h1>Page not found</h1>} />
       </Switch>
     </div>
   </Router>
