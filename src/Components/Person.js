@@ -13,9 +13,19 @@ const Person = ({ person }) => {
       <div className="row">
         <div className="card col-md-5 grid Film">
           <h4>{person.name}</h4>
-          <p>Films: {person.films}</p>
+          <p>Films: </p>
+          <div>
+            {person.films.map((film) => {
+                return (
+                  <div>
+                    <a href={film}> {film} </a>
+                    <br />
+                  </div>
+                )
+              })
+            }
+          </div>
           <p>
-            : <br />
             <br />
           </p>
         </div>

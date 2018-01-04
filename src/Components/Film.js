@@ -12,7 +12,9 @@ const Films = ({ film }) => {
     <div>
       <div className="row">
         <div className="card col-md-5 grid Film">
-          <h4>{film.title}</h4>
+    <Link to={`/films/${film.id}`}>
+      <h4>{film.title}</h4>
+    </Link>
           <p>Episode No: {film.episode}</p>
           <p>
             Description: <br />

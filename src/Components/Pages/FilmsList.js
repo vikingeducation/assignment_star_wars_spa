@@ -24,12 +24,14 @@ class FilmsList extends Component {
       .then(json => {
         let films = json.results.map(film => {
           return {
+            id: film.url.split("/").slice(-2, -1),
             title: film.title,
             episode: film.episode_id,
             description: film.opening_crawl,
             url: film.url
           };
         });
+        console.log(films);
         this.setState({
           films: films
         });
