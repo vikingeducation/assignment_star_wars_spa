@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import App from "../components/App";
+// import App from "../components/App";
+import { App } from "../components/App";
 import serialize from "form-serialize";
 import { getStarWars } from "../actions";
 
 class AppContainer extends Component {
   componentDidMount() {
+    console.log("props inside app class", this.props);
     this.props.getStarWars();
   }
 
   render() {
-    console.log("entities", this.props.entities);
-    return <App entities={this.props.entities} />;
+    return (
+      <div>
+        <App />
+      </div>
+    );
   }
 }
 

@@ -6,6 +6,7 @@ import {
   NavLink,
   Switch
 } from "react-router-dom";
+import PopulateContainer from "../containers/PopulateContainer";
 
 const NavLinks = () => (
   <div className="NavLinks">
@@ -15,37 +16,41 @@ const NavLinks = () => (
     <NavLink activeClassName="active" exact to="/people">
       People
     </NavLink>{" "}
+    <NavLink activeClassName="active" exact to="/planets">
+      Planets
+    </NavLink>{" "}
+    <NavLink activeClassName="active" exact to="/species">
+      Species
+    </NavLink>{" "}
+    <NavLink activeClassName="active" exact to="/starships">
+      Starships
+    </NavLink>{" "}
+    <NavLink activeClassName="active" exact to="/vehicles">
+      Vehicles
+    </NavLink>{" "}
   </div>
 );
 
-const App = ({ entities }) => (
+const App = () => (
   <Router>
-    <div className="App">
+    <div>
       <header className="App-header">
         <h1 className="App-title">Welcome to Star Wars Information</h1>
       </header>
       <NavLinks />
-      <Route
-        path="/"
-        render={() => {
-          return entities.map((entity, index) => {
-            return <p key={index}>{entity.title} </p>;
-          });
-        }}
-      />
-      <Route path="/" render={() => <h1>Home</h1>} />
+
+      <Switch>
+        <Route exact path="/" component={PopulateContainer} />
+        <Route path="/films" component={PopulateContainer} />
+        <Route path="/people" component={PopulateContainer} />
+        <Route path="/planets" component={PopulateContainer} />
+        <Route path="/species" component={PopulateContainer} />
+        <Route path="/starships" component={PopulateContainer} />
+        <Route path="/vehicles" component={PopulateContainer} />
+        <Route render={() => <h1>Page not found</h1>} />
+      </Switch>
     </div>
   </Router>
 );
 
-export default App;
-
-{
-  /* <Switch>
-  <Route exact path="/" render={() => <h1>Home</h1>} />
-  <Route path="/photos/:id" component={PhotoContainer} />
-  <Route path="/photos" component={PhotosContainer} />
-  <Route path="/about" component={About} />
-  <Route render={() => <h1>Page not found</h1>} />
-</Switch>; */
-}
+export { App };

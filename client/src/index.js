@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import AppContainer from "./containers/AppContainer";
-import registerServiceWorker from "./registerServiceWorker";
 
 import { createStore, applyMiddleware } from "redux";
 import { starWars } from "./reducers";
@@ -18,4 +17,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-registerServiceWorker();
