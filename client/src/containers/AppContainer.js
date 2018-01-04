@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import App from "../components/App";
-import { App, Populate } from "../components/App";
+import { App } from "../components/App";
 import serialize from "form-serialize";
 import { getStarWars } from "../actions";
 
@@ -12,7 +12,11 @@ class AppContainer extends Component {
 
   render() {
     console.log("entities", this.props.entities);
-    return <Populate entities={this.props.entities} />;
+    return (
+      <div>
+        <App />
+      </div>
+    );
   }
 }
 
@@ -26,6 +30,12 @@ const mapDispatchToProps = dispatch => {
   return {
     getStarWars: () => {
       dispatch(getStarWars("films"));
+    },
+    onClick: e => {
+      e.preventDefault();
+      let query = e.target.name;
+      console.log(query);
+      dispatch(getStarWars(query));
     }
   };
 };
