@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paginator from '../Paginator';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,32 +14,60 @@ class PeopleList extends Component {
     super(props);
 
     this.state = {
+      page: 1,
+      previous: '',
+      next: '',
       people: []
     };
   }
 
-  componentDidMount() {
-    // this.setState({ isFetching: true });
-    fetch('https://swapi.co/api/people/')
+  onClick = page => {
+    fetch(`https://swapi.co/api/people/?page=${page}`)
       .then(response => response.json())
       .then(json => {
         console.log(json);
         let people = json.results;
-
-        console.log(people);
+        json.previous = json.previous || ' ';
         this.setState({
-          people
+          people: json.results,
+          previous: json.previous.split('/').slice(-2, -1),
+          next: json.next.split('/').slice(-2, -1),
+          page
+        });
+      });
+  };
+
+  componentDidMount() {
+    // this.setState({ isFetching: true });
+    console.log('STATE====================');
+    console.log(this.state.page);
+    console.log('STATE====================');
+    fetch(`https://swapi.co/api/people/?page=${this.state.page}`)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+        let people = json.results;
+        json.previous = json.previous || ' ';
+        this.setState({
+          people: json.results,
+          previous: json.previous.split('/').slice(-2, -1),
+          next: json.next.split('/').slice(-2, -1),
+          page: this.state.page
         });
       });
   }
 
   render() {
-    console.log(this.state);
-    const { people } = this.state;
-
+    const { people, previous, next } = this.state;
+    console.log(people, previous, next);
     return (
-      <div className="FilmsList">
-        {people.map((person, index) => <Person person={person} key={index} />)}
+      <div className="container">
+        <Paginator previous={previous} next={next} callback={this.onClick} />
+        <div className="FilmsList">
+          {people.map((person, index) => (
+            <Person person={person} key={index} />
+          ))}
+        </div>
       </div>
     );
   }

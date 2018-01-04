@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paginator from '../Paginator';
 import {
   BrowserRouter as Router,
   Route,
@@ -24,7 +25,7 @@ class FilmsList extends Component {
       .then(json => {
         let films = json.results.map(film => {
           return {
-            id: film.url.split("/").slice(-2, -1),
+            id: film.url.split('/').slice(-2, -1),
             title: film.title,
             episode: film.episode_id,
             description: film.opening_crawl,
