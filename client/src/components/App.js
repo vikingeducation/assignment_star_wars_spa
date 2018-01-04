@@ -10,28 +10,35 @@ import PopulateContainer from "../containers/PopulateContainer";
 
 const NavLinks = ({ onClick }) => (
   <div className="NavLinks">
-    <NavLink activeClassName="active" exact to="/">
-      <p onClick={onClick} name="people">
-        Home
+    <NavLink activeClassName="active" exact to="/films">
+      <p onClick={onClick} name="films">
+        Films
       </p>
     </NavLink>{" "}
-    <NavLink activeClassName="active" exact to="/films">
-      Films
-    </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/people">
-      People
+      <p onClick={onClick} name="people">
+        People
+      </p>
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/planets">
-      Planets
+      <p onClick={onClick} name="planets">
+        Planets
+      </p>
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/species">
-      Species
+      <p onClick={onClick} name="species">
+        Species
+      </p>
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/starships">
-      Starships
+      <p onClick={onClick} name="starships">
+        Starships
+      </p>
     </NavLink>{" "}
     <NavLink activeClassName="active" exact to="/vehicles">
-      Vehicles
+      <p onClick={onClick} name="vehicles">
+        Vehicles
+      </p>
     </NavLink>{" "}
   </div>
 );
