@@ -18,26 +18,34 @@ const NavLinks = () => (
   </div>
 );
 
-const Populate = ({ entities }) => {
-  const gallery = entities.map((entity, index) => {
-    return <p key={index}>{entity.title} </p>;
-  });
-  return <div>{gallery}</div>;
-};
-
-const App = () => (
+const App = ({ entities }) => (
   <Router>
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to Star Wars Information</h1>
       </header>
       <NavLinks />
-      <Switch>
-        <Route path="/" component={Populate} />
-        <Route path="/people" render={() => <h1>Home</h1>} />
-      </Switch>
+      <Route
+        path="/"
+        render={() => {
+          return entities.map((entity, index) => {
+            return <p key={index}>{entity.title} </p>;
+          });
+        }}
+      />
+      <Route path="/" render={() => <h1>Home</h1>} />
     </div>
   </Router>
 );
 
-export { App, Populate };
+export default App;
+
+{
+  /* <Switch>
+  <Route exact path="/" render={() => <h1>Home</h1>} />
+  <Route path="/photos/:id" component={PhotoContainer} />
+  <Route path="/photos" component={PhotosContainer} />
+  <Route path="/about" component={About} />
+  <Route render={() => <h1>Page not found</h1>} />
+</Switch>; */
+}
