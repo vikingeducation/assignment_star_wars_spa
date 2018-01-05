@@ -22,16 +22,23 @@ class PeopleList extends Component {
   }
 
   onClick = page => {
+    console.log("------------------- START page -------------------");
+    console.log(page);
+    console.log("-------------------- END page --------------------");
+    
     fetch(`https://swapi.co/api/people/?page=${page}`)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
+        console.log("------------------- START  -------------------");
+        console.log();
+        console.log("-------------------- END  --------------------");
+               
         let people = json.results;
         json.previous = json.previous || ' ';
         this.setState({
           people: json.results,
-          previous: json.previous.split('/').slice(-2, -1),
-          next: json.next.split('/').slice(-2, -1),
+          previous: json.previous.split('=').slice(-2, -1),
+          next: json.next.split('=').slice(-2, -1),
           page
         });
       });
@@ -39,19 +46,17 @@ class PeopleList extends Component {
 
   componentDidMount() {
     // this.setState({ isFetching: true });
-    console.log('STATE====================');
-    console.log(this.state.page);
-    console.log('STATE====================');
+
     fetch(`https://swapi.co/api/people/?page=${this.state.page}`)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
+
         let people = json.results;
         json.previous = json.previous || ' ';
         this.setState({
           people: json.results,
-          previous: json.previous.split('/').slice(-2, -1),
-          next: json.next.split('/').slice(-2, -1),
+          previous: json.previous.split('=').slice(-2, -1),
+          next: json.next.split('=').slice(-2, -1),
           page: this.state.page
         });
       });
