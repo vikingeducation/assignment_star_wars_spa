@@ -1,2 +1,2 @@
-# assignment_star_wars_spa
-May the SPA be with you...
+# Star Wars SPA
+Single page React application using the Star Wars API
