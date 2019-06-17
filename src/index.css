@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.loading-icon {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.router-link {
+	width: 200px;
+	border: 1px solid white;
+}
+
+.router-link-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: black;
+	flex-wrap: wrap;
+}
